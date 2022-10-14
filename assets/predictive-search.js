@@ -2,11 +2,39 @@ class PredictiveSearch extends HTMLElement {
   constructor() {
     super();
     this.cachedResults = {};
+    let SearchedProducts = [] ;
+    this.SearchedProducts = []
     this.input = this.querySelector('input[type="search"]');
     this.predictiveSearchResults = this.querySelector('[data-predictive-search]');
     this.isOpen = false;
 
     this.setupEventListeners();
+
+    const elementToObserve = document.querySelector("body");
+    const observer = new MutationObserver((changes) => {
+      changes.forEach(function(change) {
+        if($(change.target).hasClass('snize-ac-results-singlecolumn-list'))
+        {
+          SearchedProducts = [];
+          $(change.target).find(".snize-product").each((index, item) => {
+            let image = $(item).find(".snize-thumbnail img").attr("src");
+            let title = $(item).find(".snize-title").text();
+            let price = $(item).find(".snize-price-list .snize-price").text();
+      
+            let singleProduct = {
+              image,
+              title,
+              price,
+            };
+            SearchedProducts.push(singleProduct);
+          });
+        }
+    });
+
+    this.SearchedProducts = SearchedProducts
+    });
+    observer.observe(elementToObserve, { subtree: true, childList: true });
+
   }
 
   setupEventListeners() {
@@ -128,26 +156,56 @@ class PredictiveSearch extends HTMLElement {
       return;
     }
 
-    fetch(`${routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&${encodeURIComponent('resources[type]')}=product&${encodeURIComponent('resources[limit]')}=6&section_id=predictive-search`)
-      .then((response) => {
-        if (!response.ok) {
-          var error = new Error(response.status);
-          this.close();
-          throw error;
-        }
+    // fetch(
+    //   `${routes.predictive_search_url}?q=${encodeURIComponent(
+    //     searchTerm
+    //   )}&${encodeURIComponent("resources[type]")}=product&${encodeURIComponent(
+    //     "resources[limit]"
+    //   )}=6&section_id=predictive-search`
+    // )
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       var error = new Error(response.status);
+    //       this.close();
+    //       throw error;
+    //     }
 
-        return response.text();
-      })
-      .then((text) => {
-        const resultsMarkup = new DOMParser().parseFromString(text, 'text/html').querySelector('#shopify-section-predictive-search').innerHTML;
-        this.cachedResults[queryKey] = resultsMarkup;
-        this.renderSearchResults(resultsMarkup);
-      })
-      .catch((error) => {
-        this.close();
-        throw error;
-      });
+    //     return response.text();
+    //   })
+    //   .then((text) => {
+    //     const resultsMarkup = new DOMParser()
+    //       .parseFromString(text, "text/html")
+    //       .querySelector("#shopify-section-predictive-search").innerHTML;
+    //     this.cachedResults[queryKey] = resultsMarkup;
+    //     this.renderSearchResults(resultsMarkup);
+    //   })
+    //   .catch((error) => {
+    //     this.close();
+    //     throw error;
+    //   });
+
+    setTimeout(()=>{
+      this.SmartsearchProductResult()
+    }, 500);
+
   }
+
+  SmartsearchProductResult()
+  {
+    console.log( this.SearchedProducts)
+    console.log( this.SearchedProducts.length)
+    if(!this.SearchedProducts.length) return ;
+
+    $('header .predictive-search .suggested-search , header .predictive-search .suggested-search .predictive-search__loading-state').hide();
+    $('header .predictive-search #predictive-search-results').show();
+    $('header .predictive-search #predictive-search-results').find('.predictive-search-see-all').text(`SEE ALL RESULTS (${this.SearchedProducts.length})`);
+    $('header .predictive-search #predictive-search-results').find('#predictive-search-results-list').empty();
+  this.SearchedProducts.slice(0, 6).map((product,key) => {
+   let Producthtml = `<li id="predictive-search-option-${key}" class="predictive-search__list-item" role="option" aria-selected="false"> <a href="/en-pk/products/quarter-zip-pullover-steel?_pos=1&amp;_psq=p&amp;_ss=e&amp;_v=1.0" class="predictive-search__item predictive-search__item--link link link--text" tabindex="-1"><div class="product-card-media media"> <div class="media-ratio ratio--1-1"> <img class="predictive-search__image media-asset" src="${product.image};width=250"> </div></div><div class="predictive-search__item-content"><div> <h3 class="predictive-search__item-heading h5">${product.title}</h3><h4 class="typography-font-3 product-subtitle">100% CASHMERE</h4> <span class="medium-hide large-up-hide typography-font-3 uppercase available-colors">1 color</span> </div><div class="price typography-font-3"> <div class="price__container"><div class="price__regular"> <span class="visually-hidden visually-hidden--inline">Regular price</span> <span class="price-item price-item--regular"> ${product.price} </span> </div><div class="price__sale"> <span class="visually-hidden visually-hidden--inline">Regular price</span> <span> <s class="price-item price-item--regular"> ${product.price} </s> </span><span class="visually-hidden visually-hidden--inline">Sale price</span> <span class="price-item price-item--sale price-item--last"> ${product.price} </span> </div><small class="unit-price caption hidden"> <span class="visually-hidden">Unit price</span> <span class="price-item price-item--last"> <span></span> <span aria-hidden="true">/</span> <span class="visually-hidden">&nbsp;per&nbsp;</span> <span> </span> </span> </small> </div></div></div></a> </li>`
+   $('header .predictive-search #predictive-search-results').find('#predictive-search-results-list').append(Producthtml) 
+  })
+  }
+
 
   setLiveRegionLoadingState() {
     this.statusElement = this.statusElement || this.querySelector('.predictive-search-status');
@@ -167,8 +225,9 @@ class PredictiveSearch extends HTMLElement {
   }
 
   renderSearchResults(resultsMarkup) {
+    // console.log(resultsMarkup);
     this.predictiveSearchResults.innerHTML = resultsMarkup;
-    this.setAttribute('results', true);
+    this.setAttribute("results", true);
 
     this.setLiveRegionResults();
     this.open();
@@ -209,6 +268,14 @@ class PredictiveSearch extends HTMLElement {
 
     this.isOpen = false;
   }
+
+
+
 }
+
+
+
+
+
 
 customElements.define('predictive-search', PredictiveSearch);

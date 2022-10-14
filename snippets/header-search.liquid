@@ -74,7 +74,26 @@
                           <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
                         </svg>
                       </div>
+
+
+                         <div id="predictive-search-results" style="display: none;">
+                              <h2 id="predictive-search-products" class="predictive-search__heading text-body caption-with-letter-spacing uppercase"> Products <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                </svg>
+                              </h2>
+                            <ul id="predictive-search-results-list" class="predictive-search__results-list list-unstyled" role="listbox" aria-labelledby="predictive-search-products"></ul>
+                              <a class="button button--primary btn-lg predictive-search-see-all" href="javascript:;" onclick="seeAllPredictiveResults()">SEE ALL RESULTS (6)</a>
+                              <div class="predictive-search__loading-state" aria-hidden="true">
+                                <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                  <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                </svg>
+                              </div>
+                         </div>
+
+
                     </div>
+
+ 
 
                     <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
                   {%- endif -%}
