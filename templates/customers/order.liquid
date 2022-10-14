@@ -1,0 +1,613 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+{{ 'section-sidebar-contact.css' | asset_url | stylesheet_tag }}
+
+<div class="order-hide-mobile">
+  {% include 'customer-logout' %}
+</div>
+
+<div class="customer-container customer-container-order">
+  <div id="sidebar-container" class="sidebar-container">
+    <div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrapper">
+        <a href="{{ routes.account_url }}" class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link ">My Account</a>
+      </div>
+      <div class="sidebar-menu-link-wrapper">
+        <a href="" class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link active ">Orders</a>
+      </div>
+      <div class="sidebar-menu-link-wrapper">
+        <a href="{{ routes.account_addresses_url }}" class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link ">Saved Addresses</a>
+      </div>
+      <div class="sidebar-menu-link-wrapper">
+        <a href="/pages/wishlist" class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link ">Wishlist</a>
+      </div>
+
+    </div>
+  </div>  
+
+  <div class="pages-content">
+    <div class="customer order">
+  
+      <div class="customer-order-detail-container">
+        <div class="customer-order-list-wrap">
+    
+          <div class="typography-text typography-text--body order-hide-desktop uppercase order-customer-name">Hello, {{ customer.first_name }}</div>
+    
+          <div class="order-hide-desktop order-go-back">
+            <span>{% render 'icon-arrow' %}</span>
+            <a href="/account?=orders" class="typography-text typography-text--body uppercase link link--underline ">MY ORDERS</a>
+          </div>
+    
+    
+    
+    
+    
+    
+          {%- for line_item in order.line_items -%}
+            <div class="order-line-item">
+              <a href="{{ line_item.url }}" class="order-line-item-img  media">
+                <div class="media-ratio ratio--1-1">
+                  <img src="{{ line_item.image | image_url }}" width="190" alt="{{ line_item.image.alt }}" class="media-asset">
+                </div>
+              </a>
+              <div class="order-line-item-info">
+                <div class="order-line-item-title-wrap">
+                  <h3 class="order-line-item-title typography-heading--4">
+                    {%- if line_item.url != blank -%}
+                      <a class="typography-heading--4" href="{{ line_item.url }}">{{ line_item.title | split: '-' | first }}</a>
+                    {%- else -%}
+                      {{ line_item.title }}
+                    {%- endif -%}
+                  </h3>
+                  <span class="typography-text typography-heading--4">{{ line_item.final_price | money | remove:" " }}</span>
+                </div>
+
+
+
+                <div class="order-line-item-variant-info">
+                  <p class="cart-item-title">ITEM: {{ line_item.id }} </p>
+                  {%- for option in line_item.options_with_values -%}
+                    {% if option.name == 'Color' %}
+                      <p class="cart-item-title">{{ option.value }}</p>
+                    {% endif %}
+                  {%- endfor -%}
+
+                  {%- for option in line_item.options_with_values -%}
+                    {% if option.name == 'Size' %}
+                      <p class="cart-item-title">{{ option.value }}</p>
+                    {% endif %}
+                  {%- endfor -%}
+                </div>
+
+
+
+    
+    
+    
+    
+    
+    
+                {%- assign property_size = line_item.properties | size -%}
+                {%- unless line_item.selling_plan_allocation == nil and property_size == 0 -%}
+                  <div class="properties">
+                    {%- unless line_item.product.has_only_default_variant -%}
+                      <span>
+                        {{ line_item.variant.title }}
+                      </span>
+                    {%- endunless -%}
+                    {%- unless line_item.selling_plan_allocation == nil -%}
+                      <span>
+                        {{ line_item.selling_plan_allocation.selling_plan.name }}
+                      </span>
+                    {%- endunless -%}
+                    {%- if property_size != 0 -%}
+                      {%- for property in line_item.properties -%}
+                        {% assign property_first_char = property.first | slice: 0 %}
+                        {%- if property.last != blank and property_first_char != '_' -%}
+                          <span>
+                            {{ property.first }}:&nbsp;
+                            {%- if property.last contains '/uploads/' -%}
+                              <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
+                            {%- else -%}
+                              {{ property.last }}
+                            {%- endif -%}
+                          </span>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    {%- endif -%}
+                  </div>
+                {%- endunless -%}
+    
+                {%- if line_item.line_level_discount_allocations != blank -%}
+                  <ul role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                    {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+                      <li>
+                        <svg aria-hidden="true" focusable="false" viewBox="0 0 12 12">
+                          <use href="#icon-discount" />
+                        </svg>
+                        {{- discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money | remove:" " -}})
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+    
+                {%- if line_item.fulfillment -%}
+                  <div class="fulfillment">
+                    {%- assign created_at = line_item.fulfillment.created_at | time_tag: format: 'date' -%}
+                    <span>{{ 'customer.order.fulfilled_at_html' | t: date: created_at }}</span>
+    
+                      {%- if line_item.fulfillment.tracking_url -%}
+                        <a href="{{ line_item.fulfillment.tracking_url }}">
+                          {{ 'customer.order.track_shipment' | t }}
+                        </a>
+                      {%- endif -%}
+                      <span>
+                        {{ line_item.fulfillment.tracking_company }}
+                        {%- if line_item.fulfillment.tracking_number -%} #{{ line_item.fulfillment.tracking_number }} {%- endif -%}
+                      </span>
+                  </div>
+                {%- endif -%}
+    
+    
+    
+                <div class="order-line-item-quantity typography-text typography-text--body uppercase"  data-label="{{ 'customer.order.quantity' | t }}">
+                  quantity: {{ line_item.quantity }}
+                </div>
+    
+               
+    
+    
+              </div>
+    
+            </div>
+    
+          {%- endfor -%}
+    
+        </div>
+    
+        <div class="customer-order-detail-wrap">
+    
+          <div class="typography-text typography-text--body order-hide-desktop order-logout uppercase"><a href="{{ routes.account_logout_url }}" class="link link--underline">{{ 'customer.log_out' | t }}</a></div>
+          
+          <div class="order-hide-mobile order-go-back order-go-back-mob">
+            <span>{% render 'icon-arrow' %}</span>
+            <a href="/account?=orders" class="typography-text typography-text--body uppercase link link--underline ">MY ORDERS</a>
+          </div>
+    
+    
+          <div class="customer-order-details">
+            <div class="customer-order-container">
+              <div class="customer-order-container-title typography-text typography-text--body uppercase">Order number {{ order.name }} </div>
+              <div class="customer-order-info-wrap">
+                <div class="customer-order-info">
+                  <div class="customer-order-info-title typography-text typography-text--body uppercase">Status</div>
+                  <div class="customer-order-info-data typography-text typography-text--body uppercase" data-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.fulfillment_status }}</div>
+                </div>
+                <div class="customer-order-info">
+                  <div class="customer-order-info-title typography-text typography-text--body uppercase">{{ 'customer.orders.date' | t }}</div>
+                  <div class="customer-order-info-data typography-text typography-text--body uppercase" data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: "%b %d, %y" }}</div>
+                </div>
+                <div class="customer-order-info">
+                  <div class="customer-order-info-title typography-text typography-text--body uppercase">{{ 'customer.orders.total' | t }}</div>
+                  <div class="customer-order-info-data typography-text typography-text--body uppercase" data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money | remove:" " }}</div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="order-list-item-mobile">
+              {%- for line_item in order.line_items -%}
+                <div class="order-line-item">
+                  <a href="{{ line_item.url }}" class="order-line-item-img  media">
+                    <div class="media-ratio ratio--1-1">
+                      <img src="{{ line_item.image | image_url }}" width="190" alt="{{ line_item.image.alt }}" class="media-asset">
+                    </div>
+                  </a>
+                  <div class="order-line-item-info">
+                    <div class="order-line-item-title-wrap">
+                      <h3 class="order-line-item-title typography-heading--4">
+                        {%- if line_item.url != blank -%}
+                          <a class="typography-heading--4" href="{{ line_item.url }}">{{ line_item.title | split: '-' | first }}</a>
+                        {%- else -%}
+                          {{ line_item.title }}
+                        {%- endif -%}
+                      </h3>
+                      <span class="typography-text typography-heading--4">{{ line_item.final_price | money | remove:" " }}</span>
+                    </div>
+
+                    <div class="order-line-item-variant-info">
+                      <p class="cart-item-title">ITEM: {{ line_item.id }} </p>
+                      {%- for option in line_item.options_with_values -%}
+                        {% if option.name == 'Color' %}
+                          <p class="cart-item-title">{{ option.value }}</p>
+                        {% endif %}
+                      {%- endfor -%}
+    
+                      {%- for option in line_item.options_with_values -%}
+                        {% if option.name == 'Size' %}
+                          <p class="cart-item-title">{{ option.value }}</p>
+                        {% endif %}
+                      {%- endfor -%}
+                    </div>
+    
+
+
+        
+        
+        
+        
+        
+                    {%- assign property_size = line_item.properties | size -%}
+                    {%- unless line_item.selling_plan_allocation == nil and property_size == 0 -%}
+                      <div class="properties">
+                        {%- unless line_item.product.has_only_default_variant -%}
+                          <span>
+                            {{ line_item.variant.title }}
+                          </span>
+                        {%- endunless -%}
+                        {%- unless line_item.selling_plan_allocation == nil -%}
+                          <span>
+                            {{ line_item.selling_plan_allocation.selling_plan.name }}
+                          </span>
+                        {%- endunless -%}
+                        {%- if property_size != 0 -%}
+                          {%- for property in line_item.properties -%}
+                            {% assign property_first_char = property.first | slice: 0 %}
+                            {%- if property.last != blank and property_first_char != '_' -%}
+                              <span>
+                                {{ property.first }}:&nbsp;
+                                {%- if property.last contains '/uploads/' -%}
+                                  <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
+                                {%- else -%}
+                                  {{ property.last }}
+                                {%- endif -%}
+                              </span>
+                            {%- endif -%}
+                          {%- endfor -%}
+                        {%- endif -%}
+                      </div>
+                    {%- endunless -%}
+        
+                    {%- if line_item.line_level_discount_allocations != blank -%}
+                      <ul role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                        {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+                          <li>
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 12 12">
+                              <use href="#icon-discount" />
+                            </svg>
+                            {{- discount_allocation.discount_application.title }} (-{{ discount_allocation.amount | money | remove:" " -}})
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    {%- endif -%}
+        
+                    {%- if line_item.fulfillment -%}
+                      <div class="fulfillment">
+                        {%- assign created_at = line_item.fulfillment.created_at | time_tag: format: 'date' -%}
+                        <span>{{ 'customer.order.fulfilled_at_html' | t: date: created_at }}</span>
+        
+                          {%- if line_item.fulfillment.tracking_url -%}
+                            <a href="{{ line_item.fulfillment.tracking_url }}">
+                              {{ 'customer.order.track_shipment' | t }}
+                            </a>
+                          {%- endif -%}
+                          <span>
+                            {{ line_item.fulfillment.tracking_company }}
+                            {%- if line_item.fulfillment.tracking_number -%} #{{ line_item.fulfillment.tracking_number }} {%- endif -%}
+                          </span>
+                      </div>
+                    {%- endif -%}
+        
+        
+        
+                    <div class="order-line-item-quantity typography-text typography-text--body uppercase"  data-label="{{ 'customer.order.quantity' | t }}">
+                      quantity: {{ line_item.quantity }}
+                    </div>
+        
+                  
+        
+        
+                  </div>
+        
+                </div>
+        
+              {%- endfor -%}
+            </div>
+
+            {% if order.note %}
+              <div class="order-gift-message">
+                <div class="order-gift-message-heading  typography-heading typography-font-3 typography-heading--4 uppercase">Gift Message</div>
+                <div class="order-gift-message-content typography-text typography-text--body">
+                  {{ order.note }}
+                </div>
+
+              </div>
+            {% endif %}
+      
+      
+      
+      
+            {%- for shipping_method in order.shipping_methods -%}
+            <div class="order-prices-wrap">
+              <div class="typography-heading typography-font-3 typography-heading--4 uppercase" id="RowShipping">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</div>
+              <div class="typography-text typography-text--body" data-label="{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})">{{ shipping_method.price | money | remove:" " }}</div>
+            </div>
+      
+    
+      
+            {%- endfor -%}
+            {%- for tax_line in order.tax_lines -%}
+      
+            <div class="order-prices-wrap">
+                <div class="typography-heading typography-font-3 typography-heading--4 uppercase" id="RowTax">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</div>
+                <div class="typography-text typography-text--body" headers="RowTax" role="cell" data-label="{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)">{{ tax_line.price | money | remove:" " }}</div>
+            </div>
+            {%- endfor -%}
+            {%- if order.total_duties -%}
+      
+            <div class="order-prices-wrap">
+                <div  class="typography-heading typography-font-3 typography-heading--4 uppercase" id="RowDuties">{{ 'customer.order.total_duties' | t }}</div>
+                <div class="typography-text typography-text--body" role="cell" data-label="{{ 'customer.order.total_duties' | t }}">{{ order.total_duties | money | remove:" " }}</div>
+            </div>  
+            {%- endif -%}
+            <div class="order-prices-wrap">
+              <div class="typography-heading typography-font-3 typography-heading--4 uppercase" id="RowTotal" >{{ 'customer.order.total' | t }}</div>
+              <div class="typography-text typography-text--body" data-label="{{ 'customer.order.total' | t }}">{{ order.total_price | money_with_currency | remove:" " }}</div>
+            </div> 
+      
+            <div class="order-addresses">
+              <div class="typography-text typography-text--body">
+                <h3 class="typography-text typography-text--body uppercase">{{ 'customer.order.billing_address' | t }}</h3>
+                {{ order.billing_address | format_address }}
+              </div>
+              <div class="typography-text typography-text--body">
+                <h3 class="typography-text typography-text--body uppercase">{{ 'customer.order.shipping_address' | t }}</h3>
+                {{ order.shipping_address | format_address }}
+              </div>
+            </div>
+    
+          </div>
+    
+    
+    
+        </div>
+    
+      </div>
+    
+    </div>
+    
+  
+  </div>
+  
+
+</div>
+
+
+
+
+
+<style>
+
+.pages-content{
+  width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+
+  @media screen and (min-width: 750px) {
+    .sidebar-container{
+      display: none;
+    }
+
+  }
+
+  .customer-order-detail-container {
+      display: flex;
+  }
+  .customer-order-list-wrap {
+    flex: 0 0 65%;
+  }
+  .order-line-item {
+    display: flex;
+    max-width: 653px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+    border-bottom: 0.5px dashed rgba(57, 52, 53, 0.4);
+  }
+  .order-line-item-info{
+    width: 100%;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .order-line-item-title-wrap{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .order-line-item-title-wrap *{
+    font-size: 2rem;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+  }
+
+  h3.order-line-item-title a{
+    text-decoration: none;
+
+  }
+  h3.order-line-item-title{
+    margin: 0;
+
+  }
+  .order-line-item-img.media {
+    flex: 0 0 190px;
+  }
+
+  .customer-order-detail-wrap {
+      border-left: 0.5px solid rgba(57, 52, 53, 0.4);
+      flex: 1;
+      flex: 0 0 35%;
+      padding: 0 9rem 0 7.3rem;
+  }
+
+  .order-line-item-quantity{
+    margin-top: auto;
+    letter-spacing: 0.02em;
+    color: var(--color-dark-grey)
+  }
+  .customer-order-details {
+    max-width: 320px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .customer-order-details{
+      padding-top: 9rem;
+    }
+  }
+
+
+
+  .order-prices-wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .order-prices-wrap .typography-heading{
+    font-size: 1.4rem;
+    line-height: normal;
+  }
+
+  .order-prices-wrap * {
+    letter-spacing: 0.02em;
+    margin-bottom: 0.6rem;
+  }
+
+  .order-addresses h3{
+    color: var(--color-grey-1);
+    letter-spacing: 0.02em;
+    line-height: 22px;
+    margin: 0;
+  }
+  .order-addresses p{
+    margin: 0;
+    color: var(--color-dark-grey)
+  }
+  .order-addresses > div {
+    margin-bottom: 3rem;
+  }
+  .order-addresses {
+    margin-top: 2.5rem;
+  }
+
+  .order-customer-name{
+    margin-bottom: 3rem;
+    padding-left: 9rem;
+    padding-top: 1.6rem;
+  }
+  .order-go-back{
+    padding-left: 9rem;
+    display: flex;
+    margin-bottom: 5.2rem;
+    align-items: center;
+  }
+  @media screen and (min-width: 750px) {
+    .order-go-back{
+      padding-top: 9rem;
+    }
+  }
+  .order-go-back svg{
+    width: 1.3rem;
+    margin-right: 1.3rem;
+    transform: rotate(180deg);
+    color: black;
+
+  }
+  .order-logout{
+    text-align: right;
+    padding-top: 1.6rem;
+    margin-bottom: 3rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .order-list-item-mobile{
+      display: none;
+    }
+    .order-hide-mobile{
+      display: none
+    }
+
+    .customer.order .order-hide-desktop.order-logout{
+      position: absolute;
+      right: 9rem;
+      
+    }
+    .customer.order .order-hide-desktop.order-customer-name{
+      position: absolute;
+      left: 9rem;
+      padding-left: 0;
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .order-go-back-mob{
+      margin-bottom: 3rem;
+    }
+    .customer-order-detail-wrap{
+      border: none;
+    }
+    .order-hide-desktop{
+      display: none;
+    }
+    .order-list-item-mobile{
+      margin-bottom: 3rem;
+    }
+    .customer-order-list-wrap{
+      display: none;
+    }
+    .customer-order-detail-wrap{
+      padding: 0;
+    }
+    .order-line-item-img.media{
+      flex: 0 0 100px !important;
+    }
+    .order-line-item-title{
+      font-size: 1.4rem;
+    }
+    .order-line-item-title a{
+      font-size: 1.4rem;
+    }
+    .order-line-item-title-wrap span{
+      font-size: 1.4rem;
+    }
+    .customer-order-detail-container{
+      display: block;
+    }
+    .order-line-item-quantity{
+      font-size: 1.2rem;
+    }
+    .customer-order-details {
+
+      max-width: 600px;
+      padding: 0 3.5rem;
+    }
+    .order-line-item{
+      border: none;
+    }
+    .order-prices-wrap .typography-heading{
+      font-size: 1.6rem;
+    }
+    .customer-order-container{
+      padding-bottom: 0;
+    }
+  }
+
+  .order-go-back-mob{
+    padding-left: 3.5rem;
+    margin-top: 6rem;
+  }
+  
+
+  div#RowTax {
+      width: 70%;
+  }
+
+
+</style>

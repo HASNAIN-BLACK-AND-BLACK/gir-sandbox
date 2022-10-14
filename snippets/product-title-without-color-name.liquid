@@ -1,0 +1,2 @@
+{% assign product_title = product_title | escape | split: " - " %}
+{{ product_title | slice: 0, 1 }}

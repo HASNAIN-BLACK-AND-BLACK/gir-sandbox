@@ -1,0 +1,1440 @@
+{{ 'section-clothing-size-guide.css' | asset_url | stylesheet_tag }}
+
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+
+    <div class="clothing-size-guide__close">
+        <p>Close {% render 'icon-cross' %}</p>
+    </div>
+
+    <div class="clothing-size-guide">
+
+        {% for block in section.blocks %}
+
+        {% if block.type == 'unisex-mens' %}
+       
+        {% if product.tags contains 'mens' or product.tags contains 'unisex' %}
+        <div class="clothing-size-guide-mens">
+          <div class="clothing-size__top-heading">
+            <h2>{{block.settings.heading}}</h2>
+            <p>{{block.settings.text}}</p>
+          </div>
+
+          <div class="clothing-size__buttons">
+              <button type="button" class="active inches_btn">Inches</button>
+              <button type="button" class="cm_btn">Cm</button>
+          </div> 
+
+          <table class="clothing-size-table">
+              <tr>
+                  <th></th>
+                  <th>Chest</th>
+                  <th>Waist</th>
+              </tr>
+
+              {% if block.settings.xxs_chest_inch != blank %}
+              <tr>
+                  <td>
+                      XXS
+                  </td>
+                  <td>
+                      <span class="size-inch">{{block.settings.xxs_chest_inch}}</span>
+                      <span class="size-cm">{{block.settings.xxs_chest_cm}}</span>
+                  </td>
+                  <td>
+                      <span class="size-inch">{{block.settings.xxs_waist_inch}}</span>
+                      <span class="size-cm">{{block.settings.xxs_waist_cm}}</span>
+                  </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.xs_chest_inch != blank %}
+              <tr>
+                <td>
+                    XS
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xs_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.xs_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xs_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.xs_waist_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.s_chest_inch != blank %}
+              <tr>
+                <td>
+                    S
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.s_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.s_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.s_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.s_waist_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.sm_chest_inch != blank %}
+              <tr>
+                <td>
+                    S/M
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.sm_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.sm_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.sm_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.sm_waist_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.m_chest_inch != blank %}
+              <tr>
+                <td>
+                    M
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.m_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.m_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.m_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.m_waist_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.ml_chest_inch != blank %}
+              <tr>
+                <td>
+                    M/L
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.ml_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.ml_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.ml_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.ml_waist_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+
+              {% if block.settings.l_chest_inch != blank %}
+              <tr>
+                <td>
+                    L
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.l_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.l_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.l_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.l_waist_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.lxl_chest_inch != blank %}
+              <tr>
+                <td>
+                    L/XL
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.lxl_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.lxl_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.lxl_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.lxl_waist_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.xl_chest_inch != blank %}
+              <tr>
+                <td>
+                    XL
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xl_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.xl_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xl_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.xl_waist_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.xxl_chest_inch != blank %}
+              <tr>
+                <td>
+                    XXL
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xxl_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.xxl_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xxl_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.xxl_waist_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+          </table>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {% if block.type == 'womens' %}
+          {% if product.tags contains  'womens' %}
+          {% unless product.tags contains 'mens' or product.tags contains 'unisex' %}
+            <div class="clothing-size-guide-womens">
+              <div class="clothing-size__top-heading">
+                <h2>{{block.settings.heading}}</h2>
+                <p>{{block.settings.text}}</p>
+              </div>
+    
+              <div class="clothing-size__buttons">
+                  <button type="button" class="active inches_btn">Inches</button>
+                  <button type="button" class="cm_btn">Cm</button>
+              </div>
+
+            <table class="clothing-size-table">
+              <tr>
+                  <th></th>
+                  <th>Chest</th>
+                  <th>Waist</th>
+                  <th>Hip</th>
+              </tr>
+
+              {% if block.settings.xxs_chest_inch != blank %}
+              <tr>
+                  <td>
+                      XXS
+                  </td>
+                  <td>
+                      <span class="size-inch">{{block.settings.xxs_chest_inch}}</span>
+                      <span class="size-cm">{{block.settings.xxs_chest_cm}}</span>
+                  </td>
+                  <td>
+                      <span class="size-inch">{{block.settings.xxs_waist_inch}}</span>
+                      <span class="size-cm">{{block.settings.xxs_waist_cm}}</span>
+                  </td>
+                  <td>
+                    <span class="size-inch">{{block.settings.xxs_hip_inch}}</span>
+                    <span class="size-cm">{{block.settings.xxs_hip_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.xs_chest_inch != blank %}
+              <tr>
+                <td>
+                    XS
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xs_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.xs_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xs_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.xs_waist_cm}}</span>
+                </td>
+                <td>
+                  <span class="size-inch">{{block.settings.xs_hip_inch}}</span>
+                  <span class="size-cm">{{block.settings.xs_hip_cm}}</span>
+              </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.s_chest_inch != blank %}
+              <tr>
+                <td>
+                    S
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.s_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.s_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.s_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.s_waist_cm}}</span>
+                </td>
+                <td>
+                  <span class="size-inch">{{block.settings.s_hip_inch}}</span>
+                  <span class="size-cm">{{block.settings.s_hip_cm}}</span>
+              </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.sm_chest_inch != blank %}
+              <tr>
+                <td>
+                    S/M
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.sm_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.sm_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.sm_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.sm_waist_cm}}</span>
+                </td>
+                <td>
+                  <span class="size-inch">{{block.settings.sm_hip_inch}}</span>
+                  <span class="size-cm">{{block.settings.sm_hip_cm}}</span>
+              </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.m_chest_inch != blank %}
+              <tr>
+                <td>
+                    M
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.m_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.m_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.m_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.m_waist_cm}}</span>
+                </td>
+                <td>
+                  <span class="size-inch">{{block.settings.m_hip_inch}}</span>
+                  <span class="size-cm">{{block.settings.m_hip_cm}}</span>
+              </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.ml_chest_inch != blank %}
+              <tr>
+                <td>
+                    M/L
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.ml_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.ml_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.ml_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.ml_waist_cm}}</span>
+                </td>
+                <td>
+                  <span class="size-inch">{{block.settings.ml_hip_inch}}</span>
+                  <span class="size-cm">{{block.settings.ml_hip_cm}}</span>
+              </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.l_chest_inch != blank %}
+              <tr>
+                <td>
+                    L
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.l_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.l_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.l_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.l_waist_cm}}</span>
+                </td>
+                <td>
+                  <span class="size-inch">{{block.settings.l_hip_inch}}</span>
+                  <span class="size-cm">{{block.settings.l_hip_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.lxl_chest_inch != blank %}
+              <tr>
+                <td>
+                    L/XL
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.lxl_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.lxl_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.lxl_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.lxl_waist_cm}}</span>
+                </td>
+                <td>
+                  <span class="size-inch">{{block.settings.lxl_hip_inch}}</span>
+                  <span class="size-cm">{{block.settings.lxl_hip_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.xl_chest_inch != blank %}
+              <tr>
+                <td>
+                    XL
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xl_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.xl_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xl_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.xl_waist_cm}}</span>
+                </td>
+                <td>
+                  <span class="size-inch">{{block.settings.xl_hip_inch}}</span>
+                  <span class="size-cm">{{block.settings.xl_hip_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+              {% if block.settings.xxl_chest_inch != blank %}
+              <tr>
+                <td>
+                    XXL
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xxl_chest_inch}}</span>
+                    <span class="size-cm">{{block.settings.xxl_chest_cm}}</span>
+                </td>
+                <td>
+                    <span class="size-inch">{{block.settings.xxl_waist_inch}}</span>
+                    <span class="size-cm">{{block.settings.xxl_waist_cm}}</span>
+                </td>
+                <td>
+                  <span class="size-inch">{{block.settings.xxl_hip_inch}}</span>
+                  <span class="size-cm">{{block.settings.xxl_hip_cm}}</span>
+                </td>
+              </tr>
+              {% endif %}
+
+
+          </table>
+            </div>
+           
+          {% endunless %}
+          {% endif %}
+         {% endif %}
+
+        {% endfor %}
+    </div>
+  </div>
+
+
+    <script>
+    $(document).ready(function(){
+        $("#size_guide_toggler").click(function(){
+            $(".clothing-size-guide-section").addClass("open");
+            $('body').addClass('scroll-lock');
+        });
+
+
+        $(".clothing-size-guide__close").click(function(){
+            $(".clothing-size-guide-section").removeClass("open");
+            $('body').removeClass('scroll-lock');
+        });
+
+        $('.cm_btn').click(function(){
+            $(this).addClass('active');
+            $(this).parent().find('.inches_btn').removeClass('active');
+            $('.clothing-size-table tr td .size-inch').hide();
+            $('.clothing-size-table tr td .size-cm').show();
+        })
+        $('.inches_btn').click(function(){
+            $(this).addClass('active');
+            $(this).parent().find('.cm_btn').removeClass('active');
+            $('.clothing-size-table tr td .size-inch').show();
+            $('.clothing-size-table tr td .size-cm').hide();
+        })
+
+        
+    });
+    </script>
+
+
+
+{% schema %}
+{
+  "name": "Clothing Size Guide",
+  "tag": "section",
+  "class": "clothing-size-guide-section section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "unisex-mens",
+      "name": "Unisex/Mens", 
+      "settings": [
+        {
+          "type": "header",
+          "content": "Top Heading"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text" 
+        },
+        {
+          "type": "header",
+          "content": "XXS"
+        },
+        {
+          "type": "header",
+          "content": "XXS chest"
+        },
+        {
+          "type": "text",
+          "id": "xxs_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "xxs_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "XXS Waist"
+        },
+        {
+          "type": "text",
+          "id": "xxs_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "xxs_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "XS"
+        },
+        {
+          "type": "header",
+          "content": "XS chest"
+        },
+        {
+          "type": "text",
+          "id": "xs_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "xs_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "XS Waist"
+        },
+        {
+          "type": "text",
+          "id": "xs_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "xs_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "S"
+        },
+        {
+          "type": "header",
+          "content": "S chest"
+        },
+        {
+          "type": "text",
+          "id": "s_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "s_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "S Waist"
+        },
+        {
+          "type": "text",
+          "id": "s_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "s_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "S/M"
+        },
+        {
+          "type": "header",
+          "content": "S/M chest"
+        },
+        {
+          "type": "text",
+          "id": "sm_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "sm_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "S/M Waist"
+        },
+        {
+          "type": "text",
+          "id": "sm_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "sm_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "M"
+        },
+        {
+          "type": "header",
+          "content": "M chest"
+        },
+        {
+          "type": "text",
+          "id": "m_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "m_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "M Waist"
+        },
+        {
+          "type": "text",
+          "id": "m_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "m_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "M/L"
+        },
+        {
+          "type": "header",
+          "content": "M/L chest"
+        },
+        {
+          "type": "text",
+          "id": "ml_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "ml_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "M/L Waist"
+        },
+        {
+          "type": "text",
+          "id": "ml_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "ml_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "L"
+        },
+        {
+          "type": "header",
+          "content": "L chest"
+        },
+        {
+          "type": "text",
+          "id": "l_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "l_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "L Waist"
+        },
+        {
+          "type": "text",
+          "id": "l_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "l_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "L/XL"
+        },
+        {
+          "type": "header",
+          "content": "L/XL chest"
+        },
+        {
+          "type": "text",
+          "id": "lxl_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "lxl_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "L/XL Waist"
+        },
+        {
+          "type": "text",
+          "id": "lxl_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "lxl_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "XL"
+        },
+        {
+          "type": "header",
+          "content": "XL chest"
+        },
+        {
+          "type": "text",
+          "id": "xl_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "xl_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "XL Waist"
+        },
+        {
+          "type": "text",
+          "id": "xl_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "xl_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "XXL"
+        },
+        {
+          "type": "header",
+          "content": "XXL chest"
+        },
+        {
+          "type": "text",
+          "id": "xxl_chest_inch",
+          "label": "Chest Inch",
+          "default": "44-46"
+        },
+        {
+          "type": "text",
+          "id": "xxl_chest_cm",
+          "label": "Chest Cm"
+        },
+        {
+          "type": "header",
+          "content": "XXL Waist"
+        },
+        {
+          "type": "text",
+          "id": "xxl_waist_inch",
+          "label": "Waist Inch", 
+          "default": "39-41"
+        },
+        {
+          "type": "text",
+          "id": "xxl_waist_cm",
+          "label": "Waist Cm"
+        }
+      ]
+    },
+    {
+      "type": "womens",
+      "name": "Womens", 
+      "settings": [
+        {
+          "type": "header",
+          "content": "Top Heading"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text" 
+        },
+        {
+          "type": "header",
+          "content": "XXS"
+        },
+        {
+          "type": "header",
+          "content": "XXS chest"
+        },
+        {
+          "type": "text",
+          "id": "xxs_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "xxs_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "XXS Waist"
+        },
+        {
+          "type": "text",
+          "id": "xxs_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "xxs_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        
+        {
+          "type": "header",
+          "content": "XXS Hip"
+        },
+        {
+          "type": "text",
+          "id": "xxs_hip_inch",
+          "label": "Hip Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "xxs_hip_cm",
+          "label": "Hip Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "XS"
+        },
+        {
+          "type": "header",
+          "content": "XS chest"
+        },
+        {
+          "type": "text",
+          "id": "xs_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "xs_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "XS Waist"
+        },
+        {
+          "type": "text",
+          "id": "xs_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "xs_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "XS Hip"
+        },
+        {
+          "type": "text",
+          "id": "xs_hip_inch",
+          "label": "Hip Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "xs_hip_cm",
+          "label": "Hip Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "S"
+        },
+        {
+          "type": "header",
+          "content": "S chest"
+        },
+        {
+          "type": "text",
+          "id": "s_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "s_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "S Waist"
+        },
+        {
+          "type": "text",
+          "id": "s_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "s_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "S Hip"
+        },
+        {
+          "type": "text",
+          "id": "s_hip_inch",
+          "label": "Hip Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "s_hip_cm",
+          "label": "Hip Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "S/M"
+        },
+        {
+          "type": "header",
+          "content": "S/M chest"
+        },
+        {
+          "type": "text",
+          "id": "sm_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "sm_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "S/M Waist"
+        },
+        {
+          "type": "text",
+          "id": "sm_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "sm_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "S/M Hip"
+        },
+        {
+          "type": "text",
+          "id": "sm_hip_inch",
+          "label": "Hip Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "sm_hip_cm",
+          "label": "Hip Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "M"
+        },
+        {
+          "type": "header",
+          "content": "M chest"
+        },
+        {
+          "type": "text",
+          "id": "m_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "m_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "M Waist"
+        },
+        {
+          "type": "text",
+          "id": "m_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "m_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "M Hip"
+        },
+        {
+          "type": "text",
+          "id": "m_hip_inch",
+          "label": "Hip Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "m_hip_cm",
+          "label": "Hip Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "M/L"
+        },
+        {
+          "type": "header",
+          "content": "M/L chest"
+        },
+        {
+          "type": "text",
+          "id": "ml_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "ml_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "M/L Waist"
+        },
+        {
+          "type": "text",
+          "id": "ml_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "ml_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "M/L Hip"
+        },
+        {
+          "type": "text",
+          "id": "ml_hip_inch",
+          "label": "Hip Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "ml_hip_cm",
+          "label": "Hip Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "L"
+        },
+        {
+          "type": "header",
+          "content": "L chest"
+        },
+        {
+          "type": "text",
+          "id": "l_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "l_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "L Waist"
+        },
+        {
+          "type": "text",
+          "id": "l_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "l_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "L Hip"
+        },
+        {
+          "type": "text",
+          "id": "l_hip_inch",
+          "label": "Hip Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "l_hip_cm",
+          "label": "Hip Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "L/XL"
+        },
+        {
+          "type": "header",
+          "content": "L/XL chest"
+        },
+        {
+          "type": "text",
+          "id": "lxl_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "lxl_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "L/XL Waist"
+        },
+        {
+          "type": "text",
+          "id": "lxl_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "lxl_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "L/XL Hip"
+        },
+        {
+          "type": "text",
+          "id": "lxl_hip_inch",
+          "label": "Hip Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "lxl_hip_cm",
+          "label": "Hip Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "XL"
+        },
+        {
+          "type": "header",
+          "content": "XL chest"
+        },
+        {
+          "type": "text",
+          "id": "xl_chest_inch",
+          "label": "Chest Inch",
+          "default": "2"
+        },
+        {
+          "type": "text",
+          "id": "xl_chest_cm",
+          "label": "Chest Cm",
+          "default": "3"
+        },
+        {
+          "type": "header",
+          "content": "XL Waist"
+        },
+        {
+          "type": "text",
+          "id": "xl_waist_inch",
+          "label": "Waist Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "xl_waist_cm",
+          "label": "Waist Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "XL Hip"
+        },
+        {
+          "type": "text",
+          "id": "xl_hip_inch",
+          "label": "Hip Inch", 
+          "default": "33-34"
+        },
+        {
+          "type": "text",
+          "id": "xl_hip_cm",
+          "label": "Hip Cm",
+          "default": "43-44"
+        },
+        {
+          "type": "header",
+          "content": "XXL"
+        },
+        {
+          "type": "header",
+          "content": "XXL chest"
+        },
+        {
+          "type": "text",
+          "id": "xxl_chest_inch",
+          "label": "Chest Inch",
+          "default": "44.5"
+        },
+        {
+          "type": "text",
+          "id": "xxl_chest_cm",
+          "label": "Chest Cm"
+        },
+        {
+          "type": "header",
+          "content": "XXL Waist"
+        },
+        {
+          "type": "text",
+          "id": "xxl_waist_inch",
+          "label": "Waist Inch", 
+          "default": "37.5"
+        },
+        {
+          "type": "text",
+          "id": "xxl_waist_cm",
+          "label": "Waist Cm"
+        },
+        {
+          "type": "header",
+          "content": "XXL Hip"
+        },
+        {
+          "type": "text",
+          "id": "xxl_hip_inch",
+          "label": "Hip Inch", 
+          "default": "48.5"
+        },
+        {
+          "type": "text",
+          "id": "xxl_hip_cm",
+          "label": "Hip Cm"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clothing Size Guide",
+      "blocks": [
+      ]
+    }
+  ]
+}
+{% endschema %}

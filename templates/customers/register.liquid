@@ -1,0 +1,476 @@
+
+
+<!-- <div class="customer register">
+  <svg style="display: none">
+    <symbol id="icon-error" viewBox="0 0 13 13">
+      <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+      <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+      <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+      <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+    </symbol>
+  </svg>
+  <h1>
+    {{ 'customer.register.title' | t }}
+  </h1>
+  {%- form 'create_customer', novalidate: 'novalidate' -%}
+    {%- if form.errors -%}
+      <h2 class="form__message" tabindex="-1" autofocus>
+        <svg aria-hidden="true" focusable="false" role="presentation">
+          <use href="#icon-error" />
+        </svg>
+        {{ 'templates.contact.form.error_heading' | t }}
+      </h2>
+      <ul> 
+        {%- for field in form.errors -%}
+          <li>
+            {%- if field == 'form' -%}
+              {{ form.errors.messages[field] }}
+            {%- else -%}
+              <a href="#RegisterForm-{{ field }}">
+                {{ form.errors.translated_fields[field] | capitalize }}
+                {{ form.errors.messages[field] }}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    <div class="field">      
+      <input
+        type="text"
+        name="customer[first_name]"
+        id="RegisterForm-FirstName"
+        {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+        autocomplete="given-name"
+        placeholder="{{ 'customer.register.first_name' | t }}"
+      >
+      <label for="RegisterForm-FirstName">
+        {{ 'customer.register.first_name' | t }}
+      </label>
+    </div>
+    <div class="field">
+      <input
+        type="text"
+        name="customer[last_name]"
+        id="RegisterForm-LastName"
+        {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+        autocomplete="family-name"
+        placeholder="{{ 'customer.register.last_name' | t }}"
+      >
+      <label for="RegisterForm-LastName">
+        {{ 'customer.register.last_name' | t }}
+      </label>
+    </div>
+    <div class="field">      
+      <input
+        type="email"
+        name="customer[email]"
+        id="RegisterForm-email"
+        {% if form.email %} value="{{ form.email }}"{% endif %}
+        spellcheck="false"
+        autocapitalize="off"
+        autocomplete="email"
+        aria-required="true"
+        {% if form.errors contains 'email' %}
+          aria-invalid="true"
+          aria-describedby="RegisterForm-email-error"
+        {% endif %}
+        placeholder="{{ 'customer.register.email' | t }}"
+      >
+      <label for="RegisterForm-email">
+        {{ 'customer.register.email' | t }}
+      </label>
+    </div>
+    {%- if form.errors contains 'email' -%}
+      <span id="RegisterForm-email-error" class="form__message">
+        <svg aria-hidden="true" focusable="false" role="presentation">
+          <use href="#icon-error" />
+        </svg>
+        {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+      </span>
+    {%- endif -%}
+    <div class="field">     
+      <input
+        type="password"
+        name="customer[password]"
+        id="RegisterForm-password"
+        aria-required="true"
+        {% if form.errors contains 'password' %}
+          aria-invalid="true"
+          aria-describedby="RegisterForm-password-error"
+        {% endif %}
+        placeholder="{{ 'customer.register.password' | t }}"
+      >
+      <label for="RegisterForm-password">
+        {{ 'customer.register.password' | t }}
+      </label>
+    </div>
+    {%- if form.errors contains 'password' -%}
+      <span id="RegisterForm-password-error" class="form__message">
+        <svg aria-hidden="true" focusable="false" role="presentation">
+          <use href="#icon-error" />
+        </svg>
+        {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
+      </span>
+    {%- endif -%}
+    <button>
+      {{ 'customer.register.submit' | t }}
+    </button>
+  {%- endform -%}
+</div> -->
+
+
+
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+<div class="customer register">
+  <svg style="display: none">
+    <symbol id="icon-error" viewBox="0 0 13 13">
+      <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+      <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+      <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+      <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+    </symbol>
+  </svg>
+  <div class="registeration-tabs-container">
+    <h1 class="registeration-tabs">
+      <a href="/account/login" id="login-tab" class="login-tab">Login</a><a href="/account/register" id="register-tab" class="register-tab" >{{ 'customer.register.title' | t }}</a>
+      <div class="header-line"></div>
+    </h1>
+  </div>
+
+  <div class="customer-form-wrap">
+    <div id="register-div">
+      {%- form 'create_customer' -%}
+      <!-- {%- if form.errors -%}
+        <h2 class="form__message" tabindex="-1" autofocus>
+          {{ 'templates.contact.form.error_heading' | t }}
+        </h2>
+        <ul> 
+          {%- for field in form.errors -%}
+            <li>
+              {%- if field == 'form' -%}
+                {{ form.errors.messages[field] }}
+              {%- else -%}
+                <a href="#RegisterForm-{{ field }}">
+                  {{ form.errors.translated_fields[field] | capitalize }}
+                  {{ form.errors.messages[field] }}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%} -->
+      <div class="field field--input typography-text typography-text--fields">      
+        <input
+          required
+          type="text"
+          name="customer[first_name]"
+          id="RegisterForm-FirstName"
+          {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+          autocomplete="given-name"
+          placeholder="{{ 'customer.register.first_name' | t }}"
+        >
+        <label for="RegisterForm-FirstName">
+          {{ 'customer.register.first_name' | t }}
+        </label>
+      </div>
+      <div class="field field--input typography-text typography-text--fields">
+        <input
+          required
+          type="text"
+          name="customer[last_name]"
+          id="RegisterForm-LastName"
+          {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+          autocomplete="family-name"
+          placeholder="{{ 'customer.register.last_name' | t }}"
+        >
+        <label for="RegisterForm-LastName">
+          {{ 'customer.register.last_name' | t }}
+        </label>
+      </div>
+      <div class="field field--input typography-text typography-text--fields">      
+        <input
+          required
+          type="email"
+          name="customer[email]"
+          id="RegisterForm-email"
+          {% if form.email %} value="{{ form.email }}"{% endif %}
+          spellcheck="false"
+          autocapitalize="off"
+          autocomplete="email"
+          aria-required="true"
+          {% if form.errors contains 'email' %}
+            aria-invalid="true"
+            aria-describedby="RegisterForm-email-error"
+            style="border-color: #f00e00;"
+          {% endif %}
+          placeholder="{{ 'customer.register.email' | t }}"
+        >
+        <label for="RegisterForm-email">
+          {{ 'customer.register.email' | t }}
+        </label>
+      </div>
+      <small class="form-validation-error form-validation-error-email visually-hidden typography-text--body typography-text">
+        <span class="form-validation-error-message">INVALID EMAIL ADDRESS</span>
+      </small>
+      {%- if form.errors contains 'email' -%}
+        <span id="RegisterForm-email-error" class="form__message">
+          {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.
+        </span>
+      {%- endif -%}
+      <div class="field field--input typography-text typography-text--fields">     
+        <input
+          required
+          type="password"
+          name="customer[password]"
+          id="RegisterForm-password"
+          aria-required="true"
+          {% if form.errors contains 'password' %}
+            aria-invalid="true"
+            aria-describedby="RegisterForm-password-error"
+            style="border-color: #f00e00";
+          {% endif %}
+          placeholder="{{ 'customer.register.password' | t }}"
+        >
+        <label for="RegisterForm-password">
+          {{ 'customer.register.password' | t }}
+        </label>
+      </div>
+      <div class="field field--input typography-text typography-text--fields">     
+        <input
+          required
+          type="password"
+          name="customer[confirm-password]"
+          id="RegisterForm-confirm-password"
+          aria-required="true"
+          {% if form.errors contains 'password' %}
+            aria-invalid="true"
+            aria-describedby="RegisterForm-password-error"
+            style="border-color: #f00e00";
+          {% endif %}
+          placeholder="{{ 'customer.register.confirm-password' | t }}"
+        >
+        <label for="RegisterForm-confirm-password">
+          {{ 'customer.register.confirm_password' | t }}
+        </label>
+      </div>
+      <small class="form-validation-error form-validation-error-password visually-hidden typography-text--body typography-text">
+        <span class="form-validation-error-message">PASSWORDS DON'T MATCH</span>
+      </small>
+      {%- if form.errors contains 'password' -%}
+        <span id="RegisterForm-password-error" class="form__message">
+          {{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.
+        </span>
+      {%- endif -%}
+      <!-- <div class="field field--checkbox typography-text typography-text--fields">
+        <input
+          type="checkbox"
+          name="customer[accept-exclusive]"
+          id="RegisterFrom-accept-exclusive"
+        >    
+        <label for="RegisterFrom-accept-exclusive">
+           {{ 'customer.register.newsletter' | t }}
+        </label>
+      </div> -->
+  
+      <label class="field-checkbox">
+        <input         
+        id="RegisterFrom-accept-exclusive"
+        type="checkbox"
+        name="customer[accept-exclusive]"
+        class="">
+        <span class="checkmark"></span>
+        <span class="checkbox-text">{{ 'customer.register.newsletter' | t }}</span>
+      </label>
+      
+      <button  type="button" id="registration-submit-button" class="button button--primary btn-lg">
+        {{ 'customer.register.submit' | t }}
+      </button>
+  
+      <div class="register-privacy-policy">By creating an account, you agree to our <a class="link link--underline" href="/pages/privacy-policy" >Privacy Policy</a></div>
+    {%- endform -%}
+    </div>
+    
+    {%- if shop.checkout.guest_login -%}
+      <div>
+        <hr>
+        <h2>{{ 'customer.login_page.guest_title' | t }}</h2>
+  
+        {%- form 'guest_login' -%}
+          <button>
+            {{ 'customer.login_page.guest_continue' | t }}
+          </button>
+        {%- endform -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  
+
+  <script>
+    $('#registration-submit-button').click(function () {
+      $.ajax({
+        type: 'POST',
+        data: $('#create_customer').serialize(),
+        url : '/account',
+        success: function (response){
+          $('#create_customer').hide();
+          $('#register-div').append(`
+            <div class="success-message-wrapper" >
+              <p> 
+                <span class="success-message-text">
+                  Registered Successfully!
+                </span> 
+                <span class="success-message-bottom-text">Click <a href="/account">here</a> to go to account</span>
+              </p>
+            </div>
+            `)
+        },
+        error: function (jqXRe, exception) {
+          console.log({exception})
+        }
+      })
+    })
+    
+  </script>
+
+
+</div>
+
+<style>
+
+  .header-line{
+    left: 75%;
+    width: 18%;
+  }
+  @media only screen and (min-width: 750px) {
+    .header-line{
+      width: 34%;
+    }
+  }
+  #login-tab{
+    opacity: 0.6;
+  }
+  .success-message-wrapper p {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+
+  }
+  .success-message-wrapper .success-message-text {
+    font-family: 'CutiveMono-Regular';
+    font-size: 16px;
+  }
+  .success-message-wrapper span a {
+    font-family: 'CutiveMono-Regular';
+    text-decoration: none;
+    border-bottom: 1px solid;
+  }
+  .success-message-wrapper span a:hover {
+    color: #7E7A78;
+  }
+  .success-message-bottom-text {
+    font-family: 'CutiveMono-Regular';
+    font-size: 14px;
+    
+  }
+</style>
+
+
+<script>
+  document.querySelector('#login-tab').addEventListener("click", function (e) {
+
+    document.querySelector(".header-line").style.left = "75%"
+  })
+  document.querySelector('#register-tab').addEventListener("click", function (e) {
+
+    document.querySelector(".header-line").style.left = "25%"
+  })
+
+</script>
+
+
+<script>
+  // VALIDATE EMAIL
+let registerEmailInput = document.querySelector("#RegisterForm-email")
+let errorEmailElement = document.querySelector(".form-validation-error-email")
+let errorPasswordElement = document.querySelector(".form-validation-error-password")
+
+function validateEmail(inputValue) {
+  let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  if (re.test(inputValue)){
+      return false;
+  } else {
+      return true;
+  }
+}
+
+registerEmailInput.addEventListener("keyup", function() {
+  let validationFailed = validateEmail(this.value);
+  console.log(this.value)
+  if (!validationFailed) {
+    console.log("validation failed")
+    errorEmailElement.classList.remove("visually-hidden");
+
+    // this.classList.add("error-border");
+  } else {
+    errorEmailElement.classList.add("visually-hidden");
+
+    console.log("validation success")
+    
+    // this.classList.remove("error-border")s;
+  }
+});
+
+
+// VALIDATE PASSWORD
+let password = document.getElementById("RegisterForm-password")
+  , confirm_password = document.getElementById("RegisterForm-confirm-password");
+
+  function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+    errorPasswordElement.classList.remove("visually-hidden");
+
+    // document.getElementById("RegisterForm-password").classList.add("error-border");
+    // document.getElementById("RegisterForm-confirm-password").classList.add("error-border");
+  } else {
+    confirm_password.setCustomValidity('');
+    errorPasswordElement.classList.add("visually-hidden");
+
+    // document.getElementById("RegisterForm-password").classList.remove("error-border");
+    // document.getElementById("RegisterForm-confirm-password").classList.remove("error-border");
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+
+
+
+// Redirect to Account page instead of Homepage
+{% comment %}
+  window.addEventListener("load", function (event) {
+    var redirectInput = document.createElement('input'),
+        registerSubmit = document.querySelector('#create_customer button[type="submit"]'),
+        registerForm = document.querySelector('#create_customer'),
+        captchaSubmit = document.querySelector('.shopify-challenge__container input[type="submit"]'),
+        captchaForm = document.querySelector('#g-recaptcha');
+
+    redirectInput.setAttribute('type', 'hidden');
+    redirectInput.setAttribute('name', 'return_to');
+    redirectInput.setAttribute('value', '/account'); //URL to redirect
+
+    if (registerForm.length) {
+        registerSubmit.insertAdjacentElement("beforebegin", redirectInput)
+    } else if (captchaForm.length) {
+        captchaSubmit.insertAdjacentElement("beforebegin", redirectInput)
+    }
+
+});
+{% endcomment %}
+</script>

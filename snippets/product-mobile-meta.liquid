@@ -1,0 +1,10 @@
+<div class="product__title" {{ block.shopify_attributes }}>
+    <h2>{% render 'product-title-without-color-name', product_title: product.title %}</h2>
+</div>
+<p class="product__text subtitle" {{ block.shopify_attributes }}>
+    {{ product.metafields.product.subtitle }}
+</p>
+<div class="product-price-main no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+    {%- render 'price', product: product, use_variant: true, show_badges: false, price_class: 'price--large' -%}
+</div>
+ 

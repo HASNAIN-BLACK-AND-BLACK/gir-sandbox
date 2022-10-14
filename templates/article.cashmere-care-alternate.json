@@ -1,0 +1,424 @@
+{
+  "sections": {
+    "1659540947467f1669": {
+      "type": "section-ninth-article-1",
+      "settings": {
+        "blog": "gir-world",
+        "post_limit": 5,
+        "color_scheme": "background-1"
+      }
+    },
+    "main": {
+      "type": "section-one-article-1",
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 52,
+        "main_heading": "MCCARTNEY & DEKOONING",
+        "heading_alignment": "align-left",
+        "show_badge": true,
+        "badge": "https:\/\/cdn.shopify.com\/s\/files\/1\/0641\/5613\/9760\/files\/GIR_RoundLogo02.svg?v=1658856569",
+        "badge_alignment": "align-right",
+        "back_to_blog": "All Stories",
+        "heading_color": "#000000",
+        "show_featured_image": false,
+        "custom_image": "shopify:\/\/shop_images\/mccartney-and-dekooning.jpg"
+      }
+    },
+    "1658925011ded745e3": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "c158ceea-f98d-4c8c-b6bc-2b2aa08c92cd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Like a set from a movie,",
+            "heading_color": "#000000"
+          }
+        },
+        "013d8ed2-9866-42ac-92ea-3bcfa351d836": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>Capri draws you in with its beauty, panache and style: think rocky cliffs, olive and lemon trees, whitewashed villas and impossibly blue seas. I have great friends who have also fallen under the Capri spell, who I meet there every July—it’s like coming home to somewhere familiar and fun. It’s been 20 years since my first visit, and I haven’t missed a year since! Here are some of my absolute island favourites for enjoying la dolce vita on Capri.<\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "c158ceea-f98d-4c8c-b6bc-2b2aa08c92cd",
+        "013d8ed2-9866-42ac-92ea-3bcfa351d836"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 52,
+        "text_width": 870
+      }
+    },
+    "1659355233e90f1515": {
+      "type": "section-three-article-1",
+      "blocks": {
+        "84a67253-261e-4565-aa6e-04ed78a3504e": {
+          "type": "products1",
+          "settings": {
+            "product": "knit-sweater-100-cashmere"
+          }
+        },
+        "5c4d257e-d359-4ca9-8375-dd682c23a861": {
+          "type": "products1",
+          "settings": {
+            "product": "example-hat"
+          }
+        },
+        "16bec8e3-358c-44e9-9cb4-f63a12ff85ed": {
+          "type": "products1",
+          "settings": {
+            "product": "example-hat-two"
+          }
+        },
+        "48a1444f-fa0b-493a-832a-4ba2133e607b": {
+          "type": "products1",
+          "settings": {
+            "product": "knit-sweater-100-cashmere-1"
+          }
+        },
+        "a2608d59-e5fe-4523-974e-6a95f082f16d": {
+          "type": "products1",
+          "settings": {
+            "product": "carpenter-jogger-almond"
+          }
+        },
+        "52535898-61b2-4693-87ef-6838104b31f5": {
+          "type": "products1",
+          "settings": {
+            "product": "carpenter-jogger-cherry"
+          }
+        },
+        "9c6799f7-5abd-420b-a6e9-f32fd2141e83": {
+          "type": "products1",
+          "settings": {
+            "product": "carpenter-jogger-lime"
+          }
+        },
+        "2aa008dc-e7dc-4184-9e1c-27e5d4b6a517": {
+          "type": "products1",
+          "settings": {
+            "product": "carpenter-jogger-royal"
+          }
+        },
+        "8937583d-77ec-4673-9c44-72c436a6191a": {
+          "type": "products1",
+          "settings": {
+            "product": "carpenter-jogger-steel"
+          }
+        },
+        "a2e77d48-624f-427e-b62f-e46e3ed8f41c": {
+          "type": "products1",
+          "settings": {
+            "product": "carpenter-jogger-sunflower"
+          }
+        },
+        "fdbcdbd8-4448-4a0d-8dcc-39ee9b9b0f5a": {
+          "type": "products2",
+          "settings": {
+            "product": "example-pants-paints"
+          }
+        },
+        "a2603f9b-aa8d-4575-98d5-6f33d7e1f524": {
+          "type": "products2",
+          "settings": {
+            "product": "knit-sweater-100-cashmere-2"
+          }
+        },
+        "c46e9792-53bc-4302-8635-0999789f976d": {
+          "type": "products2",
+          "settings": {
+            "product": "knit-sweater-100-cashmere-3"
+          }
+        }
+      },
+      "block_order": [
+        "84a67253-261e-4565-aa6e-04ed78a3504e",
+        "5c4d257e-d359-4ca9-8375-dd682c23a861",
+        "16bec8e3-358c-44e9-9cb4-f63a12ff85ed",
+        "48a1444f-fa0b-493a-832a-4ba2133e607b",
+        "a2608d59-e5fe-4523-974e-6a95f082f16d",
+        "52535898-61b2-4693-87ef-6838104b31f5",
+        "9c6799f7-5abd-420b-a6e9-f32fd2141e83",
+        "2aa008dc-e7dc-4184-9e1c-27e5d4b6a517",
+        "8937583d-77ec-4673-9c44-72c436a6191a",
+        "a2e77d48-624f-427e-b62f-e46e3ed8f41c",
+        "fdbcdbd8-4448-4a0d-8dcc-39ee9b9b0f5a",
+        "a2603f9b-aa8d-4575-98d5-6f33d7e1f524",
+        "c46e9792-53bc-4302-8635-0999789f976d"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 42,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 52,
+        "image1": "shopify:\/\/shop_images\/GIR-image01.png",
+        "image1_border": true,
+        "image_credits1": "SMITH ARCHIVE",
+        "image2": "shopify:\/\/shop_images\/96b2358cf6df83517e8c0f9edf24a8bc.jpg",
+        "image2_border": false,
+        "image_credits2": "PATTY SMITH ARCHIVE",
+        "show_featured_products": true,
+        "title": "Shop the look",
+        "heading_size": "h1",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "shop_the_look": "Click to shop the look",
+        "show_second_above": false,
+        "show_swatches": true
+      }
+    },
+    "16593937685a8278e9": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "1413755e-a798-4f1a-854c-77e64dc5b60b": {
+          "type": "heading",
+          "settings": {
+            "heading": "“I like restaurants with a rustic feel that have a real story to them. You don’t have to look very hard for that in Italy—everywhere is family-run with a decades-long history”",
+            "heading_color": "#000000"
+          }
+        },
+        "41ec140e-7509-414f-a247-c0d6644e0188": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>says Nina Parker, the British chef and author of the colorful Nina St.-Tropez: Recipes from the South of France cookbook.<\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "1413755e-a798-4f1a-854c-77e64dc5b60b",
+        "41ec140e-7509-414f-a247-c0d6644e0188"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 52,
+        "text_width": 870
+      }
+    },
+    "165939628669fe40cf": {
+      "type": "section-four-article-1",
+      "blocks": {
+        "83f75b0e-5920-4cce-b406-b686e17c21bc": {
+          "type": "products1",
+          "settings": {
+            "product": "example-hat"
+          }
+        },
+        "0f22380b-f793-443c-a678-6e89a716c163": {
+          "type": "products1",
+          "settings": {
+            "product": "example-hat-two"
+          }
+        },
+        "74498c9f-1d29-4759-af16-a69df6fc9f9f": {
+          "type": "products1",
+          "settings": {
+            "product": "carpenter-jogger-black"
+          }
+        }
+      },
+      "block_order": [
+        "83f75b0e-5920-4cce-b406-b686e17c21bc",
+        "0f22380b-f793-443c-a678-6e89a716c163",
+        "74498c9f-1d29-4759-af16-a69df6fc9f9f"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 52,
+        "desktop_image": "shopify:\/\/shop_images\/gir-image02.png",
+        "mobile_image": "shopify:\/\/shop_images\/f846494b4a7347a1a8c353d56a903aef_1.jpg",
+        "image_border": true,
+        "image_credits": "PATTY SMITH ARCHIVE",
+        "show_featured_products": true,
+        "title": "Shop the look",
+        "heading_size": "h1",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "shop_the_look": "Click to shop the look",
+        "show_swatches": true
+      }
+    },
+    "1659394195f4130997": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "303f6a5a-cde5-4a3d-b10b-30a84c5fb3b8": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>“It has that same romance, intrigue, and historic glamour to it.” Parker should know; this past year she swapped her habitual stomping ground in the South of France for the Amalfi Coast, as she embarks on another Mediterranean food odyssey for her second book, to be published next summer. Between hosting pop-up dinners and serving gelato from her charming seventies Citroën van, Parker has been eating her way around what is arguably Italy’s most charismatic coastline; that seductive, rocky stretch of shore that curls around the Gulf of Naples.<\/p><p><br\/>“It has a different atmosphere from the rest of Italy,” says Parker, who adopts a wardrobe of simple white and Caprese blue as she taste-tours the area’s treasure trove of trattorias. “I like restaurants with a rustic feel that have a real story to them. You don’t have to look very hard for that in Italy—everywhere is family-run with a decades-long history.” Here, she shares her insights from the most stylish sun lounger spots, the ultimate dessert rooms, and where to camp out for those languorous lunches in and around the province of Salerno:<\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "303f6a5a-cde5-4a3d-b10b-30a84c5fb3b8"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 52,
+        "text_width": 870
+      }
+    },
+    "165944189403113159": {
+      "type": "section-five-article-1",
+      "settings": {
+        "heading": "Video",
+        "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7a9dcc5e1cc34f9e90f93620a714d157.mp4",
+        "mb_thumbnail": "shopify:\/\/shop_images\/mobile_thumbnail_video.png",
+        "button_text": "Play",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1659527335a1080b79": {
+      "type": "section-six-article-1",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 50,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 52,
+        "paragraph": "<p>Capri draws you in with its beauty, panache and style: think rocky cliffs, olive and lemon trees, whitewashed villas and impossibly blue seas. I have great friends who have also fallen under the Capri spell, who I meet there every July—it’s like coming home to somewhere familiar and fun.<\/p>",
+        "heading_color": "#000000"
+      }
+    },
+    "16595285352840497a": {
+      "type": "section-seventh-article-1",
+      "blocks": {
+        "cdf037e5-e35d-4efc-a9a8-eacc703bb348": {
+          "type": "products1",
+          "settings": {
+            "product": "knit-sweater-100-cashmere"
+          }
+        },
+        "4ed32cb8-60e1-4ad0-a6cf-d86ab18aba74": {
+          "type": "products2",
+          "settings": {
+            "product": "example-pants-paints"
+          }
+        }
+      },
+      "block_order": [
+        "cdf037e5-e35d-4efc-a9a8-eacc703bb348",
+        "4ed32cb8-60e1-4ad0-a6cf-d86ab18aba74"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 52,
+        "image1": "shopify:\/\/shop_images\/section-seventh-image-1.jpg",
+        "image1_border": false,
+        "image_credits1": "PATTY SMITH ARCHIVE",
+        "image2": "shopify:\/\/shop_images\/section-seventh-image-2.jpg",
+        "image2_border": false,
+        "image_credits2": "",
+        "show_featured_products": true,
+        "title": "Shop the look",
+        "heading_size": "h1",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "shop_the_look": "Click to shop the look",
+        "show_swatches": true
+      }
+    },
+    "1659533370b034f1f6": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "750b95bf-9a34-4146-a2d3-7626374376d9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Like a set from a movie,",
+            "heading_color": "#000000"
+          }
+        },
+        "5fa89ac5-7e38-4bf1-bcee-50f6f2071389": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>Capri draws you in with its beauty, panache and style: think rocky cliffs, olive and lemon trees, whitewashed villas and impossibly blue seas. I have great friends who have also fallen under the Capri spell, who I meet there every July—it’s like coming home to somewhere familiar and fun. It’s been 20 years since my first visit, and I haven’t missed a year since! Here are some of my absolute island favourites for enjoying la dolce vita on Capri.<\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "750b95bf-9a34-4146-a2d3-7626374376d9",
+        "5fa89ac5-7e38-4bf1-bcee-50f6f2071389"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 28,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 40,
+        "text_width": 870
+      }
+    },
+    "165953710795f99ca4": {
+      "type": "section-eighth-article-1",
+      "settings": {
+        "heading": "MORE STORIES",
+        "heading_size": "h1",
+        "blog": "gir-world",
+        "post_limit": 5,
+        "columns_desktop": 3,
+        "color_scheme": "background-1",
+        "show_image": true,
+        "show_date": false,
+        "show_author": false,
+        "show_view_all": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "1659540947467f1669",
+    "main",
+    "1658925011ded745e3",
+    "1659355233e90f1515",
+    "16593937685a8278e9",
+    "165939628669fe40cf",
+    "1659394195f4130997",
+    "165944189403113159",
+    "1659527335a1080b79",
+    "16595285352840497a",
+    "1659533370b034f1f6",
+    "165953710795f99ca4"
+  ]
+}

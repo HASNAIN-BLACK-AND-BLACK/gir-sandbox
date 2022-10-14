@@ -1,0 +1,270 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'custom-video-section.css' | asset_url | stylesheet_tag }}
+
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+
+
+{{ 'section-five-article-1.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'article_video.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="custom-video-main">
+  <div class="video-section article_sec_five_container isolate{% unless section.settings.full_width %} page-width{% endunless %} section-{{ section.id }}-padding">
+    
+    <div class="main-video">
+      
+      <div class="video-wrap player video-{{section.id}}">
+        
+        {% unless section.settings.video_url == blank %}
+      	<video id="article_main_video"  class="viewer" width="100%" height="100%" autoplay="autoplay" muted loop>
+          <source src="{{section.settings.video_url}}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        {% endunless %}
+        
+            
+        <div class="video-overlay-content video_overlay_desktop_only">
+          <div class="play-pause-btn">
+          	<button type="button" class="video-control-btn pause-btn">
+                  <span class="visually-hidden">Pause</span>
+                  {% render 'icon-pause' %}
+                </button>
+            <button type="button" class="video-control-btn play-btn hide">
+                <span class="visually-hidden">Play</span>
+                {% render 'icon-play' %}
+            </button>
+          </div>
+          
+          
+          <div class="middle-content">
+          	<div class="progress-range" title="Jump-to">
+                <div class="progress-bar"></div>
+            </div>
+          </div>
+          <div class="audio-btn">
+            <button type="button" class="audio-control-btn unmute-btn">
+              <span class="visually-hidden">Unmute</span>
+            	{% render 'icon-mute' %}
+            </button>
+            <button type="button" class="audio-control-btn mute-btn hide">
+              <span class="visually-hidden">Mute</span>
+            	{% render 'icon-unmute' %}
+            </button>
+          </div>
+          <div class="video_fullscreen">
+              <button class="fullscreen-btn screenSize">
+                <div class="open-fullscreen-btn-container" id="screenSize_icon">
+                  <div class="icon_fullscreen">{% render 'icon-fullscreen' %}</div>
+                  <div class="icon_closeFullscreen">{% render 'icon-close-fullscreen' %}</div>
+                </div>
+              </button>
+                    
+          </div>
+        </div>
+        
+      </div>
+
+        {% if section.settings.mb_thumbnail != blank %}
+            {% assign mobileImage = section.settings.mb_thumbnail %}
+            <div class="video_thumbnail media mobile_only">
+                <div class="media-ratio ratio--1-1">
+                    <img src="{{ mobileImage | image_url: width: 1100 }}"
+                    loading="lazy"
+                    width="{{ mobileImage.width }}"
+                    height="{{ mobileImage.height }}"
+                    alt="{{ mobileImage.alt | escape }}"
+                    class="media-asset">
+                </div>
+                <div class="video-overlay-content">
+                    <div class="overlay_container" id="mobile_video_play_btn">
+                        <p class="overlay_text link">
+                            {{ section.settings.button_text }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+      
+      </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function () {
+  $(".pause-btn").click(function () {
+    $(this).addClass("hide");
+    $(this).parent().find(".play-btn").removeClass("hide");
+    $(this).parents(".video-{{section.id}}").find("video").trigger("pause");
+  });
+
+  $(".play-btn").click(function () {
+    $(this).addClass("hide");
+    $(this).parent().find(".pause-btn").removeClass("hide");
+    $(this).parents(".video-{{section.id}}").find("video").trigger("play");
+  });
+
+  $(".unmute-btn").click(function () {
+    $(this).addClass("hide");
+    $(this).parent().find(".mute-btn").removeClass("hide");
+    $(this).parents(".video-{{section.id}}").find("video").prop("muted", false);
+    $(this).parents(".video-{{section.id}}").addClass("audio-playing");
+  });
+
+  $(".mute-btn").click(function () {
+    $(this).addClass("hide");
+    $(this).parent().find(".unmute-btn").removeClass("hide");
+    $(this).parents(".video-{{section.id}}").find("video").prop("muted", true);
+    $(this).parents(".video-{{section.id}}").removeClass("audio-playing");
+  });
+
+  /** CHECK ELEMENT VISIBILITY **/
+  $.fn.visible = function (partial) {
+    var $t = $(this),
+      $w = $(window),
+      viewTop = $w.scrollTop(),
+      viewBottom = viewTop + $w.height(),
+      _top = $t.offset().top,
+      _bottom = _top + $t.height(),
+      compareTop = partial === true ? _bottom : _top,
+      compareBottom = partial === true ? _top : _bottom;
+
+    return compareBottom <= viewBottom && compareTop >= viewTop;
+  };
+
+  /* VIDEO MUTE ON SCROLL */
+  $(window).scroll(function (event) {
+    var videoSection = $(".video-{{section.id}}");
+    if (videoSection.visible(true)) {
+    } else {
+      $(".video-{{section.id}}").find("video").prop("muted", true);
+      $(".video-{{section.id}}").find("video").trigger("pause");
+    }
+
+    if (videoSection.visible(true)) {
+      $(".video-{{section.id}}.audio-playing")
+        .find("video")
+        .prop("muted", false);
+    }
+  });
+
+  let theVideo = $(".video-{{section.id}}").find("video").get(0);
+  $(theVideo).on("pause", function (e) {
+    $(".play-btn").removeClass("hide");
+    $(".pause-btn").addClass("hide");
+  });
+  $(theVideo).on("play", function (e) {
+    $(".play-btn").addClass("hide");
+    $(".pause-btn").removeClass("hide");
+  });
+});
+
+if (window.matchMedia("(max-width: 990px)").matches) {
+  $(document).ready(function () {
+    let vid = document.getElementById("article_main_video");
+    vid.pause();
+    vid.autoplay = false;
+    let playBtn = document.getElementById("mobile_video_play_btn");
+
+    //hide video section on fullscreen exit
+    var isFullscreen = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+    $(document).on ('mozfullscreenchange webkitfullscreenchange fullscreenchange',function(){
+        isFullscreen = !isFullscreen;
+        if(!isFullscreen){
+          vid.pause();
+          $(".video-wrap").css("display", "none");
+        }
+    });
+    
+    //Hide video on iPhone
+    vid.addEventListener('webkitendfullscreen', function (e) { 
+      $(".video-wrap").css("display", "none");
+    });
+    
+  });
+}
+
+</script>
+
+{% schema %}
+{
+  "name": "Video Module",
+  "tag": "section",
+  "class": "video-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Video",
+      "label": "t:sections.video.settings.heading.label"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "mb_thumbnail",
+      "label": "Video Thumbnail for Mobile View"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Video Play Button Label",
+	  "default": "Play",
+      "info":"Appears only on Mobile View"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.video.settings.full_width.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Article Video Module"
+    }
+  ]
+}
+{% endschema %}
+
+

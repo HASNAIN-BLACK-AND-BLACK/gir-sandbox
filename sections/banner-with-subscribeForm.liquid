@@ -1,0 +1,537 @@
+{{ 'section-newsletter-popup.css' | asset_url | stylesheet_tag }}
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
+{{ 'section-hp-editorial.css' | asset_url | stylesheet_tag }}
+{{ 'clp-banner-subscribe-form.css' | asset_url | stylesheet_tag }}
+
+<div class="clp-banner-subscribe-form" id="clp-banner-subscribe-form">
+    <div class="clp-banner">
+      <div class="hp-editorial">
+
+        <div class="hp-edit-row">
+
+            <div class="hp-edit-col" {{ section.shopify_attributes }}>
+                <div class="hp-edit-block" id="hp-edit-block-{{ section.id }}-{{ section.id }}">
+                    <div class="hp-edit-block-media">
+         
+                    <div class="hp-edit-block-media-ratio">
+              
+    
+                    {%- case section.settings.media_type -%}
+    
+                    {%- when 'image' -%}
+    
+                    <picture>
+                        <source
+                        media="(min-width: 769px)"
+                        srcset="{% render 'image-srcset', image: section.settings.image %}"
+                        sizes="100vw"
+                        width="{{ section.settings.image.width }}"
+                        height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+                        >
+                        <source
+                        media="(max-width: 768px)"
+                        srcset="{% render 'image-srcset', image: section.settings.image_alter %}"
+                        sizes="100vw"
+                        width="{{ section.settings.image_alter.width }}"
+                        height="{{ section.settings.image_alter.width | divided_by: section.settings.image_alter.aspect_ratio }}"
+                        >
+                        <img
+                        srcset="{% render 'image-srcset', image: section.settings.image %}"
+                        sizes="100vw"
+                        width="{{ section.settings.image.width }}"
+                        height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+    
+                        src="{{ section.settings.image | image_url: width: 1500 }}"
+                        loading="lazy"
+                        alt="{{ section.settings.image.alt | escape }}"
+                        class="hp-edit-block-media-asset"
+                        >
+                    </picture>
+    
+                    {%- when 'video' -%}
+    
+                    <video
+                      class="hp-edit-block-media-asset hp-edit-block-media-desktop"
+                      autoplay
+                      playsinline
+                      muted
+                      loop
+                      preload="auto"
+                    >
+                        <source src="{{ section.settings.video }}" type="video/mp4">
+                    </video>
+    
+                    <video
+                      class="hp-edit-block-media-asset hp-edit-block-media-mobile"
+                      autoplay
+                      playsinline
+                      muted
+                      loop
+                      preload="auto"
+                    >
+                        <source src="{{ section.settings.video_alter }}" type="video/mp4">
+                    </video> 
+    
+                    {%- endcase -%}
+    
+                    </div>
+    
+                    </div>
+
+                </div>
+            </div>
+         
+        </div>
+
+      </div>
+    </div>
+
+    {% if section.settings.show_form != blank %}
+    <div class="subscrible-form" style="background-color: {{section.settings.bg_color}}" >
+        <div class="hp-middle-nl bottom-nl-popup-form klaviyo-newsletter">
+            <div class="email-form email-form-{{section.id}} bottom-nl-popup-inner popup-form-inner">
+              <div class="nl-form-wrap">
+          
+                {% unless section.settings.email_newsletter_heading == blank %}
+                  <div class="nl-popup-heading success-hide">
+                    <h3 class="family-{{ section.settings.font_family_heading }}">{{section.settings.email_newsletter_heading}}</h3>
+                  </div>
+                {% endunless %}
+            
+                <div class="subscribe-form-wrapper" js-subscribe-form>
+                  <form novalidate id="email_newsletter-{{section.id}}" class="custom-form" action="//manage.kmail-lists.com/subscriptions/subscribe" method="POST">
+                    <input type="hidden" name="g" value="{{section.settings.list_id}}">
+                
+                      <div class="newsletter-form__field-wrapper">
+                
+                        {% unless section.settings.email_privacy_agreement == blank %}
+                        <div class="field checkbox-field">
+                          <label class="checkbox-label">
+                            <input id="privacy_agreement" type="checkbox" name="newsletter" class="email-checkbox newsletter_checkbox" value="privacy_agreement" checked required>
+                            <span class="checkmark" tabindex="0"></span>
+                            <div class="privacy-agreement-text family-{{ section.settings.font_family_privacy }}">
+                              {{section.settings.email_privacy_agreement}}
+                            </div>
+                          </label>
+                        </div>
+                        {% endunless %}
+                
+                        <div class="field email-field">
+                          <input id="k_id_email" type="email" name="email" class="field__input" value="" placeholder="Enter your email address">
+                          <div class="newsletter-email-error error-message family-{{ sections.settings.font_family_messages }}" style="display:none">{{section.settings.email_error_msg}}</div>
+                        </div>
+                
+                        <div class="form-submit-btn">
+                          <button type="submit" class="newsletter-form__button email-form-submit field__button" id="ns_subscribe">
+                            {{section.settings.email_form_btn}}
+                          </button>
+                        </div>
+                      </div>
+                      
+                  </form>
+    
+                    
+                    {% if section.settings.phone_form_trigger != blank %}
+                      <div class="form-trigger phone-form-trigger">
+                        <span class="link uppercase text-underline" tabindex="0">{{section.settings.phone_form_trigger}}</span>
+                      </div>
+                    {% endif %}
+                
+                </div>
+
+                <div class="form-submit-btn show-subscribe-form" js-show-form-wrapper >
+                  <button type="button" class="newsletter-form__button email-form-submit field__button" >
+                    SIGN UP
+                  </button>
+                </div>
+
+              </div>
+              <div class="newsletter-success-message" style="display: none;">
+                <h3 class="ns-success-message family-{{ section.settings.font_family_messages }}">{{section.settings.email_success_msg}}</h3>
+              </div>
+            </div>
+          
+            <div class="phone-number-form phone-form-{{section.id}} bottom-nl-popup-inner popup-form-inner">
+          
+              <div class="nl-form-wrap">
+              {% unless section.settings.phone_newsletter_heading == blank %}
+                <div class="nl-popup-heading">
+                  <h3 class="family-{{ section.settings.font_family_heading }}">{{section.settings.phone_newsletter_heading}}</h3>
+                </div>
+              {% endunless %}
+          
+              <div id="phone_form-{{section.id}}" class="custom-form">
+                <div class="newsletter-form__field-wrapper">
+          
+                  {% if section.settings.phone_privacy_agreement != blank %}
+                  <div class="field checkbox-field">
+                    <label class="checkbox-label">
+                      <input id="phone_privacy_agreement" type="checkbox" name="phone-newsletter" class="phone-checkbox newsletter_checkbox" value="phone-newsletter" checked required>
+                      <span class="checkmark" tabindex="0"></span>
+                      <div class="privacy-agreement-text family-{{ section.settings.font_family_privacy }}">
+                        {{section.settings.phone_privacy_agreement}}
+                      </div>
+                    </label>
+                  </div>
+                  {% endif %}
+          
+                  <div class="field phone-field">
+                    <input id="k_id_phone" type="phone" name="phone_number" class="field__input js_input_phone" value="" placeholder="Enter your phone" required>
+                    <div class="newsletter-phone-error error-message family-{{ sections.settings.font_family_messages }}" style="display:none">{{section.settings.phone_error_msg}}</div>
+                  </div>
+          
+                  
+                </div>
+                
+                <div class="form-submit-btn">
+                  <button type="submit" class="newsletter-form__button phone-form-submit field__button" id="ns_phone_subscribe">
+                    {{section.settings.phone_form_btn}}
+                  </button>
+                </div>
+
+              </div>
+              
+            </div>
+          
+            {% if section.settings.email_form_trigger != blank %}
+              <div class="form-trigger email-form-trigger">
+                <span class="link uppercase text-underline" tabindex="0">{{section.settings.email_form_trigger}}</span>
+              </div>
+            {% endif %}
+          
+            <div class="newsletter-success-message phone-success-msg" style="display: none;">
+              <h3 class="ns-success-message family-{{ sections.settings.font_family_messages }}">{{section.settings.phone_success_msg}}</h3>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script> 
+{% render 'newsletter-js' %} 
+
+<script> 
+  // klaviyo api for custom form submit 
+  KlaviyoSubscribe.attachToForms('#email_newsletter-{{section.id}}', {
+    hide_form_on_success: true,
+    success: function ($form) {
+      $('#email_newsletter-{{section.id}}').parents('.nl-form-wrap').hide();
+      $('.email-form-{{section.id}}').find('.form-trigger').hide();
+      $('#email_newsletter-{{section.id}}').parents('.popup-form-inner').find('.newsletter-success-message').show();
+    },
+    extra_properties: {
+      $source: 'GIR Banner Newsletter',
+      $method_type: "Custom Klaviyo Form"
+    }
+  });
+
+  // PostScript Code
+
+  $("#ns_phone_subscribe").on('click',function(){
+    let mobileNo = $(".js_input_phone[type=phone]").val();
+    var phoneField = $(this).parents('#phone_form-{{section.id}}').find('.phone-field').find('.field__input');
+    var acceptAgreement = $(this).parents('.custom-form').find('.checkbox-field').find('.phone-checkbox').is(":checked");
+
+    if (acceptAgreement == true && phoneField.val() !='') {
+      subscribePhone(mobileNo)
+      .then(response=>{
+        // Code to hide other input 
+        
+        $('#phone_form-{{section.id}}').parents('.nl-form-wrap').hide();
+        $('.phone-form-{{section.id}}').find('.form-trigger').hide();
+        $('.phone-form-{{section.id}}').find(".phone-success-msg").show();
+
+      },error=> {
+      
+        phoneField.siblings('.newsletter-phone-error').show();
+        phoneField.siblings('.newsletter-phone-error').html(error);
+
+      })
+    }
+
+  })
+
+  $(document).ready(function(){
+    const container = $('#clp-banner-subscribe-form');
+    container.find('[js-show-form-wrapper] button').click(function(){
+      $(this).parent().hide();
+      container.find('[js-subscribe-form]').slideDown();
+    })
+  })
+
+</script>
+
+<style>
+  .waitlist-collection #switch-layout {
+    margin-right: 18px;
+  }
+  .waitlist-collection .facets-container-drawer {
+    display: none;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Banner And Subscribe Form",
+  "tag": "section",
+  "class": "section",
+  "templates": ["collection"],
+  "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_form",
+        "label": "Show Newsletter Form",
+        "default": true
+      }, 
+      { 
+        "type": "header",
+        "content": "Media"
+      },
+      {
+        "type": "radio",
+        "id": "media_type",
+        "label": "Media Type",
+        "options": [
+            {
+            "value": "image",
+            "label": "Image"
+            },
+            {
+            "value": "video",
+            "label": "Video"
+            }
+        ],
+        "default": "image"
+      },
+
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+
+      {
+        "type": "image_picker",
+        "id": "image_alter",
+        "label": "Image Alternative"
+      },
+
+      {
+        "type": "url",
+        "id": "video",
+        "label": "Video"
+      },
+
+      {
+        "type": "url",
+        "id": "video_alter",
+        "label": "Video Alternative"
+      },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "default": "#F6EBD8",
+      "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Email Form"
+    }, 
+    {
+      "type": "text",
+      "id": "list_id",
+      "label": "Klaviyo List ID",
+      "default": "X8cyiB"
+    },    
+    {
+      "type": "textarea",
+      "id": "email_newsletter_heading",
+      "label": "Newsletter Heading",
+      "default": "SUBSCRIBE TO OUR EMAILS"
+    },
+    {
+      "type": "select",
+      "id": "font_family_heading",
+      "options": [
+        {
+          "value": "Chalet-NY",
+          "label": "Chalet-NY"
+        },
+        {
+          "value": "CutiveMono-Regular",
+          "label": "CutiveMono-Regular"
+        },
+        {
+          "value": "FormulaCondensed-Black",
+          "label": "FormulaCondensed-Black"
+        },
+        {
+          "value": "FormulaCondensed-Bold",
+          "label": "FormulaCondensed-Bold"
+        },
+        {
+          "value": "FormulaCondensed-Light",
+          "label": "FormulaCondensed-Light"
+        },
+        {
+          "value": "FormulaCondensed-Regular",
+          "label": "FormulaCondensed-Regular"
+        }
+      ],
+      "default": "CutiveMono-Regular",
+      "label": "Heading Font"
+    },       
+    {
+      "type": "richtext",
+      "id": "email_privacy_agreement",
+      "label": "Privacy Agreement Text"
+    },
+    {
+      "type": "select",
+      "id": "font_family_privacy",
+      "options": [
+        {
+          "value": "Chalet-NY",
+          "label": "Chalet-NY"
+        },
+        {
+          "value": "CutiveMono-Regular",
+          "label": "CutiveMono-Regular"
+        },
+        {
+          "value": "FormulaCondensed-Black",
+          "label": "FormulaCondensed-Black"
+        },
+        {
+          "value": "FormulaCondensed-Bold",
+          "label": "FormulaCondensed-Bold"
+        },
+        {
+          "value": "FormulaCondensed-Light",
+          "label": "FormulaCondensed-Light"
+        },
+        {
+          "value": "FormulaCondensed-Regular",
+          "label": "FormulaCondensed-Regular"
+        }
+      ],
+      "default": "CutiveMono-Regular",
+      "label": "Privacy Policy Font"
+    },  
+    {
+      "type": "text",
+      "id": "email_form_btn",
+      "label": "Form Button Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "header",
+      "content": "Email Form Mesasges"
+    },
+    {
+      "type": "textarea",
+      "id": "email_success_msg",
+      "label": "Form Success Message",
+      "default": "Thank you for Subscribing to our newsletter! here is where you will receive information about our launch, exclusive events, collections, and news."
+    },
+    {
+      "type": "text",
+      "id": "email_error_msg",
+      "label": "Form Error Message",
+      "default": "Invalid Email"
+    },
+    {
+      "type": "text",
+      "id": "phone_form_trigger",
+      "label": "Phone form Trigger",
+      "default": "Text me instead"
+    },
+    {
+      "type": "text",
+      "id": "email_form_trigger",
+      "label": "Email form Trigger",
+      "default": "Email me instead"
+    },
+    {
+      "type": "select",
+      "id": "font_family_messages",
+      "options": [
+        {
+          "value": "Chalet-NY",
+          "label": "Chalet-NY"
+        },
+        {
+          "value": "CutiveMono-Regular",
+          "label": "CutiveMono-Regular"
+        },
+        {
+          "value": "FormulaCondensed-Black",
+          "label": "FormulaCondensed-Black"
+        },
+        {
+          "value": "FormulaCondensed-Bold",
+          "label": "FormulaCondensed-Bold"
+        },
+        {
+          "value": "FormulaCondensed-Light",
+          "label": "FormulaCondensed-Light"
+        },
+        {
+          "value": "FormulaCondensed-Regular",
+          "label": "FormulaCondensed-Regular"
+        }
+      ],
+      "default": "CutiveMono-Regular",
+      "label": "Form Messages Font"
+    },
+    {
+      "type": "header",
+      "content": "Phone Number Form"
+    },     
+    {
+      "type": "textarea",
+      "id": "phone_newsletter_heading",
+      "label": "Newsletter Heading",
+      "default": "JOIN THE GUEST IN RESIDENCE COMMUNITY - SUBSCRIBE AND STAY TUNED..."
+    },       
+    {
+      "type": "richtext",
+      "id": "phone_privacy_agreement",
+      "label": "Privacy Agreement Text"
+    },  
+    {
+      "type": "text",
+      "id": "phone_form_btn",
+      "label": "Form Button Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "header",
+      "content": "Phone Form Mesasges"
+    },
+    {
+      "type": "textarea",
+      "id": "phone_success_msg",
+      "label": "Form Success Message",
+      "default": "Thank you for Subscribing to our newsletter! here is where you will receive information about our launch, exclusive events, collections, and news."
+    },
+    {
+      "type": "text",
+      "id": "phone_error_msg",
+      "label": "Form Error Message",
+      "default": "Invalid Phone Number"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Banner And Subscribe Form"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,122 @@
+.price {
+  font-size: 12px;
+  letter-spacing: 0.1rem;
+  line-height: 13.21px;
+  color: #000;
+}
+
+.price > * {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.price.price--unavailable {
+  visibility: hidden;
+}
+
+.price--end {
+  text-align: right;
+}
+
+.price .price-item {
+  margin: 8px 0 12px 0;
+}
+
+.price__regular .price-item--regular {
+  margin-right: 0;
+}
+
+.price:not(.price--show-badge) .price-item--last:last-of-type {
+  margin: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .price {
+    margin-bottom: 0;
+  }
+}
+
+.price--large {
+  font-size: 12px;
+  line-height: 13.21px;
+  letter-spacing: 0.13rem;
+}
+
+@media screen and (min-width: 750px) {
+  .price--large {
+    font-size: 12px;
+  }
+}
+
+.price--sold-out .price__availability,
+.price__regular {
+  display: block;
+}
+
+.price__sale,
+.price__availability,
+.price .price__badge-sale,
+.price .price__badge-sold-out,
+.price--on-sale .price__regular,
+.price--on-sale .price__availability {
+  display: none;
+}
+
+.price--sold-out .price__badge-sold-out,
+.price--on-sale .price__badge-sale {
+  display: inline-block;
+}
+
+.price--on-sale .price__sale {
+  display: initial;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.price--center {
+  display: initial;
+  justify-content: center;
+}
+
+.price--on-sale .price-item--regular {
+  text-decoration: line-through;
+  color: #000;
+  font-size: 12px;
+}
+
+.unit-price {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.04rem;
+  line-height: 13.21px;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  color: #000;
+}
+.product-price-main {
+  margin: 8px 0 12px 0 !important;
+}
+.product .price__container {
+  margin-bottom: 0 !important;
+}
+
+.price__container .price-item {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 13.21px;
+    letter-spacing: 0.02em;
+    font-family: 'CutiveMono-Regular';
+}
+
+.product-card .price__container .price-item {
+  font-size: 1.6rem;
+  line-height: 1.7rem;
+  letter-spacing: .02em;
+}
+
+@media only screen and (max-width: 749px) {
+  .product-card .price__container .price-item {
+    font-size: 1rem !important;
+    line-height: 1.1rem;
+  }
+}

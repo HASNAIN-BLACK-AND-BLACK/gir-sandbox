@@ -1,0 +1,67 @@
+.article_sec_four_container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wide_image .media-ratio.has_border {
+    border: 4px solid black;
+}
+
+.wide_image {
+    position: relative;
+}
+
+.article_sec_four_container .bag_icon {
+    right: 10px !important;
+    bottom: 15px !important;
+    top: auto !important;
+    left: auto !important;
+    width: 12px !important;
+    height: 12px !important;
+}
+
+.desktop_only {
+    display: block;
+}
+
+.mobile_only {
+    display: none !important;
+}
+
+.wide_image_credits {
+    bottom: 65px;
+    left: auto;
+    height: max-content;
+    width: max-content;
+    right: -82px;
+    position: absolute;
+    transform: rotate(90deg);
+}
+
+.wide_image_credits p {
+    font-size: 12px;
+    line-height: 19px;
+    font-family: 'CutiveMono-Regular';
+}
+
+.article_section_four {
+    position: relative;
+}
+
+@media screen and (min-width:1200px) {
+    .article_sec_four_container.article_sec_four_container .article_section_four {
+        max-width: 1040px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:990px) {
+
+    .desktop_only {
+        display: none;
+    }
+
+    .mobile_only {
+        display: block !important;
+    }
+}

@@ -1,0 +1,512 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+{{ 'section-sidebar-contact.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'customer.js' | asset_url }}" defer></script>
+
+
+{%- include 'customer-logout' -%}
+
+<div class="customer-container">
+  <div id="sidebar-container" class="sidebar-container">
+    <div class="sidebar-menu">
+      <div class="sidebar-menu-link-wrapper">
+        <a href="{{ routes.account_url }}" class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link">My Account</a>
+      </div>
+      <div class="sidebar-menu-link-wrapper">
+        <a href="/account?=orders" class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link">Orders</a>
+      </div>
+      <div class="sidebar-menu-link-wrapper">
+        <a href="{{ routes.account_addresses_url }}" class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link active">Saved Addresses</a>
+      </div>
+      <div class="sidebar-menu-link-wrapper">
+        <a href="/pages/wishlist" class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link ">Wishlist</a>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="pages-content">
+
+
+    <div class="">
+      {%- paginate customer.addresses by 5 -%}
+      <div class="customer addresses" data-customer-addresses>
+        <svg style="display: none">
+          <symbol id="icon-caret" viewBox="0 0 10 6">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+          </symbol>
+        </svg>
+    
+        <div data-address>
+    
+          <div id="AddAddress" class="hidden" data-address>
+
+            <div class="cancel-address">
+              <span>
+                {%  render 'icon-arrow' %}
+              </span>
+              <span>
+                <button id="CancelAddressButton" class="typography-text typography-text--body uppercase link link--underline" type="reset">{{ 'customer.addresses.cancel' | t }}</button>
+              </span>
+            </div>
+
+
+
+            {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
+              <div class="field field field--input typography-text typography-text--fields">
+                <input required type="text" id="AddressFirstNameNew" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}">
+                <label for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
+              </div>
+              <div class="field field field--input typography-text typography-text--fields">
+                <input required type="text" id="AddressLastNameNew" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}">
+                <label for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
+              </div>
+              <div class="field field field--input typography-text typography-text--fields">
+                <input required type="tel" id="AddressPhoneNew" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t }}">
+                <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
+              </div>
+              <div class="field field field--input typography-text typography-text--fields">
+                <input type="text" id="AddressCompanyNew" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="{{ 'customer.addresses.company' | t }}">
+                <label for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
+              </div>
+              <div class="field field field--input typography-text typography-text--fields">
+                <input required type="text" id="AddressAddress1New" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}">
+                <label for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
+              </div>
+              <div class="field field field--input typography-text typography-text--fields">
+                <input type="text" id="AddressAddress2New" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}">
+                <label for="AddressAddress2New">{{ 'customer.addresses.address2' | t }}</label>
+              </div>
+              <div class="field field field--input typography-text typography-text--fields">
+                <input required type="text" id="AddressCityNew" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}">
+                <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
+              </div>
+              <div class="field field field--input typography-text typography-text--fields">
+                <input required type="text" id="AddressZipNew" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}">
+                <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
+              </div>
+              <!-- <div>
+                <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
+                <div class="select">
+                  <select
+                    id="AddressCountryNew"
+                    name="address[country]"
+                    data-default="{{ form.country }}"
+                    autocomplete="country"
+                  >
+                    {{ all_country_option_tags }}
+                  </select>
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                    <use href="#icon-caret" />
+                  </svg>
+                </div>
+              </div> -->
+              <div class="field field--select-compact typography-text typography-text--fields">
+                  <select
+                    required
+                    id="AddressCountryNew"
+                    name="address[country]"
+                    data-default="{{ form.country }}"
+                    autocomplete="country"
+                    class=""
+                  >
+                    {{ all_country_option_tags }}
+                  </select>
+                  <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
+              </div>
+              <!-- <div id="AddressProvinceContainerNew" style="display: none">
+                <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
+                <div class="select">
+                  <select
+                    id="AddressProvinceNew"
+                    name="address[province]"
+                    data-default="{{ form.province }}"
+                    autocomplete="address-level1"
+                  >
+                  </select>
+                  <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                    <use href="#icon-caret" />
+                  </svg>
+                </div>
+              </div> -->
+    
+  
+              <label class="field-checkbox">
+                {{ form.set_as_default_checkbox }}
+                <span class="checkmark"></span>
+                <span class="checkbox-text">{{ 'customer.addresses.set_default' | t }}</span>
+              </label>
+
+              <label class="field-checkbox">
+                <input
+                  required
+                  type="checkbox"
+                  name="customer[address-terms]"
+                  id="AddAddres-terms"
+                >    
+                <span class="checkmark"></span>
+                <span class="checkbox-text"> {{ 'customer.addresses.terms' | t }}</span>
+              </label>
+
+              <div>
+                <button id="AddAddressButton" class="button button--primary btn-lg" onclick="formcheck()">{{ 'customer.addresses.add' | t }}</button>
+              </div>
+            {%- endform -%}
+          </div>
+        </div>
+    
+        {% if customer.addresses == blank %}
+          <p class="customer-no-address typography-text typography-text--body">{{ 'customer.addresses.none' | t }}</p>
+        {% else %}
+    
+        <ul role="list" id="AddressList">
+          {%- for address in customer.addresses -%}
+          <div class="customer-address-item-container">
+            <div class="customer-address-item">
+              <div class="customer-address typography-text typography-text--body">
+                {{ address | format_address }}
+              </div>
+              <div class="customer-address-ctas">
+                <button
+                  type="button"
+                  id="EditFormButton_{{ address.id }}"
+                  aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}"
+                  aria-controls="EditAddress_{{ address.id }}"
+                  aria-expanded="false"
+                  data-address-id="{{ address.id }}"
+                  class="typography-text typography-text--body link link--underline uppercase"
+                >
+                  {{ 'customer.addresses.edit' | t }}
+                </button>
+                <button
+                  type="button"
+                  aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+                  data-target="{{ address.url }}"
+                  data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+                  class="typography-text typography-text--body link link--underline uppercase"
+                >
+                  {{ 'customer.addresses.delete' | t }}
+                </button>
+              </div>
+      
+            </div>
+      
+            <div id="EditAddress_{{ address.id }}" data-address class="hidden" >
+              <!-- <h2 class="typography-heading--8 typography-text">{{ 'customer.addresses.edit_address' | t }}</h2> -->
+              {%- form 'customer_address', address -%}
+                <div class="field field--input typography-text typography-text--fields">
+                  <input type="text" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}">
+                  <label for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}</label>
+                </div>
+                <div class="field field--input typography-text typography-text--fields">
+                  <input type="text" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}">
+                  <label for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}</label>
+                </div>
+                <div class="field field--input typography-text typography-text--fields">
+                  <input type="text" id="AddressCompany_{{ form.id }}" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="{{ 'customer.addresses.company' | t }}">
+                  <label for="AddressCompany_{{ form.id }}">{{ 'customer.addresses.company' | t }}</label>
+                </div>
+                <div class="field field--input typography-text typography-text--fields">
+                  <input type="text" id="AddressAddress1_{{ form.id }}" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}">
+                  <label for="AddressAddress1_{{ form.id }}">{{ 'customer.addresses.address1' | t }}</label>
+                </div>
+                <div class="field field--input typography-text typography-text--fields">
+                  <input type="text" id="AddressAddress2_{{ form.id }}" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}">
+                  <label for="AddressAddress2_{{ form.id }}">{{ 'customer.addresses.address2' | t }}</label>
+                </div>
+                <div class="field field--input typography-text typography-text--fields">
+                  <input type="text" id="AddressCity_{{ form.id }}" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}">
+                  <label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
+                </div>
+      
+                <!-- <div id="AddressProvinceContainer_{{ form.id }}" style="display:none;">
+                  <label for="AddressProvince_{{ form.id }}">
+                    {{ 'customer.addresses.province' | t }}
+                  </label>
+                  <div class="select">
+                    <select
+                      id="AddressProvince_{{ form.id }}"
+                      name="address[province]"
+                      data-default="{{ form.province }}"
+                      autocomplete="address-level1"
+                    >
+                    </select>
+                    <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                      <use href="#icon-caret" />
+                    </svg>
+                  </div>
+                </div> -->
+                <div class="field field--input typography-text typography-text--fields">
+                  <input type="text" id="AddressZip_{{ form.id }}" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}">
+                  <label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
+                </div>
+                <div class="field field--input typography-text typography-text--fields">
+                  <input type="tel" id="AddressPhone_{{ form.id }}"  name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t }}">
+                  <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
+                </div>
+                <div class="field field--select-compact typography-text typography-text--fields">
+                    <select
+                      id="AddressCountry_{{ form.id }}"
+                      name="address[country]"
+                      data-address-country-select
+                      value="{{ form.country }}"
+                      data-default="{{ form.country }}"
+                      data-form-id="{{ form.id }}"
+                      autocomplete="country"
+                      class=""
+                    >
+                      {{ all_country_option_tags }}
+                    </select>
+                    <label for="AddressCountry_{{ form.id }}">
+                      {{ 'customer.addresses.country' | t }}
+                    </label>
+                </div>
+                <label class="field-checkbox">
+                  {{ form.set_as_default_checkbox }}
+                  <span class="checkmark"></span>
+                  <span class="checkbox-text">{{ 'customer.addresses.set_default' | t }}</span>
+                </label>
+                <div>
+                  <button class="button button--primary btn-lg">{{ 'customer.addresses.update' | t }}</button>
+                  <button class="button button--primary btn-lg" type="reset">CANCEL</button>
+                </div>
+              {%- endform -%}
+            </div>
+          </div>
+    
+          {%- endfor -%}
+        </ul>
+    
+        {% endif %}
+    
+        <button
+          class="button button--primary btn-lg"
+          type="button"
+          aria-expanded="false"
+          aria-controls="AddAddress"
+        >
+          {{ 'customer.addresses.add_new' | t }}
+        </button>
+    
+        <div id="ConfirmDelete" class="confirm-delete-modal">
+          <div class="modal-content">
+            <span class="close">{% render 'icon-close' %}</span>
+            <p>{{ 'customer.addresses.delete_confirm' | t }} </p>
+            <button class="button button--primary btn-lg" data-confirm="">{{ 'customer.addresses.delete_confirm_cta' | t }}</button>
+          </div>
+        
+        </div>
+    
+    
+        {%- if paginate.pages > 1 -%}
+          {%- if paginate.parts.size > 0 -%}
+              <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                <ul role="list">
+                {%- if paginate.previous -%}
+                  <li>
+                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
+                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                      </svg>
+                    </a>
+                  </li>
+                {%- endif -%}
+    
+                {%- for part in paginate.parts -%}
+                  <li>
+                    {%- if part.is_link -%}
+                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a>
+                    {%- else -%}
+                      {%- if part.title == paginate.current_page -%}
+                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</span>
+                      {%- else -%}
+                        <span>{{ part.title }}</span>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+    
+                {%- if paginate.next -%}
+                  <li>
+                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}" >
+                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                      </svg>
+                    </a>
+                  </li>
+                {%- endif -%}
+                </ul>
+              </nav>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    {%- endpaginate -%}
+    </div>
+    
+    
+    
+    
+
+
+  </div>
+
+</div>
+
+
+<script>
+  window.onload = () => {
+    typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+  }
+</script>
+
+
+<script>
+  window.onload = () => {
+    typeof CustomerAddresses !== 'undefined' && new CustomerAddresses();
+  }
+</script>
+
+
+<style>
+  .header-line{
+    left: 75%;
+  }
+.confirm-delete-modal {
+  display: none;
+  position: fixed; 
+  z-index: 10001;
+  padding-top: 40vh;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+
+#ConfirmDelete .modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 3.9rem;
+  width: 455px;
+  text-align: left;
+  border-radius: 20px;
+}
+#ConfirmDelete .modal-content button{
+  margin-top: 4.3rem;
+  margin-bottom: 1rem;
+
+}
+@media screen and (max-width: 767px) {
+  #ConfirmDelete .modal-content {
+    width: 90%
+  }
+}
+#ConfirmDelete .modal-content p{
+  padding-right: 7rem;
+  font-size: 1.8rem;
+  line-height: 2.6rem;;
+}
+
+#ConfirmDelete .close {
+  float: right;
+}
+
+#ConfirmDelete .close:hover,
+#ConfirmDelete .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+#ConfirmDelete .close svg{
+  width: 2.4rem;
+}
+#ConfirmDelete button{
+  min-width: 100%;
+
+}
+</style>
+
+<script>
+  // Get the modal
+  let confirmModal = document.getElementById("ConfirmDelete");
+  
+  // Get the <span> element that closes the modal
+  let closeBtn = document.querySelector("#ConfirmDelete .close svg")
+  
+  // When the user clicks on <span> (x), close the modal
+  closeBtn.onclick = function() {
+    confirmModal.style.display = "none";
+  }
+  
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == confirmModal) {
+      confirmModal.style.display = "none";
+    }
+  }
+
+  </script>
+  
+
+  <script>
+    function formcheck() {
+      var fields = $('#address_form_new').find('select, textarea, input').serializeArray();
+
+      $.each(fields, function (i, field) {
+          if ( $(`#address_form_new input[name="${field.name}"]`).prop('required')){
+            if(!field.value){
+              $(`#address_form_new input[name="${field.name}"]`).addClass('error-border')
+              $(`#address_form_new input[name="${field.name}"]`).next().addClass('error-label')
+            }
+
+          }
+          if ( ($(`#address_form_new select[name="${field.name}"]`).prop('required')) && ($(`#address_form_new select[name="${field.name}"]`).val() == '---')  ){
+            $(`#address_form_new select[name="${field.name}"]`).addClass('error-border')
+            $(`#address_form_new select[name="${field.name}"]`).next().addClass('error-label')
+          }
+        
+      });
+
+    }
+
+    $('.customer-container select').change(function(e){
+      $(this).removeClass('error-border')
+      $(this).next().removeClass('error-label')
+    })
+    $('.customer-container input').change(function(e){
+      $(this).removeClass('error-border')
+      $(this).next().removeClass('error-label')
+    })
+
+  </script>
+
+  
+
+
+
+<script>
+
+$( document ).ready(function() {
+
+  document.querySelectorAll('.customer-container select').forEach(i => {
+    if($(i).val() == '---'){
+      $(i).parent().removeClass('selected')
+    }else{
+      $(i).parent().addClass('selected')
+    }
+ 
+  })
+
+})
+
+  $('.customer-container select').change(function(e){
+    if( $(this).val() == '---' ){
+      $(this).parent().removeClass('selected')
+    }else{
+      $(this).parent().addClass('selected')
+    }
+  })
+</script>

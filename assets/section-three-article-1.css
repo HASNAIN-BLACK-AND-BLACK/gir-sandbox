@@ -1,0 +1,130 @@
+.article_sec_three_container .article_section_three {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.article_dual_images_container {
+    display: flex;
+    min-height: 713px;
+    justify-content: start;
+    position: relative;
+    max-width: 881px;
+    margin: 0 auto;
+}
+
+.article_dual_images_inner_container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.dual_images {
+    overflow: inherit;
+}
+
+/* .article_sec_three_container .collection {
+    display: none;
+} */
+
+.dual_images .media-ratio.has_border {
+    border: 4px solid black;
+}
+
+.dual_image_one {
+    width: 422px;
+    height: 570px;
+}
+
+.dual_images.show_above {
+    z-index: 1;
+}
+
+.dual_image_two {
+    position: absolute;
+    width: 560px;
+    height: 560px;
+    left: 321px;
+    top: 153px;
+}
+
+.image_credits {
+    color: #000;
+    font-family: CutiveMono-Regular;
+    font-size: 12px;
+    line-height: 19px;
+    position: absolute;
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+    height: max-content !important;
+    width: max-content !important;
+    right: -120px !important;
+    left: auto !important;
+    top: 5px !important;
+    text-transform: uppercase;
+}
+
+.image_credits.credit_two {
+    right: -30% !important;
+    top: auto !important;
+    bottom: 23.5% !important;
+}
+
+.image_credits p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.article_sec_three_container .bag_icon {
+    display: none !important;
+}
+
+@media screen and (max-width:990px) {
+    .article_dual_images_container {
+        min-height: 268px;
+        max-width: 319px;
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    .dual_image_two {
+        max-width: 203.42px;
+        max-height: 203.42px;
+        left: 110px;
+        top: 65px;
+    }
+
+    .dual_image_one.dual_images {
+        max-width: 153.29px;
+        max-height: 204.51px;
+    }
+
+    .image_credits {
+        font-size: 8px;
+        line-height: 6.9px;
+        right: -80px !important;
+    }
+
+    .article_sec_three_container .bag_icon {
+        display: block !important;
+        position: absolute;
+        right: 10px !important;
+        left: unset !important;
+        top: unset !important;
+        height: 10px !important;
+        width: 10px !important;
+    }
+
+    .bag_icon_one {
+        bottom: 10px !important;
+    }
+
+    .bag_icon_two {
+        bottom: 15px !important;
+    }
+
+    .image_credits.credit_two {
+        right: -55% !important;
+        top: auto !important;
+        bottom: 47% !important;
+    }
+}

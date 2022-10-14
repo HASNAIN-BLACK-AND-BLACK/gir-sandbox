@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/GIR_GIGI_PabloDiPrima_03_RGB_UPDATED_19f8af24-f705-45f7-b304-2b2b926024ee.jpg",
+        "image_2": "shopify:\/\/shop_images\/GIR_GIGI_PabloDiPrima_03_RGB_UPDATED_19f8af24-f705-45f7-b304-2b2b926024ee.jpg",
+        "image_overlay_opacity": 0,
+        "adapt_height_first_image": true,
+        "heading": "Page not found",
+        "text_align": "center",
+        "desktop_content_alignment": "center",
+        "heading_color": "#ffffff",
+        "mb_heading_color": "#ffffff",
+        "button_label_1": "Continue Shopping",
+        "button_link_1": "shopify:\/\/collections\/core",
+        "button_label_color": "#ffffff",
+        "mb_button_label_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

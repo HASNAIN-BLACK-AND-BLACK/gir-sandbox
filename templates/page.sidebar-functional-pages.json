@@ -1,0 +1,102 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page-sidebar-contact",
+      "blocks": {
+        "2da3c716-c926-4582-87b1-f5809da6a0d5": {
+          "type": "returns",
+          "settings": {
+            "returns_question": "*Free Shipping & Returns Policy",
+            "returns_answer": "<p>Shipping and return fees are waived with subscription to our newsletter. Orders may be returned or exchanged within 14 days of receipt. <\/p><p>Click <a href=\"https:\/\/guestinresidence.com\/apps\/returns\" target=\"_blank\" title=\"Link to initiate a return or exchange.\"><strong>here<\/strong><\/a> to initiate a domestic return. For international returns, please email contact@guestinresidence.com for a shipping label.<\/p><p><\/p><p>Please allow up to 5 business days for your refunds and exchanges to proccess once it's delivered back to us.<\/p>"
+          }
+        },
+        "5b6f808c-e692-4ae6-bdc0-278161424908": {
+          "type": "returns",
+          "settings": {
+            "returns_question": "Track my order",
+            "returns_answer": "<p>You will be notified by email once your order has shipped with a tracking link. Standard domestic shipping typically take 4-5 business days to arrive.<\/p>"
+          }
+        },
+        "145d87e7-723d-42c9-a0f4-565bad3a5dbf": {
+          "type": "returns",
+          "settings": {
+            "returns_question": "International Shipping",
+            "returns_answer": "<p>International shipping will be available starting September 12th.<\/p>"
+          }
+        },
+        "4edf9d6b-2a78-4d1c-9bc7-d99c0201f729": {
+          "type": "returns",
+          "settings": {
+            "returns_question": "Address Changes & Order cancellations",
+            "returns_answer": "<p>Please email contact@guestinresidence.com immediately should you need to update your shipping address or cancel your order.<\/p>"
+          }
+        },
+        "1e7163ff-0f00-41fa-8168-ed1aa45ee24e": {
+          "type": "returns",
+          "settings": {
+            "returns_question": "return conditions",
+            "returns_answer": "<p>Products must be in original condition with tags attached to be eligible for a return. Socks must have sleeves intact. We reserve the right to refuse returns that do not meet the stated criteria.<\/p>"
+          }
+        },
+        "6565d2bd-77ea-4e23-b46e-98849c9efce9": {
+          "type": "faq",
+          "settings": {
+            "faq_question": "Which Size Should I buy?",
+            "faq_answer": "<p>Please follow the size guide on each product page for specific fit intention and measurements.<\/p>"
+          }
+        },
+        "8dc5a466-3b8d-42df-82e2-42aa3f31eaeb": {
+          "type": "faq",
+          "settings": {
+            "faq_question": "Where Can I Purchase Guest In Residence?",
+            "faq_answer": "<p>Guest In Residence is sold exclusively at GuestInResidence.com.<\/p>"
+          }
+        },
+        "ef0e49da-11be-46f2-afd7-24c3c25f0512": {
+          "type": "faq",
+          "settings": {
+            "faq_question": "Which payment methods can I use?",
+            "faq_answer": "<p>We accept most major credit cards including Visa, MasterCard, American Express, and Discover. You also have the option to use Shop Pay, Apple Pay, Google Pay, Amazon Pay, Meta Pay, or PayPal.<\/p>"
+          }
+        },
+        "f6eedd43-476c-46ee-becf-5100e93394f2": {
+          "type": "faq",
+          "settings": {
+            "faq_question": "When will you restock?",
+            "faq_answer": "<p>Should your desired item sell out, please sign up on the product page to be notified when it comes back in stock. Please note that our Limited Edition collections will typically not be restocked.<\/p>"
+          }
+        },
+        "e7dc56be-8da0-42bc-b479-dcf29482a0a6": {
+          "type": "faq",
+          "settings": {
+            "faq_question": "How do I contact Customer Service?",
+            "faq_answer": "<p>For any inquiries, please reach out to us at contact@guestinresidence.com. We are also available via live chat from Monday to Friday at 10 AM to 5 PM EST.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "2da3c716-c926-4582-87b1-f5809da6a0d5",
+        "5b6f808c-e692-4ae6-bdc0-278161424908",
+        "145d87e7-723d-42c9-a0f4-565bad3a5dbf",
+        "4edf9d6b-2a78-4d1c-9bc7-d99c0201f729",
+        "1e7163ff-0f00-41fa-8168-ed1aa45ee24e",
+        "6565d2bd-77ea-4e23-b46e-98849c9efce9",
+        "8dc5a466-3b8d-42df-82e2-42aa3f31eaeb",
+        "ef0e49da-11be-46f2-afd7-24c3c25f0512",
+        "f6eedd43-476c-46ee-becf-5100e93394f2",
+        "e7dc56be-8da0-42bc-b479-dcf29482a0a6"
+      ],
+      "settings": {
+        "menu": "functional-pages-sidebar-menu",
+        "padding_top": 52,
+        "padding_bottom": 40,
+        "shipping-returns": "shipping-returns",
+        "faq": "faq",
+        "mobile-faq": "FAQS"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

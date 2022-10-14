@@ -1,0 +1,26 @@
+.article_sec_five_type2_container .article_section_four {
+    max-width: 857px;
+    margin: 0 auto;
+}
+
+.article_sec_five_type2_container .collection {
+    padding-top: 50px;
+}
+
+@media screen and (max-width:990px) {
+    .article_sec_five_type2_container .wide_image_credits {
+        bottom: 50px;
+        right: -58px;
+    }
+
+    .wide_image_credits p {
+        font-size: 8px;
+        line-height: 5px;
+        margin: 0;
+    }
+
+    .article_sec_five_type2_container .article_section_four {
+        width: 276px;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,52 @@
+<script>
+   /** KLAVIYO FORMS  **/
+   $('.email-form-submit').on('click', function(e) {
+    // e.preventDefault();
+       var acceptAgreement = $(this).parents('.custom-form').find('.checkbox-field').find('.email-checkbox');
+       if (acceptAgreement.checked == true) {
+         acceptAgreement.removeClass('checkbox-error');
+       } else {
+         acceptAgreement.addClass('checkbox-error');
+       }
+ 
+       var emailField = $(this).parents('#email_newsletter-{{section.id}}').find('.email-field').find('.field__input');
+       if(emailField.val() ==''|| !validateEmail(emailField.val())){
+        emailField.siblings('.newsletter-email-error').show();
+       }else{
+        emailField.siblings('.newsletter-email-error').hide();
+       }
+
+   })
+
+   function validateEmail($email) {
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/; 
+    return emailReg.test( $email );
+  }
+
+   $('.phone-form-submit').on('click', function(e) { 
+    // e.preventDefault();
+     
+       var acceptAgreement = $(this).parents('.custom-form').find('.checkbox-field').find('.phone-checkbox');
+      
+       if (acceptAgreement.checked == true) {
+         acceptAgreement.removeClass('checkbox-error');
+       } else {
+         acceptAgreement.addClass('checkbox-error');
+       }
+       var phoneField = $(this).parents('#phone_form-{{section.id}}').find('.phone-field').find('.field__input');
+       if(phoneField.val() ==''){
+        phoneField.siblings('.newsletter-phone-error').show();
+       }else{
+        phoneField.siblings('.newsletter-phone-error').hide();
+       }
+   })
+
+   $('.phone-form-trigger span').on('click keypress', function(){
+      $(this).parents('.klaviyo-newsletter').find('.email-form').hide();
+      $(this).parents('.klaviyo-newsletter').find('.phone-number-form').show();
+  })
+   $('.email-form-trigger span').on('click keypress', function(){
+     $(this).parents('.klaviyo-newsletter').find('.phone-number-form').hide();
+      $(this).parents('.klaviyo-newsletter').find('.email-form').show();
+  })
+</script>

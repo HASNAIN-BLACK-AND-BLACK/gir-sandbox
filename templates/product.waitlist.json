@@ -1,0 +1,322 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "caption": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.product.subtitle.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        },
+        "4f2688e6-5aed-4704-bb65-43b09e685e68": {
+          "type": "description_tab",
+          "settings": {
+            "heading": "Details",
+            "size_guide_link": "Size Guide",
+            "care_guide_link": "Care Guide",
+            "care_guide_url": "shopify:\/\/blogs\/gir-world\/cashmere-care"
+          }
+        },
+        "47631565-b3f0-4c97-a5a8-c5546bface3a": {
+          "type": "text_with_link",
+          "settings": {
+            "text": "Chat Now",
+            "icon": "https:\/\/cdn.shopify.com\/s\/files\/1\/0641\/5613\/9760\/files\/chat.svg?v=1657895177",
+            "link": ""
+          }
+        },
+        "dcd85278-dd20-48b3-a408-f9aefd615101": {
+          "type": "wishlist",
+          "settings": {
+          }
+        },
+        "42abd57d-f353-47d3-be26-6f776b86b2de": {
+          "type": "star-rating",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "caption",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "4f2688e6-5aed-4704-bb65-43b09e685e68",
+        "47631565-b3f0-4c97-a5a8-c5546bface3a",
+        "dcd85278-dd20-48b3-a408-f9aefd615101",
+        "42abd57d-f353-47d3-be26-6f776b86b2de"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "enable_video_looping": true,
+        "popup_heading": "Enter your email address to be notified when this item will be back in stock.",
+        "privacy_agreement": "<p>By checking this box, you agree to receive marketing messages from Guest In Residence and agree to our <a href=\"\/pages\/terms-of-services\" title=\"Terms of Services\">terms of service<\/a> + <a href=\"\/pages\/privacy-policy\" title=\"Privacy Policy\">privacy policy<\/a>.<\/p>",
+        "bis_popup_btn": "Notify Me",
+        "bis_popup_link_text": "Continue Shopping",
+        "bis_popup_link": "",
+        "bis_success_msg": "Your notification has been registered.",
+        "bis_error_msg": "Invalid Email",
+        "more_details_text": "More Details",
+        "padding_top": 0,
+        "padding_bottom": 12
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "165807297896188841": {
+      "type": "more-products-tabs",
+      "blocks": {
+        "c8d2a9f7-86f1-4a36-a095-b2b4a7d8d982": {
+          "type": "products",
+          "settings": {
+            "tab_name": "More Colors",
+            "products": "{{ product.metafields.product.more_colors.value }}",
+            "show_outfit": false,
+            "show_swatches": false
+          }
+        },
+        "18d17c9b-5ac0-4e94-8ac2-2def8e06b3da": {
+          "type": "products",
+          "settings": {
+            "tab_name": "Other Styles",
+            "products": "{{ product.metafields.product.other_styles.value }}",
+            "show_outfit": false,
+            "show_swatches": true
+          }
+        }
+      },
+      "block_order": [
+        "c8d2a9f7-86f1-4a36-a095-b2b4a7d8d982",
+        "18d17c9b-5ac0-4e94-8ac2-2def8e06b3da"
+      ],
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 20
+      }
+    },
+    "165807314496315f1e": {
+      "type": "product-style-with",
+      "settings": {
+        "section_heading": "Style with",
+        "products": "{{ product.metafields.product.style_with.value }}",
+        "show_outfit": true,
+        "show_swatches": true,
+        "padding_top": 12,
+        "padding_bottom": 52
+      }
+    },
+    "16581678928520ca0c": {
+      "type": "image-banner",
+      "disabled": true,
+      "blocks": {
+        "1658167892b31b6a37-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "New Drop",
+            "heading_size": 40,
+            "font_family_heading": "Chalet-NY"
+          }
+        }
+      },
+      "block_order": [
+        "1658167892b31b6a37-0"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/ezgif_1_576f8110-5bd9-4a52-b15f-3477de5710f2.png",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "adapt_height_first_image": true,
+        "desktop_height": "500px",
+        "auto_mb_height": true,
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "1659088867be8530ac": {
+      "type": "clothing-size-guide",
+      "blocks": {
+        "5f439d82-877c-4b35-86be-5c58f22e99c3": {
+          "type": "unisex-mens",
+          "settings": {
+            "heading": "Unisex \/ Mens",
+            "text": "Unisex fit to Men’s sizing, Women should size down for a less oversized fit.",
+            "xxs_chest_inch": "",
+            "xxs_chest_cm": "",
+            "xxs_waist_inch": "",
+            "xxs_waist_cm": "",
+            "xs_chest_inch": "32-34",
+            "xs_chest_cm": "81-86.5",
+            "xs_waist_inch": "26-28",
+            "xs_waist_cm": "66-71",
+            "s_chest_inch": "34-36",
+            "s_chest_cm": "86-91",
+            "s_waist_inch": "29-31",
+            "s_waist_cm": "73-78.5",
+            "sm_chest_inch": "",
+            "sm_chest_cm": "",
+            "sm_waist_inch": "",
+            "sm_waist_cm": "",
+            "m_chest_inch": "37-40",
+            "m_chest_cm": "94-101.5",
+            "m_waist_inch": "32-34",
+            "m_waist_cm": "81-86",
+            "ml_chest_inch": "",
+            "ml_chest_cm": "",
+            "ml_waist_inch": "",
+            "ml_waist_cm": "",
+            "l_chest_inch": "40-42",
+            "l_chest_cm": "101.5-106.5",
+            "l_waist_inch": "34-36",
+            "l_waist_cm": "86-91.5",
+            "lxl_chest_inch": "",
+            "lxl_chest_cm": "",
+            "lxl_waist_inch": "",
+            "lxl_waist_cm": "",
+            "xl_chest_inch": "42-44",
+            "xl_chest_cm": "106.5-111.5",
+            "xl_waist_inch": "36-38",
+            "xl_waist_cm": "91.5-96.5",
+            "xxl_chest_inch": "44-46",
+            "xxl_chest_cm": "111.5-116.5",
+            "xxl_waist_inch": "39-41",
+            "xxl_waist_cm": "99-104"
+          }
+        },
+        "33f03f28-04e4-4049-8878-7ac6340276e4": {
+          "type": "womens",
+          "settings": {
+            "heading": "Womens",
+            "text": "Women's sizing, intended to fit true to size.",
+            "xxs_chest_inch": "",
+            "xxs_chest_cm": "",
+            "xxs_waist_inch": "",
+            "xxs_waist_cm": "",
+            "xxs_hip_inch": "",
+            "xxs_hip_cm": "",
+            "xs_chest_inch": "32.5",
+            "xs_chest_cm": "82.5",
+            "xs_waist_inch": "25",
+            "xs_waist_cm": "63.5",
+            "xs_hip_inch": "36.5",
+            "xs_hip_cm": "92.7",
+            "s_chest_inch": "33.5-34.5",
+            "s_chest_cm": "85-87.5",
+            "s_waist_inch": "26-27",
+            "s_waist_cm": "66-68.5",
+            "s_hip_inch": "37.5-38.5",
+            "s_hip_cm": "95-97.5",
+            "sm_chest_inch": "",
+            "sm_chest_cm": "",
+            "sm_waist_inch": "",
+            "sm_waist_cm": "",
+            "sm_hip_inch": "",
+            "sm_hip_cm": "",
+            "m_chest_inch": "35.5-36.5",
+            "m_chest_cm": "90-92.5",
+            "m_waist_inch": "28.5-29.5",
+            "m_waist_cm": "72-75",
+            "m_hip_inch": "39.5-40.5",
+            "m_hip_cm": "100-103",
+            "ml_chest_inch": "",
+            "ml_chest_cm": "",
+            "ml_waist_inch": "",
+            "ml_waist_cm": "",
+            "ml_hip_inch": "",
+            "ml_hip_cm": "",
+            "l_chest_inch": "37.5-39",
+            "l_chest_cm": "95-99",
+            "l_waist_inch": "30.5-32",
+            "l_waist_cm": "77.5-81",
+            "l_hip_inch": "41.5-43",
+            "l_hip_cm": "105.5-109",
+            "lxl_chest_inch": "",
+            "lxl_chest_cm": "",
+            "lxl_waist_inch": "",
+            "lxl_waist_cm": "",
+            "lxl_hip_inch": "",
+            "lxl_hip_cm": "",
+            "xl_chest_inch": "40.5-42.5",
+            "xl_chest_cm": "103-108",
+            "xl_waist_inch": "33.5-35.5",
+            "xl_waist_cm": "85-90",
+            "xl_hip_inch": "44.5-46.5",
+            "xl_hip_cm": "113-118",
+            "xxl_chest_inch": "44.5",
+            "xxl_chest_cm": "113",
+            "xxl_waist_inch": "37.5",
+            "xxl_waist_cm": "95",
+            "xxl_hip_inch": "48.5",
+            "xxl_hip_cm": "123"
+          }
+        }
+      },
+      "block_order": [
+        "5f439d82-877c-4b35-86be-5c58f22e99c3",
+        "33f03f28-04e4-4049-8878-7ac6340276e4"
+      ],
+      "settings": {
+        "padding_top": 76,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "165807297896188841",
+    "165807314496315f1e",
+    "16581678928520ca0c",
+    "1659088867be8530ac"
+  ]
+}

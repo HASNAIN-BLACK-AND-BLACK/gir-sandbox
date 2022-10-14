@@ -1,0 +1,82 @@
+.totals {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.totals > * {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.totals > h3 {
+  font-family: CutiveMono-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 20px;
+  width: 70%;
+}
+
+.totals * {
+  line-height: 1;
+}
+
+.totals > * + * {
+  margin-left: 2rem;
+}
+
+.totals__subtotal-value {
+  font-family: CutiveMono-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: right;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 20px;
+}
+.totals__subtotal-value.price{
+  font-size: 14px;
+  letter-spacing: 0px;
+}
+
+.cart__ctas + .totals {
+  margin-top: 2rem;
+}
+.order-summary{
+  font-family: CutiveMono-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 26px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 38px;
+}
+.cart_footer_contact{
+  font-family: CutiveMono-Regular;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #000000;
+  margin-top: 30px;
+  border-top: 0.5px solid rgba(57, 52, 53, 0.4);
+  padding-top: 30px;
+}
+
+@media all and (min-width: 750px) {
+  .totals {
+    justify-content: space-between;
+  }
+}

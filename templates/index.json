@@ -1,0 +1,575 @@
+{
+  "sections": {
+    "16626877415eb63b24": {
+      "type": "hp-editorial",
+      "blocks": {
+        "c630698e-f19a-4d8d-bf6f-1bd13307dc16": {
+          "type": "block",
+          "settings": {
+            "media_type": "image",
+            "media_natural_size": true,
+            "image": "shopify:\/\/shop_images\/220921-GIR-WEBSITE-WW2_2.jpg",
+            "image_alter": "shopify:\/\/shop_images\/220921-GIR-WEBSITE-WW3_b0f3e4ea-0401-4f13-a64d-587a26011ce4.jpg",
+            "video": "",
+            "video_alter": "",
+            "overlay_opacity": "0.1",
+            "text_placement": "center-center",
+            "title": "DROP 1: WORKWEAR",
+            "title_font": "FormulaCondensed-Light",
+            "title_size": 40,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 30,
+            "title_color": "#ffffff",
+            "cta_text": "SHOP NOW",
+            "cta_link": "shopify:\/\/collections\/workwear",
+            "cta_type": "button",
+            "cta_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "c630698e-f19a-4d8d-bf6f-1bd13307dc16"
+      ],
+      "settings": {
+        "overwrite_block_text": true,
+        "text_placement": "center-center",
+        "title": "DROP 1: WORKWEAR",
+        "title_font": "FormulaCondensed-Light",
+        "title_size": 65,
+        "title_letter_spacing": 0,
+        "title_margin_bottom": 30,
+        "title_color": "#ffffff",
+        "cta_text": "SHOP NOW",
+        "cta_link": "shopify:\/\/collections\/workwear",
+        "cta_type": "button",
+        "cta_color": "#ffffff"
+      }
+    },
+    "1662688063aeb8a7e2": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "LIMITED EDITION: WORKWEAR",
+        "heading_size": 20,
+        "font_family_heading": "CutiveMono-Regular",
+        "description": "",
+        "show_description": false,
+        "show_swatches": true,
+        "description_style": "body",
+        "collection": "workwear",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "1662350953afd0363d": {
+      "type": "hp-editorial",
+      "blocks": {
+        "d29393d5-19eb-4def-bb6c-f812e8b6c22c": {
+          "type": "block",
+          "settings": {
+            "media_type": "video",
+            "media_natural_size": true,
+            "video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/48763202198846ac890a1b4bd03e094a.mp4",
+            "video_alter": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/9c92e4db339e46cbac6ba9a33b3401b2.mp4",
+            "overlay_opacity": "0.05",
+            "text_placement": "center-center",
+            "title": "UTILITY MEETS CASHMERE",
+            "title_font": "FormulaCondensed-Light",
+            "title_size": 40,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 30,
+            "title_color": "#ffffff",
+            "cta_text": "SHOP WORKWEAR",
+            "cta_link": "shopify:\/\/collections\/workwear",
+            "cta_type": "button",
+            "cta_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "d29393d5-19eb-4def-bb6c-f812e8b6c22c"
+      ],
+      "settings": {
+        "overwrite_block_text": false,
+        "text_placement": "center-center",
+        "title": "",
+        "title_font": "Chalet-NY",
+        "title_size": 65,
+        "title_letter_spacing": 10,
+        "title_margin_bottom": 30,
+        "title_color": "#000000",
+        "cta_text": "",
+        "cta_link": "",
+        "cta_type": "button",
+        "cta_color": "#000000"
+      }
+    },
+    "16623539434da7dca0": {
+      "type": "hp-editorial",
+      "blocks": {
+        "2da2ae13-f6a1-4cbe-8870-fbea8a0baf45": {
+          "type": "block",
+          "settings": {
+            "media_type": "image",
+            "media_natural_size": true,
+            "image": "shopify:\/\/shop_images\/tonnechange-desktop.jpg",
+            "image_alter": "shopify:\/\/shop_images\/GUEST_IN_RESIDENCE_CORE_COLLECTION_MOBILETG.jpg",
+            "video": "",
+            "video_alter": "",
+            "overlay_opacity": "0.25",
+            "text_placement": "bottom-center",
+            "title": "MADE TO LOVE &amp; LAST",
+            "title_font": "FormulaCondensed-Light",
+            "title_size": 45,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 30,
+            "title_color": "#ffffff",
+            "cta_text": "SHOP WOMEN'S CORE",
+            "cta_link": "shopify:\/\/collections\/core-womens",
+            "cta_type": "button",
+            "cta_color": "#ffffff"
+          }
+        },
+        "e50af2f9-623f-4f33-a055-27d7ff0aca76": {
+          "type": "block",
+          "settings": {
+            "media_type": "image",
+            "media_natural_size": true,
+            "image": "shopify:\/\/shop_images\/tonnechange-desktop_copy.jpg",
+            "video": "",
+            "video_alter": "",
+            "overlay_opacity": "0.25",
+            "text_placement": "bottom-center",
+            "title": "FUTURE HEIRLOOMS",
+            "title_font": "FormulaCondensed-Light",
+            "title_size": 45,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 30,
+            "title_color": "#ffffff",
+            "cta_text": "SHOP MEN'S CORE",
+            "cta_link": "shopify:\/\/collections\/core-mens",
+            "cta_type": "button",
+            "cta_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "2da2ae13-f6a1-4cbe-8870-fbea8a0baf45",
+        "e50af2f9-623f-4f33-a055-27d7ff0aca76"
+      ],
+      "settings": {
+        "overwrite_block_text": false,
+        "text_placement": "center-center",
+        "title": "CORE COLLECTION",
+        "title_font": "Chalet-NY",
+        "title_size": 55,
+        "title_letter_spacing": 0,
+        "title_margin_bottom": 30,
+        "title_color": "#ffffff",
+        "cta_text": "",
+        "cta_link": "shopify:\/\/collections\/core",
+        "cta_type": "button",
+        "cta_color": "#ffffff"
+      }
+    },
+    "166385077975cc9d92": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "CORE",
+        "heading_size": 20,
+        "font_family_heading": "CutiveMono-Regular",
+        "description": "",
+        "show_description": false,
+        "show_swatches": false,
+        "description_style": "body",
+        "collection": "core",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "165714695439f2cbba": {
+      "type": "blog-post-article",
+      "settings": {
+        "article": "gir-world\/cashmere-care",
+        "bg_color": "#f6ebd8",
+        "badge": "shopify:\/\/shop_images\/featured-badge.gif",
+        "badge_svg": "https:\/\/cdn.shopify.com\/s\/files\/1\/0641\/5613\/9760\/files\/footer-svg.svg?v=1658925148",
+        "padding_top": 76,
+        "padding_bottom": 40,
+        "padding_left": 40,
+        "padding_right": 52
+      }
+    },
+    "1662353684123a5dac": {
+      "type": "hp-editorial",
+      "blocks": {
+        "dd24cdb7-3ed7-4829-aea3-5ce18911a065": {
+          "type": "block",
+          "settings": {
+            "media_type": "image",
+            "media_natural_size": true,
+            "image": "shopify:\/\/shop_images\/gigi2_017_ac2c4705-ca7d-424d-9850-eb5d2d111ea0.jpg",
+            "image_alter": "shopify:\/\/shop_images\/gigi2_017_ac2c4705-ca7d-424d-9850-eb5d2d111ea0.jpg",
+            "video": "",
+            "video_alter": "",
+            "overlay_opacity": "0.1",
+            "text_placement": "center-center",
+            "title": "WOMEN\/UNISEX",
+            "title_font": "Chalet-NY",
+            "title_size": 45,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 30,
+            "title_color": "#ffffff",
+            "cta_text": "SHOP",
+            "cta_link": "shopify:\/\/collections\/women",
+            "cta_type": "button",
+            "cta_color": "#ffffff"
+          }
+        },
+        "54c510a5-dfb3-4e24-86ad-6eac7f106952": {
+          "type": "block",
+          "settings": {
+            "media_type": "image",
+            "media_natural_size": true,
+            "image": "shopify:\/\/shop_images\/waris_150_20881019-59d3-40a7-a8a0-a00df2430306.jpg",
+            "image_alter": "shopify:\/\/shop_images\/waris_150_20881019-59d3-40a7-a8a0-a00df2430306.jpg",
+            "video": "",
+            "video_alter": "",
+            "overlay_opacity": "0.1",
+            "text_placement": "center-center",
+            "title": "MEN\/UNISEX",
+            "title_font": "Chalet-NY",
+            "title_size": 45,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 30,
+            "title_color": "#ffffff",
+            "cta_text": "SHOP",
+            "cta_link": "shopify:\/\/collections\/men",
+            "cta_type": "button",
+            "cta_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "dd24cdb7-3ed7-4829-aea3-5ce18911a065",
+        "54c510a5-dfb3-4e24-86ad-6eac7f106952"
+      ],
+      "settings": {
+        "overwrite_block_text": false,
+        "text_placement": "center-center",
+        "title": "",
+        "title_font": "Chalet-NY",
+        "title_size": 65,
+        "title_letter_spacing": 10,
+        "title_margin_bottom": 30,
+        "title_color": "#000000",
+        "cta_text": "",
+        "cta_link": "",
+        "cta_type": "button",
+        "cta_color": "#000000"
+      }
+    },
+    "1662353598ecb7d060": {
+      "type": "hp-editorial",
+      "disabled": true,
+      "blocks": {
+        "d0ddfba0-f41d-4ba1-b377-1b6bfcb5010c": {
+          "type": "block",
+          "settings": {
+            "media_type": "image",
+            "media_natural_size": true,
+            "image": "shopify:\/\/shop_images\/220904-GIR-COLOR-POP-GRID.jpg",
+            "image_alter": "shopify:\/\/shop_images\/220904-GIR-COLOR-POP-GRID-MOBILE.jpg",
+            "video": "",
+            "video_alter": "",
+            "overlay_opacity": "0.1",
+            "text_placement": "bottom-center",
+            "title": "LIMITED EDITIONS",
+            "title_font": "Chalet-NY",
+            "title_size": 80,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 8,
+            "title_color": "#ffffff",
+            "cta_text": "SHOP POP",
+            "cta_link": "shopify:\/\/collections\/fall-color-pop",
+            "cta_type": "button",
+            "cta_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "d0ddfba0-f41d-4ba1-b377-1b6bfcb5010c"
+      ],
+      "settings": {
+        "overwrite_block_text": false,
+        "text_placement": "center-center",
+        "title": "",
+        "title_font": "Chalet-NY",
+        "title_size": 65,
+        "title_letter_spacing": 10,
+        "title_margin_bottom": 30,
+        "title_color": "#000000",
+        "cta_text": "",
+        "cta_link": "",
+        "cta_type": "button",
+        "cta_color": "#000000"
+      }
+    },
+    "1662362984927e0ad3": {
+      "type": "hp-editorial",
+      "disabled": true,
+      "blocks": {
+        "25503761-5226-4077-b583-c6a83754fa9c": {
+          "type": "block",
+          "settings": {
+            "media_type": "image",
+            "media_natural_size": true,
+            "image": "shopify:\/\/shop_images\/romeo_087.jpg",
+            "image_alter": "shopify:\/\/shop_images\/baby.jpg",
+            "video": "",
+            "video_alter": "",
+            "overlay_opacity": "0.15",
+            "text_placement": "center-center",
+            "title": "FUTURE\n<br>HEIRLOOMS",
+            "title_font": "Chalet-NY",
+            "title_size": 50,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 15,
+            "title_color": "#ffffff",
+            "cta_text": "SHOP ACCESSORIES",
+            "cta_link": "shopify:\/\/collections\/accessories",
+            "cta_type": "button",
+            "cta_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "25503761-5226-4077-b583-c6a83754fa9c"
+      ],
+      "settings": {
+        "overwrite_block_text": false,
+        "text_placement": "center-center",
+        "title": "FUTURE\n<br>HEIRLOOMS",
+        "title_font": "FormulaCondensed-Light",
+        "title_size": 65,
+        "title_letter_spacing": 10,
+        "title_margin_bottom": 30,
+        "title_color": "#ffffff",
+        "cta_text": "DISCOVER GIR",
+        "cta_link": "shopify:\/\/collections\/core-mens",
+        "cta_type": "button",
+        "cta_color": "#ffffff"
+      }
+    },
+    "166215234103c26cd0": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "UNDER $200",
+        "heading_size": 20,
+        "font_family_heading": "CutiveMono-Regular",
+        "description": "",
+        "show_description": false,
+        "show_swatches": true,
+        "description_style": "body",
+        "collection": "under-250",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "enable_desktop_slider": false,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "16626615925bdccf19": {
+      "type": "hp-editorial",
+      "blocks": {
+        "4b33c4b9-6042-4e02-9ba9-1130af716234": {
+          "type": "block",
+          "settings": {
+            "media_type": "image",
+            "media_natural_size": false,
+            "image": "shopify:\/\/shop_images\/386520070003_FINAL_copy.jpg",
+            "image_alter": "shopify:\/\/shop_images\/386520070003_FINAL_copy.jpg",
+            "video": "",
+            "video_alter": "",
+            "overlay_opacity": "0.15",
+            "text_placement": "bottom-center",
+            "title": "COMING SOON",
+            "title_font": "Chalet-NY",
+            "title_size": 45,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 30,
+            "title_color": "#ffffff",
+            "cta_text": "",
+            "cta_link": "",
+            "cta_type": "button",
+            "cta_color": "#000000"
+          }
+        },
+        "9cd93856-22de-4bb6-97b6-4d1bb13e04c8": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "media_type": "image",
+            "media_natural_size": false,
+            "video": "",
+            "video_alter": "",
+            "overlay_opacity": "0",
+            "text_placement": "center-center",
+            "title": "",
+            "title_font": "FormulaCondensed-Light",
+            "title_size": 65,
+            "title_letter_spacing": 10,
+            "title_margin_bottom": 30,
+            "title_color": "#000000",
+            "cta_text": "",
+            "cta_link": "",
+            "cta_type": "button",
+            "cta_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "4b33c4b9-6042-4e02-9ba9-1130af716234",
+        "9cd93856-22de-4bb6-97b6-4d1bb13e04c8"
+      ],
+      "settings": {
+        "overwrite_block_text": true,
+        "text_placement": "center-center",
+        "title": "COMING SOON",
+        "title_font": "Chalet-NY",
+        "title_size": 65,
+        "title_letter_spacing": 0,
+        "title_margin_bottom": 30,
+        "title_color": "#ffffff",
+        "cta_text": "",
+        "cta_link": "",
+        "cta_type": "button",
+        "cta_color": "#000000"
+      }
+    },
+    "16568847965fb5db98": {
+      "type": "newsletter",
+      "settings": {
+        "bg_color": "#f2a900",
+        "full_width": true,
+        "list_id": "X8cyiB",
+        "email_newsletter_heading": "DROP 2: JOIN THE WAITLIST FOR EARLY ACCESS AND <br> FREE GLOBAL SHIPPING.",
+        "font_family_heading": "FormulaCondensed-Light",
+        "email_privacy_agreement": "<p>By checking this box, you agree to receive marketing messages from Guest In Residence and agree to our  <a href=\"https:\/\/guestinresidence.com\/pages\/terms-conditions\" title=\"Terms & Conditions\">terms of service <\/a>+ <a href=\"https:\/\/guestinresidence.com\/pages\/privacy-policy\" title=\"Privacy Policy\">privacy policy<\/a>.<\/p>",
+        "font_family_privacy": "CutiveMono-Regular",
+        "email_form_btn": "Sign Up",
+        "email_success_msg": "Thank you! You've successfully joined the waitlist.",
+        "email_error_msg": "Invalid Email",
+        "phone_form_trigger": "Text me instead",
+        "email_form_trigger": "Email me instead",
+        "font_family_messages": "CutiveMono-Regular",
+        "phone_newsletter_heading": "DROP 2: JOIN THE WAITLIST FOR EARLY ACCESS AND FREE GLOBAL SHIPPING.",
+        "phone_privacy_agreement": "<p>By checking this box, you agree to receive marketing messages from Guest In Residence including recurring automated marketing text messages (e.g. cart reminders) if a phone number is provided. Consent is not a condition to purchase. Msg & data rates may apply. Msg frequency varies. Reply HELP for help and STOP to cancel. View our <a href=\"\/pages\/terms-of-services\" title=\"Terms of Services\">Terms of Service<\/a> and <a href=\"\/pages\/privacy-policy\" title=\"Privacy Policy\">Privacy Policy<\/a>.<\/p>",
+        "phone_form_btn": "Subscribe",
+        "phone_success_msg": "Thank you! You've successfully joined the waitlist.",
+        "phone_error_msg": "Invalid Phone Number",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "1662353072d4688d4f": {
+      "type": "hp-editorial",
+      "disabled": true,
+      "blocks": {
+        "629782da-49bc-4f30-9b2e-83957e0f9ffc": {
+          "type": "block",
+          "settings": {
+            "media_type": "video",
+            "media_natural_size": true,
+            "image": "shopify:\/\/shop_images\/Screen_Shot_2022-09-01_at_8.14.10_PM.png",
+            "image_alter": "shopify:\/\/shop_images\/Homepage_V6.jpg",
+            "video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/7f64816fcff94b2cb0d7d058dc13703d.mp4",
+            "video_alter": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/2af699c76ff14d82a6c0465f1f6f628b.mov",
+            "overlay_opacity": "0.1",
+            "text_placement": "center-center",
+            "title": "DISCOVER GIR",
+            "title_font": "Chalet-NY",
+            "title_size": 80,
+            "title_letter_spacing": 0,
+            "title_margin_bottom": 30,
+            "title_color": "#ffffff",
+            "cta_text": "DISCOVER",
+            "cta_link": "shopify:\/\/pages\/discover-gir",
+            "cta_type": "button",
+            "cta_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "629782da-49bc-4f30-9b2e-83957e0f9ffc"
+      ],
+      "settings": {
+        "overwrite_block_text": false,
+        "text_placement": "center-center",
+        "title": "",
+        "title_font": "Chalet-NY",
+        "title_size": 65,
+        "title_letter_spacing": 10,
+        "title_margin_bottom": 30,
+        "title_color": "#000000",
+        "cta_text": "",
+        "cta_link": "",
+        "cta_type": "button",
+        "cta_color": "#000000"
+      }
+    }
+  },
+  "order": [
+    "16626877415eb63b24",
+    "1662688063aeb8a7e2",
+    "1662350953afd0363d",
+    "16623539434da7dca0",
+    "166385077975cc9d92",
+    "165714695439f2cbba",
+    "1662353684123a5dac",
+    "1662353598ecb7d060",
+    "1662362984927e0ad3",
+    "166215234103c26cd0",
+    "16626615925bdccf19",
+    "16568847965fb5db98",
+    "1662353072d4688d4f"
+  ]
+}

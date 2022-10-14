@@ -1,0 +1,164 @@
+{%- if section.settings.menu != blank -%}
+<header-drawer data-breakpoint="tablet">
+  {% include 'header-search'%}
+
+  <div class="mobile-header-main menu-drawer-container">
+    <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
+      <span class="mb__open">
+        {% render 'icon-hamburger' %}
+      </span>
+    </summary>
+    <div id="menu-drawer" class="gradient menu-drawer motion-reduce" tabindex="-1">
+      
+      <div class="mb__header-wrap">
+        <div class="mb__close">
+          {% render 'icon-close' %}
+        </div>
+        <div class="mb__logo">
+          {% if section.settings.svg_mobile_menu_logo != blank %}
+
+          <img src="{{ section.settings.svg_mobile_menu_logo }}"
+              loading="lazy"
+              class="mb-logo header__heading-logo"
+            >
+            {% else %}
+
+            <img src="{{ section.settings.mobile_menu_logo | img_url: '300x' }}"
+              loading="lazy"
+              class="mb-logo header__heading-logo"
+            >
+
+            {% endif %}
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="menu-drawer__inner-container">
+        
+        
+        <div class="mobile-menu-tabs">
+          <div class="mb-menu-tab-list">
+            
+            <div class="tabs">
+              <ul id="tabs-nav">
+                {%- for link in section.settings.mb_menu.links -%}
+                <li><a href="{{link.url}}">{{link.title}}</a></li>
+                {% endfor %}
+              </ul> <!-- END tabs-nav -->
+              <div id="tabs-content">
+                {%- for link in section.settings.menu.links -%}
+                <div id="{{link.handle}}" class="tab-content" data-mm-container="{{link.handle }}">
+                  
+                  <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                        {%- for childlink in link.links -%}
+                        <li>
+                          {%- if childlink.links == blank -%}
+                          <a href="{{ childlink.url }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                            {{ childlink.title | escape }}
+                          </a>
+                          {%- else -%}
+                          <details id="Details-menu-drawer-submenu-{{ forloop.index }}">
+                            <summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
+                              {{ childlink.title | escape }}
+                              {% render 'icon-arrow' %}
+                              {% render 'icon-caret' %}
+                            </summary>
+                            <div id="childlink-{{ childlink.title | escape }}" class="menu-drawer__submenu has-submenu gradient motion-reduce">
+                              <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                                {% render 'icon-arrow' %}
+                                {{ childlink.title | escape }}
+                              </button>
+                              <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                {%- for grandchildlink in childlink.links -%}
+                                <li>
+                                  <a href="{{ grandchildlink.url }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                    {{ grandchildlink.title | escape }}
+                                  </a>
+                                </li>
+                                {%- endfor -%}
+                              </ul>
+                            </div>
+                          </details>
+                          {%- endif -%}
+                        </li>
+                        {%- endfor -%}
+                      </ul>
+                  
+                </div>
+                {% endfor %}
+                
+              </div>
+            </div>
+            
+          	
+          </div>	
+        </div>
+        
+        <div class="menu-drawer__navigation-container mb-menu-login">
+     
+          <div class="menu-drawer__utility-links">
+            {%- if shop.customer_accounts_enabled -%}
+            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5"> 
+              <span class="mb-menu-footer-item">Account {% render 'icon-arrow-right' %}</span> 
+            </a>
+            {%- endif -%}
+          </div>
+
+          <div class="menu-drawer__utility-links">
+            <a href="/pages/wishlist" class="menu-drawer__account link focus-inset h5"> 
+              <span class="mb-menu-footer-item">Wishlist {% render 'icon-arrow-right' %}</span> 
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header-drawer>
+{%- endif -%}
+
+
+<script>
+  $(document).ready(function(){
+    
+      let $parentList = $('#tabs-content div[data-mm-container]');
+        $parentList.each((idx,elm)=> {
+        const id = $(elm).attr('id');
+        const $megaMenu = $('.mega-menu-main[data-id]');    
+        const mmSection =  $(`.mega-menu-main[data-id=${id}]`);
+        let $tabMenu = $(`#tabs-content #${id}`);    
+          console.log(mmSection);  
+         if(mmSection.length > 0 && $tabMenu.length > 0) {
+			$tabMenu.append(mmSection.clone());
+
+         }   
+        });
+    
+    
+    $('#tabs-nav li:first-child').addClass('active');
+    $('.tab-content').hide();
+    $('.tab-content:first').show();
+
+    // Click function
+    $('#tabs-nav li').click(function(){
+      $('#tabs-nav li').removeClass('active');
+      $(this).addClass('active');
+      $('.tab-content').hide();
+
+      var activeTab = $(this).find('a').attr('href');
+      $(activeTab).fadeIn();
+      $('#tabs-content .mb-article-frame').sly('reload');
+      return false;
+    });
+
+      
+    
+    
+    $(".mb__close .icon.icon-close").click(function(){
+      $("#Details-menu-drawer-container").removeClass("menu-opening");
+    });
+
+    
+  })
+</script>

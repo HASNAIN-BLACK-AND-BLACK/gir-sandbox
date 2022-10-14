@@ -1,0 +1,22 @@
+
+<link rel="stylesheet" type="text/css" href="https://crossborder-integration.global-e.com/resources/css/1199/{{localization.country.iso_code}}"/>
+<script>
+    GLBE_PARAMS = {
+        appUrl: "https://crossborder-integration.global-e.com/",
+        pixelUrl: "https://utils.global-e.com",
+        pixelEnabled: true,
+        geAppUrl: "https://web.global-e.com/",
+        env: "Production",
+        geCDNUrl: "https://webservices.global-e.com/",
+        apiUrl: "https://api.global-e.com/",
+        emi: "8u1t",
+        mid: "1199",
+        hiddenElements: ".ge-hide,.afterpay-paragraph,form[action='https://payments.amazon.com/checkout/signin']",
+        countryCode: "{{localization.country.iso_code}}",
+        countryName: "{{localization.country.name}}",
+        currencyCode: "{{localization.country.currency.iso_code}}",
+        currencyName: "{{localization.country.currency.name}}",
+        locale: "{{localization.language.iso_code}}",
+        operatedCountries: ["AD","AE","AG","AI","AL","AM","AN","AO","AR","AT","AU","AW","AZ","BA","BB","BD","BE","BF","BG","BJ","BL","BN","BO","BR","BS","BW","BZ","CA","CH","CI","CK","CL","CM","CN","CO","CR","CV","CW","CY","CZ","DE","DJ","DK","DM","DO","DZ","EC","EE","EG","ES","ET","FI","FJ","FK","FO","FR","GB","GD","GE","GF","GG","GI","GL","GM","GN","GP","GQ","GR","GT","GW","GY","HK","HN","HR","HT","HU","ID","IE","IL","IM","IN","IS","IT","JM","JP","KE","KG","KH","KM","KN","KR","KY","KZ","LA","LB","LC","LI","LK","LS","LT","LU","LV","MA","MC","MD","ME","MF","MK","MN","MO","MQ","MS","MT","MU","MV","MW","MX","MY","MZ","NA","NC","NG","NI","NL","NO","NP","NR","NU","NZ","PA","PE","PF","PG","PH","PK","PL","PT","PY","QA","RE","RO","RS","RW","SA","SB","SC","SE","SG","SI","SK","SL","SM","SN","SR","ST","SV","SZ","TC","TD","TG","TH","TL","TO","TR","TT","TV","TW","TZ","UG","UY","UZ","VA","VC","VE","VG","VN","VU","WF","ZA","ZM"],
+        allowedCountries: [{% for country in localization.available_countries %}{ code: '{{ country.iso_code }}', name: '{{ country.name }}' }, {% endfor %}]   };
+</script>

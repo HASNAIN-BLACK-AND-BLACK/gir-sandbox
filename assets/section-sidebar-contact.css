@@ -1,0 +1,198 @@
+*:focus-visible {
+    outline: 0.2rem solid var(--color-focus-green);
+    outline-offset: -0.2rem;
+}
+.sidebar-contact-pages-main {
+    display: flex;
+    justify-content: center;
+}
+.link-hover:hover{
+  color: #7E7A78!important;
+  text-decoration: underline!important;
+  text-underline-offset: 0.5rem!important;
+}
+.sidebar-container {
+    width: 30%;
+    position: sticky;
+    top: 0;
+    height: 60vh;
+}
+
+.sidebar-menu {
+    padding-top: 4rem;
+}
+
+.sidebar-menu-link-wrapper {
+    margin-bottom: 3.6rem;
+}
+
+.sidebar-menu-link {
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--color-grey-2);
+}
+
+.sidebar-menu-link.active {
+    color: var(--color-black);
+    text-decoration: underline;
+    text-underline-offset: 1.4rem;
+}
+
+.pages-content {
+    width: 70%;
+    padding-top: 0rem;
+}
+
+.content-margin-top {
+    margin-top: 4rem;
+}
+
+.paragraph-content {
+    letter-spacing: 0.02em;
+}
+
+.margin-top-sidebar {
+    top: 150px;
+}
+.hide-on-desktop{
+    display: none;
+   }
+@media screen and (max-width: 1199px) {
+    .sidebar-container {
+        width: 25%;
+    }
+    .pages-content {
+        width: 65%;
+    }
+    .hide-on-desktop{
+        display: block;   
+       }
+       .hide-on-mobile{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .pages-content {
+        padding-top: 0rem;
+    }
+    .sidebar-menu {
+        padding-top: 4rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .pages-content {
+        padding-top: 2.5rem;
+    }
+    .sidebar-menu {
+        padding-top: 7rem;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .sidebar-container {
+        width: 29%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar-menu {
+        padding-top: 4rem;
+    }
+    .pages-content {
+        width: 60%;
+        padding-top: 1rem;
+    }
+}
+@media screen and (min-width: 768px) {
+    .sidebar-menu-link:hover{
+        color: var(--color-black);
+        text-decoration: underline;
+        text-underline-offset: 1.4rem;
+      }
+}
+
+
+
+@media screen and (max-width: 575px) {
+    .sidebar-contact-pages-main {
+        flex-direction: column;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .sidebar-container {
+        width: 100%;
+        height: auto;
+        background-color: #ffffff;
+        z-index: 1;
+    }
+    .pages-content {
+        width: 100%;
+        padding-top: 4rem;
+        padding-left: 2.6rem;
+        padding-right: 2.6rem;
+    }
+    .sidebar-menu {
+        padding-top: 0.5rem;
+        display: flex;
+        align-items: center;
+        overflow: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        overflow-x: scroll;
+        max-width: unset;
+        margin-left: unset;
+        justify-content: flex-start;
+        flex-flow: row nowrap;
+    }
+    .sidebar-menu:after {
+        content: '';
+        border-bottom: 1px solid rgba(126,122,120,.4);
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+    .sidebar-menu::-webkit-scrollbar {
+        display: none;
+    }
+    .sidebar-menu-link {
+        position: relative;
+        white-space: nowrap;
+        float: left;
+        cursor: pointer;
+        outline: 0;
+        box-shadow: none;
+        padding-bottom: 0.5rem;
+    }
+    .sidebar-menu-link.active {
+        color: var(--color-black);
+        /* text-decoration: underline;
+        text-underline-offset: 1.3rem;
+        text-decoration-thickness: 1px;
+        outline: 0!important;
+        box-shadow: none; */
+
+        text-decoration: none;
+        color: #000000;
+        border-bottom: 1px solid #000000;
+    }
+    .sidebar-menu-link-wrapper:first-of-type {
+        margin-left: 3.6rem;
+    }
+    .sidebar-menu-link-wrapper {
+        margin-bottom: 0;
+    }
+    .mobile-text-size {
+        font-size: 1.6rem;
+    }
+    .margin-top-sidebar {
+        top: 100px;
+        transition: 0.91s;
+    }
+    .sidebar-menu-link-wrapper a {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        padding-right: 0;
+        margin-right: 2.1rem;
+    }
+}

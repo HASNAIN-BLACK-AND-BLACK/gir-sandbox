@@ -1,0 +1,25 @@
+<div class="customer-logout-mobile">
+    <span class="typography-heading typography-heading--8">Hello, {{ customer.first_name }}</span>
+    <span><a href="{{ routes.account_logout_url }}" class="button button--tertiary-small typography-heading typography-heading--8">{{ 'customer.log_out' | t }}</a></span>
+</div>
+
+<style>
+    .customer-logout-mobile{
+        display: none;
+    }
+    @media only screen and (max-width: 750px) {
+        .customer-logout-mobile{
+            display: flex;
+            justify-content: space-between;
+            padding: 2.8rem 2.4rem;
+            border-bottom: var(--inputs-border-width) dashed rgba(var(--color-input-border),var(--alpha-input-border));
+        }
+        .customer-logout-mobile span{
+            text-transform: uppercase;
+        }
+        .customer-logout-mobile a:hover{
+            color: rgb(var(--color-white))
+        }
+    }
+
+</style>

@@ -1,0 +1,739 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- assign flatImageFirst = false -%}
+
+{%- if collection.metafields.custom.flat_image_first -%}
+  {%- assign flatImageFirst = true -%}
+{%- endif -%}
+
+<div class="section-{{ section.id }}-padding">
+
+  <ul class="list-unstyled sub-categories typography-heading typography-font-3 typography-heading--4 uppercase collection-{{ collection.id }}">
+    {% if collection.handle contains 'women' %}
+      {% for link in linklists['womens'].links %}
+        <li><a href="{{ link.url }}" {% if link.current %}class="active"{% endif %} title="{{ link.title }}">{{ link.title }}</a></li>
+      {% endfor %}
+    {% elsif collection.handle contains 'men' %}
+      {% for link in linklists['mens'].links %}
+        <li><a href="{{ link.url }}" {% if link.current %}class="active"{% endif %} title="{{ link.title }}">{{ link.title }}</a></li>
+      {% endfor %}
+    {% endif %}  
+  
+  </ul>
+
+
+  <div class="">
+    {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+    {%- if section.settings.enable_filtering -%}
+      <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}" id="main-collection-filters" data-id="{{ section.id }}">
+
+        {%- unless flatImageFirst -%}
+          {%- if collection.products.size > 0 -%}
+            <!-- Change Product images from Product Image to Outfit Image -->
+            <ul class="switch-product-image list-unstyled isolate">
+              <li><button class="product-image typography-heading typography-font-3 typography-heading--4 uppercase">{{ 'sections.collection_template.show_product_images_on_card' | t }}</button></li>
+              <li><span class="separator">/</span></li>
+              <li><button class="outfit-image typography-heading typography-font-3 typography-heading--4 uppercase active">{{ 'sections.collection_template.show_outfit_images_on_card' | t }}</button></li>
+            </ul>
+          {%- endif -%}
+        {%- endunless -%}
+  
+        {%- if collection.products.size > 0 -%}
+          <!-- Switch Grid Layout -->
+          <button id="switch-layout" class="typography-heading typography-font-3 typography-heading--4 uppercase grid-4">
+            {% render 'icon-4-grid' %}{% render 'icon-2-grid' %}{% render 'icon-1-grid' %}<span>{{ 'sections.collection_template.grid_layout_label' | t | remove: ' ' }}</span>
+          </button>
+
+          {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, filter_type: section.settings.filter_type, products_page_limit: section.settings.products_per_page %}
+        {%- endif -%}
+      </aside>
+    {%- endif -%}
+
+
+    <div class="product-grid-container" id="ProductGridContainer">
+      {%- paginate collection.products by section.settings.products_per_page -%}
+        {%- if collection.products.size == 0 -%}
+          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+            <div class="loading-overlay gradient"></div>
+            <div class="title-wrapper center">
+              <h2 class="typography-heading typography-font-3 typography-heading--4 title title--primary">
+                {{ 'sections.collection_template.empty' | t }}<br>
+                {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
+              </h2>
+            </div>
+          </div> 
+        {%- else -%}
+          <div class="collection">
+            <div class="loading-overlay gradient"></div>
+            <ul id="product-grid" data-id="{{ section.id }}" class="
+            clp-grid product-grid product-grid--collection list-unstyled isolate show-outfit-image">
+            
+            {% assign show_promo_banner = collection.metafields.custom.enable_promotional_banner %}
+     
+
+            {% assign promo_content_alignment = section.settings.promo_content_alignment %}
+            {% assign promo_banner_1_image = collection.metafields.custom.banner_background %}
+            {% assign promo_banner_1_video = collection.metafields.custom.promotional_background_video %}
+            {% assign promo_banner_1_title = collection.metafields.custom.promotional_banner_title %}
+            {% assign promo_banner_1_desc = collection.metafields.custom.promotional_banner_description %}
+            {% assign promo_banner_1_button_label = collection.metafields.custom.promo_banner_button_label %}
+            {% assign promo_banner_1_button_link = collection.metafields.custom.promotional_banner_button_link %}
+
+            {% assign promo_banner_2_title = collection.metafields.custom.promotional_banner_2_title %}
+            {% assign promo_banner_2_button_label = collection.metafields.custom.promotional_banner_2_button_label %}
+            {% assign promo_banner_2_button_link = collection.metafields.custom.promotional_banner_2_link %}
+            {% assign promo_banner_2_image = collection.metafields.custom.promotional_banner_2_image %}
+            {% assign promo_banner_2_video = collection.metafields.custom.promotional_banner_2_video %}
+            {% assign promo_banner_2_desc = collection.metafields.custom.promotional_banner_2_description %}
+
+            {% assign promo_banner_3_title = collection.metafields.custom.promotional_banner_3_title %}
+            {% assign promo_banner_3_button_label = collection.metafields.custom.promotional_banner_3_button_label %}
+            {% assign promo_banner_3_button_link = collection.metafields.custom.promotional_banner_3_link %}
+            {% assign promo_banner_3_image = collection.metafields.custom.promotional_banner_3_image %}
+            {% assign promo_banner_3_video = collection.metafields.custom.promotional_banner_3_video %}
+            {% assign promo_banner_3_desc = collection.metafields.custom.promotional_banner_3_description %}
+
+            {% assign promo_banner_4_title = collection.metafields.custom.promotional_banner_4_title %}
+            {% assign promo_banner_4_button_label = collection.metafields.custom.promotional_banner_4_button_label %}
+            {% assign promo_banner_4_button_link = collection.metafields.custom.promotional_banner_4_link %}
+            {% assign promo_banner_4_image = collection.metafields.custom.promotional_banner_4_image %}
+            {% assign promo_banner_4_video = collection.metafields.custom.promotional_banner_4_video %}
+            {% assign promo_banner_4_desc = collection.metafields.custom.promotional_banner_4_description %}
+
+            {% assign promo_banner_5_title = collection.metafields.custom.promotional_banner_5_title %}
+            {% assign promo_banner_5_button_label = collection.metafields.custom.promotional_banner_5_button_label %}
+            {% assign promo_banner_5_button_link = collection.metafields.custom.promotional_banner_5_link %}
+            {% assign promo_banner_5_image = collection.metafields.custom.promotional_banner_5_image %}
+            {% assign promo_banner_5_video = collection.metafields.custom.promotional_banner_5_video %}
+            {% assign promo_banner_5_desc = collection.metafields.custom.promotional_banner_5_description %}
+
+            {% assign promo_banner_6_title = collection.metafields.custom.promotional_banner_6_title %}
+            {% assign promo_banner_6_button_label = collection.metafields.custom.promotional_banner_6_button_label %}
+            {% assign promo_banner_6_button_link = collection.metafields.custom.promotional_banner_6_link %}
+            {% assign promo_banner_6_image = collection.metafields.custom.promotional_banner_6_image %}
+            {% assign promo_banner_6_video = collection.metafields.custom.promotional_banner_6_video %}
+            {% assign promo_banner_6_desc = collection.metafields.custom.promotional_banner_6_description %}
+
+            {% assign promo_banner_7_title = collection.metafields.custom.promotional_banner_7_title %}
+            {% assign promo_banner_7_button_label = collection.metafields.custom.promotional_banner_7_button_label %}
+            {% assign promo_banner_7_button_link = collection.metafields.custom.promotional_banner_7_link %}
+            {% assign promo_banner_7_image = collection.metafields.custom.promotional_banner_7_image %}
+            {% assign promo_banner_7_video = collection.metafields.custom.promotional_banner_7_video %}
+            {% assign promo_banner_7_desc = collection.metafields.custom.promotional_banner_7_description %}
+
+            {% assign promo_banner_8_title = collection.metafields.custom.promotional_banner_8_title %}
+            {% assign promo_banner_8_button_label = collection.metafields.custom.promotional_banner_8_button_label %}
+            {% assign promo_banner_8_button_link = collection.metafields.custom.promotional_banner_8_link %}
+            {% assign promo_banner_8_image = collection.metafields.custom.promotional_banner_8_image %}
+            {% assign promo_banner_8_video = collection.metafields.custom.promotional_banner_8_video %}
+            {% assign promo_banner_8_desc = collection.metafields.custom.promotional_banner_8_description %}
+
+              {% if show_promo_banner == true %}
+
+              {%capture promo_block_1 %}
+                <li class="promo-block-1 clp-promo-banner">
+                  <a href="{{ promo_banner_1_button_link }}">
+                    {% if promo_banner_1_video and promo_banner_1_video != blank %}
+                      <div class="media">
+                        <div class="media-ratio ratio--4-5">
+                            <video playsinline  class="media-asset" width="100%" height="100%" autoplay="autoplay" loop muted>
+                              <source src="{{ promo_banner_1_video | file_url }}" type="video/mp4">
+                              Your browser does not support the video tag.
+                          </video>
+                        </div>
+                      </div>
+                    {% elsif promo_banner_1_image and promo_banner_1_image != blank %}
+                      <div class="media">
+                        <div class="media-ratio ratio--4-5">
+                          <img
+                            srcset="{{ promo_banner_1_image | img_url: '1000x' }}"
+                            src="{{ promo_banner_1_image | img_url: '1000x' }}"
+                            alt="{{ promo_banner_1_image.alt | escape }}"
+                            class="motion-reduce product-card-image media-asset"
+                            {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                          >
+                        </div>
+                      </div>
+                    {% endif %}
+
+                    {%- if promo_banner_1_title != blank or promo_banner_1_desc != blank or promo_banner_1_button_label != blank -%}
+                    
+                    <div class="clp-promo-content center align-{{ promo_content_alignment }} {%- if promo_banner_1_button_label == blank -%}no-button{%- endif -%}">
+                      <div class="clp-promo-content-box">
+                        {% if promo_banner_1_title %}<h1 class="typography-heading typography-heading--2 center uppercase">{{ promo_banner_1_title }}</h1>{% endif %}
+                        {% if promo_banner_1_desc %}<p class="typography-text typography-text--body-small">{{ promo_banner_1_desc }}</p>{% endif %}
+                        {% if promo_banner_1_button_label and promo_banner_1_button_label != blank %}<span class="link link--underline uppercase" role="button">{{ promo_banner_1_button_label }}</span>{% endif %}
+                      </div>
+                    </div>
+
+                    {%- endif -%}
+
+
+                  </a>
+                </li>
+              {%endcapture%}
+
+              {%capture promo_block_2 %}
+                {% if promo_banner_2_image != blank or promo_banner_2_video != blank %}
+                  <li class="clp-promo-banner promo-block-2">
+                    <a href="{{ promo_banner_2_button_link }}">
+                      {% if promo_banner_2_video and promo_banner_2_video != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                              <video playsinline  class="media-asset" width="100%" height="100%" autoplay="autoplay" loop muted>
+                                <source src="{{ promo_banner_2_video | file_url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                      {% elsif promo_banner_2_image and promo_banner_2_image != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                            <img
+                              srcset="{{ promo_banner_2_image | img_url: '1000x' }}"
+                              src="{{ promo_banner_2_image | img_url: '1000x' }}"
+                              alt="{{ promo_banner_2_image.alt | escape }}"
+                              class="motion-reduce product-card-image media-asset"
+                              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                            >
+                          </div>
+                        </div>
+                      {% endif %}
+                      {%- if promo_banner_2_title != blank or promo_banner_2_desc != blank or promo_banner_2_button_label != blank -%}
+                      <div class="clp-promo-content center align-{{ promo_content_alignment }} {%- if promo_banner_2_button_label == blank -%}no-button{%- endif -%}">
+                        <div class="clp-promo-content-box">
+                          {% if promo_banner_2_title %}<h1 class="typography-heading typography-heading--2 center uppercase">{{ promo_banner_2_title }}</h1>{% endif %}
+                          {% if promo_banner_2_desc %}<p class="typography-text typography-text--body-small">{{ promo_banner_2_desc }}</p>{% endif %}
+                          {% if promo_banner_2_button_label and promo_banner_2_button_label != blank %}<span class="link link--underline uppercase" role="button">{{ promo_banner_2_button_label }}</span>{% endif %}
+                        </div>
+                      </div>
+                      {%- endif -%}
+                    </a>
+                  </li>
+                {% endif %}
+                {%endcapture%}
+
+
+                {%capture promo_block_3 %}
+                {% if promo_banner_3_image != blank or promo_banner_3_video != blank %}
+                  <li class="clp-promo-banner promo-block-3">
+                    <a href="{{ promo_banner_3_button_link }}">
+                      {% if promo_banner_3_video and promo_banner_3_video != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                              <video playsinline  class="media-asset" width="100%" height="100%" autoplay="autoplay" loop muted>
+                                <source src="{{ promo_banner_3_video | file_url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                      {% elsif promo_banner_3_image and promo_banner_3_image != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                            <img
+                              srcset="{{ promo_banner_3_image | img_url: '1000x' }}"
+                              src="{{ promo_banner_3_image | img_url: '1000x' }}"
+                              alt="{{ promo_banner_3_image.alt | escape }}"
+                              class="motion-reduce product-card-image media-asset"
+                              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                            >
+                          </div>
+                        </div>
+                      {% endif %}
+{%- if promo_banner_3_title != blank or promo_banner_3_desc != blank or promo_banner_3_button_label != blank -%}
+                      <div class="clp-promo-content center align-{{ promo_content_alignment }} {%- if promo_banner_3_button_label == blank -%}no-button{%- endif -%}">
+                        <div class="clp-promo-content-box">
+                        {% if promo_banner_3_title %}<h1 class="typography-heading typography-heading--2 center uppercase">{{ promo_banner_3_title }}</h1>{% endif %}
+                        {% if promo_banner_3_desc %}<p class="typography-text typography-text--body-small">{{ promo_banner_3_desc }}</p>{% endif %}
+                        {% if promo_banner_3_button_label and promo_banner_3_button_label != blank %}<span class="link link--underline uppercase" role="button">{{ promo_banner_3_button_label }}</span>{% endif %}
+                          </div>
+                      </div>
+{%- endif -%}
+                  
+                    </a>
+                  </li>
+                {% endif %}
+                {%endcapture%}
+
+                {%capture promo_block_4 %}
+                {% if promo_banner_4_image != blank or promo_banner_4_video != blank %}
+                  <li class="clp-promo-banner promo-block-4">
+                    <a href="{{ promo_banner_4_button_link }}">
+                      {% if promo_banner_4_video and promo_banner_4_video != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                              <video playsinline  class="media-asset" width="100%" height="100%" autoplay="autoplay" loop muted>
+                                <source src="{{ promo_banner_4_video | file_url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                      {% elsif promo_banner_4_image and promo_banner_4_image != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                            <img
+                              srcset="{{ promo_banner_4_image | img_url: '1000x' }}"
+                              src="{{ promo_banner_4_image | img_url: '1000x' }}"
+                              alt="{{ promo_banner_4_image.alt | escape }}"
+                              class="motion-reduce product-card-image media-asset"
+                              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                            >
+                          </div>
+                        </div>
+                      {% endif %}
+{%- if promo_banner_4_title != blank or promo_banner_4_desc != blank or promo_banner_4_button_label != blank -%}
+                      <div class="clp-promo-content center align-{{ promo_content_alignment }} {%- if promo_banner_4_button_label == blank -%}no-button{%- endif -%}">
+                        <div class="clp-promo-content-box">
+                        {% if promo_banner_4_title %}<h1 class="typography-heading typography-heading--2 center uppercase">{{ promo_banner_4_title }}</h1>{% endif %}
+                        {% if promo_banner_4_desc %}<p class="typography-text typography-text--body-small">{{ promo_banner_4_desc }}</p>{% endif %}
+                        {% if promo_banner_4_button_label and promo_banner_4_button_label != blank %}<span class="link link--underline uppercase" role="button">{{ promo_banner_4_button_label }}</span>{% endif %}
+                     </div>
+                      </div>
+{%- endif -%}
+  
+                    </a>
+                  </li>
+                {% endif %}
+                {%endcapture%}
+
+                {%capture promo_block_5 %}
+                {% if promo_banner_5_image != blank or promo_banner_5_video != blank %}
+                  <li class="clp-promo-banner promo-block-5">
+                    <a href="{{ promo_banner_5_button_link }}">
+                      {% if promo_banner_5_video and promo_banner_5_video != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                              <video playsinline  class="media-asset" width="100%" height="100%" autoplay="autoplay" loop muted>
+                                <source src="{{ promo_banner_5_video | file_url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                      {% elsif promo_banner_5_image and promo_banner_5_image != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                            <img
+                              srcset="{{ promo_banner_5_image | img_url: '1000x' }}"
+                              src="{{ promo_banner_5_image | img_url: '1000x' }}"
+                              alt="{{ promo_banner_5_image.alt | escape }}"
+                              class="motion-reduce product-card-image media-asset"
+                              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                            >
+                          </div>
+                        </div>
+                      {% endif %}
+{%- if promo_banner_5_title != blank or promo_banner_5_desc != blank or promo_banner_5_button_label != blank -%}
+                      <div class="clp-promo-content center align-{{ promo_content_alignment }} {%- if promo_banner_5_button_label == blank -%}no-button{%- endif -%}">
+                        <div class="clp-promo-content-box">
+                        {% if promo_banner_5_title %}<h1 class="typography-heading typography-heading--2 center uppercase">{{ promo_banner_5_title }}</h1>{% endif %}
+                        {% if promo_banner_5_desc %}<p class="typography-text typography-text--body-small">{{ promo_banner_5_desc }}</p>{% endif %}
+                        {% if promo_banner_5_button_label and promo_banner_5_button_label != blank %}<span class="link link--underline uppercase" role="button">{{ promo_banner_5_button_label }}</span>{% endif %}
+                      </div>
+                      </div>
+{%- endif -%}
+  
+                    </a>
+                  </li>
+                {% endif %}
+                {%endcapture%}
+                
+                {%capture promo_block_6 %}
+                {% if promo_banner_6_image != blank or promo_banner_6_video != blank %}
+                  <li class="clp-promo-banner promo-block-6">
+                    <a href="{{ promo_banner_6_button_link }}">
+                      {% if promo_banner_6_video and promo_banner_6_video != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                              <video playsinline  class="media-asset" width="100%" height="100%" autoplay="autoplay" loop muted>
+                                <source src="{{ promo_banner_6_video | file_url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                      {% elsif promo_banner_6_image and promo_banner_6_image != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                            <img
+                              srcset="{{ promo_banner_6_image | img_url: '1000x' }}"
+                              src="{{ promo_banner_6_image | img_url: '1000x' }}"
+                              alt="{{ promo_banner_6_image.alt | escape }}"
+                              class="motion-reduce product-card-image media-asset"
+                              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                            >
+                          </div>
+                        </div>
+                      {% endif %}
+{%- if promo_banner_6_title != blank or promo_banner_6_desc != blank or promo_banner_6_button_label != blank -%}
+                      <div class="clp-promo-content center align-{{ promo_content_alignment }} {%- if promo_banner_6_button_label == blank -%}no-button{%- endif -%}">
+                        <div class="clp-promo-content-box">
+                        {% if promo_banner_6_title %}<h1 class="typography-heading typography-heading--2 center uppercase">{{ promo_banner_6_title }}</h1>{% endif %}
+                        {% if promo_banner_6_desc %}<p class="typography-text typography-text--body-small">{{ promo_banner_6_desc }}</p>{% endif %}
+                        {% if promo_banner_6_button_label and promo_banner_6_button_label != blank %}<span class="link link--underline uppercase" role="button">{{ promo_banner_6_button_label }}</span>{% endif %}
+                     </div>
+                      </div>
+  {%- endif -%}
+                    </a>
+                  </li>
+                {% endif %}
+                {%endcapture%}
+
+                {%capture promo_block_7 %}
+                {% if promo_banner_7_image != blank or promo_banner_7_video != blank %}
+                  <li class="clp-promo-banner promo-block-7">
+                    <a href="{{ promo_banner_7_button_link }}">
+                      {% if promo_banner_7_video and promo_banner_7_video != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                              <video playsinline  class="media-asset" width="100%" height="100%" autoplay="autoplay" loop muted>
+                                <source src="{{ promo_banner_7_video | file_url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                      {% elsif promo_banner_7_image and promo_banner_7_image != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                            <img
+                              srcset="{{ promo_banner_7_image | img_url: '1000x' }}"
+                              src="{{ promo_banner_7_image | img_url: '1000x' }}"
+                              alt="{{ promo_banner_7_image.alt | escape }}"
+                              class="motion-reduce product-card-image media-asset"
+                              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                            >
+                          </div>
+                        </div>
+                      {% endif %}
+{%- if promo_banner_7_title != blank or promo_banner_7_desc != blank or promo_banner_7_button_label != blank -%}
+                      <div class="clp-promo-content center align-{{ promo_content_alignment }} {%- if promo_banner_7_button_label == blank -%}no-button{%- endif -%}">
+                        <div class="clp-promo-content-box">
+                        {% if promo_banner_7_title %}<h1 class="typography-heading typography-heading--1 center uppercase">{{ promo_banner_7_title }}</h1>{% endif %}
+                        {% if promo_banner_7_desc %}<p class="typography-text typography-text--body-small">{{ promo_banner_7_desc }}</p>{% endif %}
+                        {% if promo_banner_7_button_label and promo_banner_7_button_label != blank %}<span class="link link--underline uppercase" role="button">{{ promo_banner_7_button_label }}</span>{% endif %}
+                      </div>
+                      </div>
+  {%- endif -%}
+                    </a>
+                  </li>
+                {% endif %}
+                {%endcapture%}
+
+                {%capture promo_block_8 %}
+                {% if promo_banner_8_image != blank or promo_banner_8_video != blank %}
+                  <li class="clp-promo-banner promo-block-8">
+                    <a href="{{ promo_banner_8_button_link }}">
+                      {% if promo_banner_8_video and promo_banner_8_video != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                              <video playsinline  class="media-asset" width="100%" height="100%" autoplay="autoplay" loop muted>
+                                <source src="{{ promo_banner_8_video | file_url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                          </div>
+                        </div>
+                      {% elsif promo_banner_8_image and promo_banner_8_image != blank %}
+                        <div class="media">
+                          <div class="media-ratio ratio--4-5">
+                            <img
+                              srcset="{{ promo_banner_8_image | img_url: '1000x' }}"
+                              src="{{ promo_banner_8_image | img_url: '1000x' }}"
+                              alt="{{ promo_banner_8_image.alt | escape }}"
+                              class="motion-reduce product-card-image media-asset"
+                              {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                            >
+                          </div>
+                        </div>
+                      {% endif %}
+{%- if promo_banner_8_title != blank or promo_banner_8_desc != blank or promo_banner_8_button_label != blank -%}
+                      <div class="clp-promo-content center align-{{ promo_content_alignment }} {%- if promo_banner_8_button_label == blank -%}no-button{%- endif -%}">
+                        <div class="clp-promo-content-box">
+                        {% if promo_banner_8_title %}<h1 class="typography-heading typography-heading--2 center uppercase">{{ promo_banner_8_title }}</h1>{% endif %}
+                        {% if promo_banner_8_desc %}<p class="typography-text typography-text--body-small">{{ promo_banner_8_desc }}</p>{% endif %}
+                        {% if promo_banner_8_button_label and promo_banner_8_button_label != blank %}<span class="link link--underline uppercase" role="button">{{ promo_banner_8_button_label }}</span>{% endif %}
+                      </div>
+                      </div>
+  {%- endif -%}
+                    </a>
+                  </li>
+                {% endif %}
+                {%endcapture%}
+
+              {% endif %}
+
+  
+              {%- for product in collection.products -%}
+                {% assign lazy_load = false %}
+                {%- if forloop.index > 2 -%}
+                  {%- assign lazy_load = true -%}
+                {%- endif -%}
+
+ 
+
+
+                {%if forloop.index == 1 %}
+
+                {%if promo_banner_1_image != blank or promo_banner_1_video != blank  %}
+                {{ promo_block_1 }}
+                {%endif%}
+
+                {%elsif forloop.index == 6%}
+                {{ promo_block_2 }}
+
+                {%elsif forloop.index == 12%}
+                {{ promo_block_3 }}
+
+                {%elsif forloop.index == 18%}
+                {{ promo_block_4 }}
+
+                {%elsif forloop.index == 24%}
+                {{ promo_block_5 }}
+
+                {%elsif forloop.index == 30%}
+                {{ promo_block_6 }}
+
+                {%elsif forloop.index == 36%}
+                {{ promo_block_7 }}
+
+                {%elsif forloop.index == 42%}
+                {{ promo_block_8 }}
+
+                {%endif%}
+
+                <li class="product-grid-item">
+                  {% render 'card-product',
+                    card_product: product,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    lazy_load: lazy_load,
+                    section_id: section.id,
+                    outFitImage: true,
+                    showSwatches: section.settings.show_swatches,
+                    low_stock_limit: section.settings.ls_limit,
+                    gender: collection.metafields.custom.gender,
+                    flatImageFirst: flatImageFirst
+                  %}
+                </li>
+              {%- endfor -%}
+            </ul>
+    
+            {%- if paginate.pages > 1 -%}
+
+
+              <div class="pagination-wrapper center load-more">
+                <a href="{{ collection.url }}?page={{ paginate.current_page | plus: 1 }}" id="{{ paginate.pages }}" Class="button button--primary btn-lg">{{ section.settings.load_more_btn_lbl }}</a>
+              </div>
+
+              <script>
+                // Collection - Load More Products -  https://issuemode.com/issues/Shopify/dawn/53977203
+                const loadMoreProducts = () => {
+                  const loadMoreBtn = document.querySelector(".load-more a");
+                  let currCollection = window.location.pathname;
+                  let currPage = loadMoreBtn.href.split("?")[1];
+
+
+                  loadMoreBtn.setAttribute("href", currCollection + "?" + currPage);
+                  
+
+                  loadMoreBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    if (loadMoreBtn.getBoundingClientRect().bottom < 3500 && loadMoreBtn.innerHTML != '{{ 'accessibility.loading' | t }}') {
+                      loadMoreBtn.innerHTML = '{{ 'accessibility.loading' | t }}';
+
+                      fetch(loadMoreBtn.href, {method: 'get', credentials: 'include'})
+                      .then (response=>response.text())
+                      .then(res => {
+                        document.querySelector('ul#product-grid').innerHTML += new DOMParser().parseFromString(res, "text/html").body.querySelector('ul#product-grid').innerHTML;
+                        if (loadMoreBtn.href.slice(-1) < parseInt(loadMoreBtn.id)) {
+                          loadMoreBtn.href = loadMoreBtn.href.slice(0, -1) + (parseInt(loadMoreBtn.href.slice(-1)) + 1);
+                          loadMoreBtn.innerHTML = '{{ 'shopify.checkout.general.expand_notice_label' | t }}';
+                        } else {
+                          loadMoreBtn.remove();
+                        }
+                      });
+                    }
+                  });
+                }
+
+                loadMoreProducts();
+              </script>
+
+            {%- endif -%}
+
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+
+    {%- if collection.description and collection.description != blank -%}
+      <div class="collection-description rte typography-text typography-text--body-small">
+        <div class="collection-description-wrapper">
+          {{ collection.description }}
+        </div>
+        <a href="#" class="typography-text typography-text--body-small uppercase see-more-description">See More</a>
+      </div>
+    {%- endif -%}
+  </div>
+  
+</div>
+
+
+<script>
+  var clpLayoutControls = (gridLayout) => {
+    // Switch clp layout between 2 and 4 grid
+    var switchLayoutBtn = document.getElementById("switch-layout");
+    var clpGrid = document.querySelector(".clp-grid");
+    
+    if (gridLayout === "twoColumnLayout") {
+      clpGrid.classList.add("grid-layout"); 
+      switchLayoutBtn.classList.remove("grid-4");
+    }
+
+    $(switchLayoutBtn).unbind().click(function() {
+      if (clpGrid.classList.contains("grid-layout")) {
+        $(clpGrid).removeClass("grid-layout"); 
+      } else {
+        $(clpGrid).addClass("grid-layout");
+      }
+      
+      switchLayoutBtn.classList.toggle("grid-4");
+    });
+
+
+    // Switch product images to outfit images
+    let switchImageBtns = Array.from(document.querySelectorAll(".switch-product-image li button"));
+    let productMedia = document.querySelectorAll(".product-card .media");
+
+    let handleClick = (e) => {
+      switchImageBtns.forEach(node => {
+        node.classList.remove('active');
+      });
+
+      if (e.currentTarget.classList.contains("outfit-image")) {
+        clpGrid.classList.add("show-outfit-image");
+      } else {
+        clpGrid.classList.remove("show-outfit-image");
+      }
+
+      productMedia.forEach(media => {
+        if (media.querySelector(".secondary_image")) {
+          media.querySelector(".secondary_image").classList.toggle("active");
+          media.querySelector(".first_image").classList.toggle("active");
+        }
+      });
+      e.currentTarget.classList.add('active');
+    }
+
+    switchImageBtns.forEach(node => {
+      node.addEventListener('click', handleClick)
+    });
+  }
+  clpLayoutControls("fourColumnLayout");
+
+  // CLP - click to see more description at bottom
+  const seeMoreDescBtn = document.querySelector(".see-more-description");
+  if(seeMoreDescBtn){
+    const collectionWrapper = document.querySelector(".collection-description-wrapper");
+    seeMoreDescBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      collectionWrapper.classList.add("expanded");
+      seeMoreDescBtn.remove();
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-product-grid.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 5,
+      "max": 65,
+      "step": 5,
+      "default": 65,
+      "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+    },
+    {
+     "type": "text",
+     "id": "load_more_btn_lbl",
+     "label": "Load more button label",
+     "default": "Load More"
+    },
+    {
+     "type": "range",
+     "id": "ls_limit",
+     "min": 5,
+     "max": 40,
+     "step": 5,
+     "default": 40,
+     "label": "Low stock limit"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatches",
+      "label": "Show Swatches",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Promotional Banner"
+    },
+    {
+      "type": "select",
+      "id": "promo_content_alignment",
+      "options": [
+        {
+          "value": "middle",
+          "label": "Middle"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "bottom",
+      "label": "Content Alignment"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__1.label"
+        },
+        {
+          "value": "vertical",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__2.label"
+        },
+        {
+          "value": "drawer",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label"
+        }
+      ],
+      "default": "drawer",
+      "label": "t:sections.main-collection-product-grid.settings.filter_type.label",
+      "info": "t:sections.main-collection-product-grid.settings.filter_type.info"
+    }
+  ]
+}
+{% endschema %}

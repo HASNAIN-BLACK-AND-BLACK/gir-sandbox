@@ -1,0 +1,157 @@
+.clp-banner-subscribe-form .subscrible-form {
+    max-width: 40%;
+    flex: 40%;
+    padding: 58px;
+    display: flex;
+    align-items: center;
+}
+.clp-banner-subscribe-form .clp-banner {
+    flex: 1;
+    height: 30vw;
+}
+.clp-banner-subscribe-form {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+.clp-banner-subscribe-form .form-submit-btn {
+    max-width: 100%;
+    flex: 100%;
+    width: 100%;
+    margin-top: 20px;
+}
+.clp-banner-subscribe-form .nl-popup-heading h3 {
+    font-size: 26px;
+    line-height: 40px;
+    font-weight: 300;
+    margin-bottom: 16px;
+}
+.clp-banner-subscribe-form .privacy-agreement-text {
+    font-size: 12px;
+    line-height: 20px;
+    color: #000000;
+    font-weight: 400;
+}
+.clp-banner-subscribe-form .newsletter-form__field-wrapper .field__input {
+    padding: 10px 0 2px;
+    color: #090909;
+    font-size: 14px;
+}
+.clp-banner-subscribe-form .field__input::placeholder {
+    color: #000000;
+} 
+.clp-banner-subscribe-form .bottom-nl-popup-form .newsletter-form__button:hover {
+    background-color: #000;
+}
+.clp-banner-subscribe-form .bottom-nl-popup-form .checkbox-label {
+    align-items: center;
+}
+.clp-banner-subscribe-form .show-subscribe-form {
+    display: none;
+}
+.clp-banner-subscribe-form .privacy-agreement-text a {
+    font-size: 12px;
+    text-underline-offset: 0.3rem;
+}
+.waitlist-collection aside.facets-wrapper {
+    padding: 20px 1.3rem;
+}
+@media (min-width: 1580px) {
+    .clp-banner-subscribe-form .hp-edit-block-media-ratio {
+        height: 34vw;
+    }
+}
+@media (min-width: 1366px) and (max-width: 1580px) {
+    .clp-banner-subscribe-form .hp-edit-block-media-ratio {
+        height: 40vw;
+    }
+}
+@media (min-width: 1280px) and (max-width: 1365px) {
+    .clp-banner-subscribe-form .hp-edit-block-media-ratio {
+        height: 48vw;
+    }
+}
+@media (min-width: 991px) and (max-width: 1279px) {
+    .clp-banner-subscribe-form .hp-edit-block-media-ratio {
+        height: 65vw;
+    }
+    .clp-banner-subscribe-form .subscrible-form {
+        padding: 40px;
+    }
+}
+@media (max-width: 990px) {
+    .clp-banner-subscribe-form {
+        flex-wrap: wrap;
+    }
+    .clp-banner-subscribe-form .subscrible-form {
+        max-width: 100%;
+        flex: 100%;
+    }
+    .clp-banner-subscribe-form .clp-banner {
+        height: auto;
+        flex: 100%;
+        max-width: 100%;
+    }
+    .clp-banner-subscribe-form .hp-edit-block-media-ratio {
+        height: 50vh;
+    }
+    .clp-banner-subscribe-form .subscribe-form-wrapper {
+        display: none;
+    }
+    .clp-banner-subscribe-form .show-subscribe-form {
+        display: block;
+    }
+    .clp-banner-subscribe-form .bottom-nl-popup-form .newsletter-form__button {
+        width: 100%;
+        min-width: unset;
+    }
+    .clp-banner-subscribe-form .hp-middle-nl.bottom-nl-popup-form {
+        max-width: 500px;
+    }
+    .clp-banner-subscribe-form .nl-popup-heading h3 {
+        font-size: 26px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 0 !important;
+    }
+    .clp-banner-subscribe-form .bottom-nl-popup-form .newsletter-form__field-wrapper {
+        display: flex !important;
+        flex-direction: column;
+    }
+    .clp-banner-subscribe-form .bottom-nl-popup-form .newsletter-form__field-wrapper .field.checkbox-field {
+        order: 2;
+    }
+    .clp-banner-subscribe-form .bottom-nl-popup-form .newsletter-form__field-wrapper .field {
+        order: 1;
+    }
+    .clp-banner-subscribe-form .bottom-nl-popup-form .newsletter-form__field-wrapper .form-submit-btn {
+        order: 3;
+    }
+    .clp-banner-subscribe-form .newsletter-form__field-wrapper .field__input {
+        padding: 16px 0 8px;
+        margin-top: 10px;
+    }
+}
+@media (max-width: 576px) {
+    .clp-banner-subscribe-form .subscrible-form {
+        padding: 35px;
+    }
+    .clp-banner-subscribe-form .nl-popup-heading h3 {
+        margin-top: 0px;
+    }
+    .clp-banner-subscribe-form .form-submit-btn {
+        margin-top: 25px;
+    }
+    .clp-banner-subscribe-form .hp-edit-block-media-ratio {
+        height: 100vw;
+    }
+    .clp-banner-subscribe-form  .bottom-nl-popup-form .checkbox-label div {
+        flex: 1 0 0;
+        margin-left: 10px;
+    }
+    .clp-banner-subscribe-form .newsletter-form__field-wrapper .field__input {
+        padding: 10px 0 8px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

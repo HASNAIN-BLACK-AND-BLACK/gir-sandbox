@@ -1,0 +1,94 @@
+{{ 'section-sidebar-contact.css' | asset_url | stylesheet_tag }}
+
+{{ 'section-ninth-article-1.css' | asset_url | stylesheet_tag }}
+
+
+{%- liquid
+  assign posts_displayed = section.settings.blog.articles_count
+  if section.settings.post_limit <= section.settings.blog.articles_count
+    assign posts_exceed_limit = true
+    assign posts_displayed = section.settings.post_limit
+  endif
+-%}
+<div class="featured-blog article_sec_ninth_container blog color-{{ section.settings.color_scheme }} gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
+  <div class="similar_articles_mobile">
+    <div id="sidebar-container" class="sidebar-container">
+      <div class="sidebar-menu">
+        {% assign currentArticle = article %}
+          <div class="sidebar-menu-link-wrapper">
+            <a class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link active" href="#" title="{{ currentArticle.title }}">
+              {{ currentArticle.title }}
+            </a>
+          </div>
+          {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
+            {% unless currentArticle.handle == article.handle %}
+            <div class="sidebar-menu-link-wrapper">
+              <a class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link" href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a>
+            </div>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+</div>
+  
+{% schema %}
+{
+  "name": "More Articles Links",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.post_limit.label"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "More Articles Links",
+      "settings": {
+        "blog": "News"
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,153 @@
+<link rel="stylesheet" href="{{ 'section-sidebar-contact.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'accordions-tab.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'section-sidebar-contact.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'accordions-tab.css' | asset_url | stylesheet_tag }}</noscript>
+
+<script src="{{ 'custom-tabs.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 830px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="page-width-container section-{{ section.id }}-padding sidebar-contact-pages-main">
+    <div id="sidebar-container" class="sidebar-container">
+        <div class="sidebar-menu">
+            {% for link in linklists[section.settings.menu].links %}
+            <div class="sidebar-menu-link-wrapper">
+                    <a href="{{ link.url }}"
+                    class="typography-heading typography-font-3 typography-heading--4 uppercase sidebar-menu-link {% if link.active %}active{% endif %}">
+                    {{ link.title }}</a>   
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="pages-content">
+        <h1
+            class="typography-heading typography-font-3 typography-heading--4 uppercase paragraph-content mobile-text-size">
+            {{ page.title | escape }}
+        </h1>
+
+        <div class="content-margin-top">
+        {% if page.url contains section.settings.privacy-policy %}
+            <div class="faq-accordion-container">
+              {% for block in section.blocks %} 
+                {% if block.settings.privacy_question != blank %}      
+                <details class="toggle">
+                    <summary class="toggle-title">
+                        <h3>
+                            <span class="title-name typography-heading typography-font-3 typography-heading--4 paragraph-content mobile-text-size">{{ block.settings.privacy_question }}</span>
+                        </h3>
+                    </summary>
+                    <div class="toggle-inner typography-text typography-text--body paragraph-content">
+                            {{ block.settings.privacy_answer }}
+                    </div>
+                </details>
+                {% endif %} 
+              {% endfor %}
+            </div>
+       
+            {% else %}
+            <p class="typography-text typography-text--body paragraph-content">{{ page.content }}</p>
+ 
+        {% endif %}
+    </div>
+
+
+    </div>
+</div>
+
+<script>
+    let oldValue = 0
+    let newValue = 0
+    window.addEventListener('scroll', (e) => {
+        newValue = window.pageYOffset;
+        if (oldValue < newValue) {
+            console.log("Up");
+            document.getElementById('sidebar-container').classList.remove('margin-top-sidebar');
+        } else if (oldValue > newValue) {
+            console.log("Down");
+            document.getElementById('sidebar-container').classList.add('margin-top-sidebar');
+        }
+        oldValue = newValue;
+    });
+
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Sidebar Menu"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "page",
+      "id": "privacy-policy",
+      "label": "Select Privacy policy page"
+      }
+  ],
+  "blocks": [
+   {
+    "type": "Privacy-policy",
+    "name": "Privacy-policy",
+    "settings": [
+      {
+        "type": "text",
+        "id": "privacy_question",
+        "label": "Question"
+      },
+      {
+        "type": "richtext",
+        "id": "privacy_answer",
+        "label": "Answer"
+      }
+    ]
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+

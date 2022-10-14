@@ -1,0 +1,270 @@
+.hp-editorial{
+    position: relative;
+}
+
+
+
+@media screen and (min-width: 769px) {
+
+    .hp-edit-row{
+        display: flex;
+    }
+    
+    .hp-edit-col{
+        flex: 1 1 100%;
+    }
+
+    .hp-edit-block-media-asset{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .hp-edit-block-media-ratio {
+        height: calc(100vh - 35px);
+    }
+
+    .hp-edit-block-media-ratio .hp-edit-block-media-asset{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    
+        object-fit: cover;
+        object-position: center center;
+    }
+    
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .hp-edit-block-media-asset{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    
+
+}
+
+
+
+.hp-edit-block{
+    position: relative;
+}
+
+.hp-edit-block-media{
+    position: relative;
+    overflow: hidden;
+}
+
+.hp-edit-block-media-ratio {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+
+.hp-edit-block-text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-flow: column nowrap;
+    
+    padding: 30px;
+}
+
+.hp-edit-block-link-cape{
+    text-decoration: none;
+}
+
+.hp-edit-block-link-cape:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+}
+
+
+.hp-edit-block-title{
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+
+.hp-edit-block-cta:focus-visible{
+    outline: 0.2rem solid var(--color-focus-green)!important;
+}
+
+.hp-edit-block-cta--button{
+    position: relative;
+    z-index: 1;
+
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: currentColor;
+
+
+    padding: 15px 20px;
+    min-width: 308px;
+    text-align: center;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: CutiveMono-Regular;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+
+    
+    text-decoration: none;
+}
+
+.hp-edit-block-cta--button:hover{
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #000!important;
+    transition-property: color, background-color, border-color;
+    transition-timing-function: ease;
+    transition-duration: 400ms;
+}
+
+
+.hp-edit-block-cta--link{
+    position: relative;
+    z-index: 1;
+
+    font-size: 14px;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: #000;
+    font-family: CutiveMono-Regular;
+    text-underline-offset: 0.5rem;
+
+    transition: opacity 400ms ease;
+
+}
+.hp-edit-block-cta--link:hover{
+    opacity: 0.6;
+}
+
+
+
+@media screen and (min-width: 769px) {
+
+    .hp-editorial--overwrite-block-text .hp-edit-block > .hp-edit-block-text{
+        display: none !important;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .hp-editorial--overwrite-block-text > .hp-edit-block-text{
+        display: none !important;
+    }
+
+}
+
+
+
+
+
+
+
+
+.hp-edit-block-text-placement--top-left{
+    text-align: left;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.hp-edit-block-text-placement--center-left{
+    text-align: left;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.hp-edit-block-text-placement--bottom-left{
+    text-align: left;
+    justify-content: flex-end;
+    align-items: flex-start;
+    
+}
+
+
+.hp-edit-block-text-placement--top-center{
+    text-align: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hp-edit-block-text-placement--center-center{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.hp-edit-block-text-placement--bottom-center{
+    text-align: center;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+
+
+
+
+
+.hp-edit-block-text-placement--top-right{
+    text-align: right;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.hp-edit-block-text-placement--center-right{
+    text-align: right;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hp-edit-block-text-placement--bottom-right{
+    text-align: right;
+    justify-content: flex-end;
+    align-items: flex-end;
+    
+}
+
+
+
+
+@media screen and (min-width: 769px) {
+
+    .hp-edit-block-media-mobile{
+        display: none !important;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .hp-edit-block-media-desktop{
+        display: none !important;
+    }
+
+}
+

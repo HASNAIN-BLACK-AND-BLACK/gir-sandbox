@@ -1,0 +1,606 @@
+
+{{ 'section-hp-editorial.css' | asset_url | stylesheet_tag }}
+
+
+<div class="hp-editorial {% if section.settings.overwrite_block_text %}hp-editorial--overwrite-block-text{% endif %}">
+
+    <div class="hp-edit-row">
+        {%- for block in section.blocks -%}
+
+        <div class="hp-edit-col" {{ block.shopify_attributes }}>
+
+            <div class="hp-edit-block" id="hp-edit-block-{{ section.id }}-{{ block.id }}">
+
+                <div class="hp-edit-block-media">
+
+                {% unless block.settings.media_natural_size %}
+                <div class="hp-edit-block-media-ratio">
+                {% endunless %}
+
+                {%- case block.settings.media_type -%}
+
+                {%- when 'image' -%}
+
+                <picture>
+                    <source
+                    media="(min-width: 769px)"
+                    srcset="{% render 'image-srcset', image: block.settings.image %}"
+                    sizes="100vw"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio }}"
+                    >
+                    <source
+                    media="(max-width: 768px)"
+                    srcset="{% render 'image-srcset', image: block.settings.image_alter %}"
+                    sizes="100vw"
+                    width="{{ block.settings.image_alter.width }}"
+                    height="{{ block.settings.image_alter.width | divided_by: block.settings.image_alter.aspect_ratio }}"
+                    >
+                    <img
+                    srcset="{% render 'image-srcset', image: block.settings.image %}"
+                    sizes="100vw"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.width | divided_by: block.settings.image.aspect_ratio }}"
+
+                    src="{{ block.settings.image | image_url: width: 1500 }}"
+                    loading="lazy"
+                    alt="{{ block.settings.image.alt | escape }}"
+                    class="hp-edit-block-media-asset"
+                    >
+                </picture>
+
+                {%- when 'video' -%}
+
+                <video
+
+                class="hp-edit-block-media-asset hp-edit-block-media-desktop"
+
+                autoplay
+                playsinline
+                muted
+                loop
+                preload="auto"
+                >
+                    <source src="{{ block.settings.video }}" type="video/mp4">
+                    
+                </video>
+
+                <video
+
+                class="hp-edit-block-media-asset hp-edit-block-media-mobile"
+
+                autoplay
+                playsinline
+                muted
+                loop
+                preload="auto"
+                >
+                    <source src="{{ block.settings.video_alter }}" type="video/mp4">
+
+                </video> 
+
+                {%- endcase -%}
+
+                {% unless block.settings.media_natural_size %}
+                </div>
+                {% endunless %}
+
+                </div>
+
+
+                <div class="hp-edit-block-text hp-edit-block-text-placement--{{ block.settings.text_placement }}" style="background-color: rgba(0,0,0,{{ block.settings.overlay_opacity }});">
+
+                    {% if block.settings.cta_link != blank %}
+                    <a class="hp-edit-block-link-cape" href="{{ block.settings.cta_link }}" aria-hidden="true" tabindex="-1">&nbsp;</a>
+                    {% endif %}
+
+                    {% if block.settings.title != blank %}
+                    <h3 class="hp-edit-block-title family-{{ block.settings.title_font }}" style="font-size: {{ block.settings.title_size }}px; color: {{ block.settings.title_color }}; letter-spacing: {{ block.settings.title_letter_spacing }}px; margin-bottom: {{ block.settings.title_margin_bottom}}px;">{{ block.settings.title }}</h3>
+                    {% endif %}
+            
+                    {% if block.settings.cta_text != blank %}
+                    <a href="{{ block.settings.cta_link }}" class="hp-edit-block-cta hp-edit-block-cta--{{ block.settings.cta_type }}" style="color: {{ block.settings.cta_color }};">{{ block.settings.cta_text }}</a>
+                    {% endif %}
+            
+                </div>
+                
+            </div>
+
+        </div>
+            
+        {%- endfor -%}
+    </div>
+
+    {% if section.settings.overwrite_block_text %}
+
+    <div class="hp-edit-block-text hp-edit-block-text-placement--{{ section.settings.text_placement }}" style="background-color: rgba(0,0,0,{{ block.settings.overlay_opacity }});">
+
+        {% if section.settings.cta_link != blank %}
+        <a class="hp-edit-block-link-cape" href="{{ section.settings.cta_link }}" aria-hidden="true" tabindex="-1">&nbsp;</a>
+        {% endif %}
+
+        {% if section.settings.title != blank %}
+        <h3 class="hp-edit-block-title family-{{ section.settings.title_font }}" style="font-size: {{ section.settings.title_size }}px; color: {{ section.settings.title_color }}; letter-spacing: {{ section.settings.title_letter_spacing }}px; margin-bottom: {{ section.settings.title_margin_bottom}}px;">{{ section.settings.title }}</h3>
+        {% endif %}
+
+        {% if section.settings.cta_text != blank %}
+        <a href="{{ section.settings.cta_link }}" class="hp-edit-block-cta hp-edit-block-cta--{{ section.settings.cta_type }}" style="color: {{ section.settings.cta_color }};">{{ section.settings.cta_text }}</a>
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+
+{% schema %}
+
+{
+    "name": "Article Editorial",
+    "tag": "section",
+    "class": "section",
+    "max_blocks": 2,
+    "templates": ["article"],
+    
+    "settings":[
+        {
+            "type": "checkbox",
+            "id": "overwrite_block_text",
+            "label": "Overwrite Block Text",
+            "default": false
+        },
+
+
+        {
+            "type": "header",
+            "content": "Text"
+        },
+
+
+        {
+            "type": "select",
+            "id": "text_placement",
+            "label": "Text Placement",
+            "options": [
+
+                {
+                    "value": "top-left",
+                    "label": "Top Left"
+                },
+                {
+                    "value": "center-left",
+                    "label": "Center Left"
+                },
+                {
+                    "value": "bottom-left",
+                    "label": "Bottom Left"
+                },
+                {
+                    "value": "top-center",
+                    "label": "Top Center"
+                },
+                {
+                    "value": "center-center",
+                    "label": "Center Center"
+                },
+                {
+                    "value": "bottom-center",
+                    "label": "Bottom Center"
+                },
+                {
+                    "value": "top-right",
+                    "label": "Top Right"
+                },
+                {
+                    "value": "center-right",
+                    "label": "Center Right"
+                },
+                {
+                    "value": "bottom-right",
+                    "label": "Bottom Right"
+                }
+
+
+            ],
+            "default": "center-center"
+        },
+        
+        {
+            "type": "html",
+            "id": "title",
+            "label": "Title"
+        },
+
+        {
+            "type": "select",
+            "id": "title_font",
+            "options": [
+            {
+                "value": "Chalet-NY",
+                "label": "Chalet NY"
+            },
+            {
+                "value": "CutiveMono-Regular",
+                "label": "CutiveMono Regular"
+            },
+            {
+                "value": "FormulaCondensed-Light",
+                "label": "Formula Condensed Light"
+            },
+            {
+                "value": "FormulaCondensed-Regular",
+                "label": "Formula Condensed Regular"
+            },
+            {
+                "value": "FormulaCondensed-Bold",
+                "label": "Formula Condensed Bold"
+            },
+            {
+                "value": "FormulaCondensed-Black",
+                "label": "Formula Condensed Black"
+            }
+
+            ],
+            "default": "FormulaCondensed-Light",
+            "label": "Title Font"
+        },
+
+        {
+            "type": "range",
+            "id": "title_size",
+            "min": 12,
+            "max": 80,
+            "step": 1,
+            "unit": "px",
+            "label": "Title Size",
+            "default": 65
+        },
+
+        {
+            "type": "range",
+            "id": "title_letter_spacing",
+            "min": 0,
+            "max": 20,
+            "step": 1,
+            "unit": "px",
+            "label": "Title Letter Spacing",
+            "default": 10
+        },
+        {
+            "type": "range",
+            "id": "title_margin_bottom",
+            "min": 0,
+            "max": 60,
+            "step": 1,
+            "unit": "px",
+            "label": "Title Margin Bottom",
+            "default": 30
+        },
+        {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title Color",
+            "default": "#000000"
+        },
+
+        {
+            "type": "text",
+            "id": "cta_text",
+            "label": "CTA Text"
+        },
+        {
+            "type": "url",
+            "id": "cta_link",
+            "label": "CTA Link"
+        },
+
+        {
+            "type": "radio",
+            "id": "cta_type",
+            "label": "CTA Type",
+            "options": [
+                {
+                "value": "button",
+                "label": "Button"
+                },
+                {
+                "value": "link",
+                "label": "Link"
+                }
+            ],
+            "default": "button"
+        },
+
+        {
+            "type": "color",
+            "id": "cta_color",
+            "label": "CTA Color",
+            "default": "#000000"
+        }
+
+    ],
+
+    "blocks":[
+    
+        {
+            "name":"Block",
+            "type":"block",
+            "settings":[
+
+                {
+                    "type": "header",
+                    "content": "Media"
+                },
+        
+                {
+                    "type": "radio",
+                    "id": "media_type",
+                    "label": "Media Type",
+                    "options": [
+                        {
+                        "value": "image",
+                        "label": "Image"
+                        },
+                        {
+                        "value": "video",
+                        "label": "Video"
+                        }
+                    ],
+                    "default": "image"
+                },
+        
+                {
+                    "type": "checkbox",
+                    "id": "media_natural_size",
+                    "label": "Media Natural Size",
+                    "default": false
+                },
+
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+        
+                {
+                    "type": "image_picker",
+                    "id": "image_alter",
+                    "label": "Image Alternative"
+                },
+        
+                {
+                    "type": "url",
+                    "id": "video",
+                    "label": "Video"
+                },
+
+                {
+                    "type": "url",
+                    "id": "video_alter",
+                    "label": "Video Alternative"
+                },
+
+                {
+                    "type": "select",
+                    "id": "overlay_opacity",
+                    "label": "Overlay Opacity",
+                    "options": [
+                        {
+                        "value": "0",
+                        "label": "0"
+                        },
+                        {
+                        "value": "0.05",
+                        "label": "0.05"
+                        },                       
+                        {
+                        "value": "0.1",
+                        "label": "0.1"
+                        },
+                        {
+                        "value": "0.15",
+                        "label": "0.15"
+                        },
+                        {
+                        "value": "0.2",
+                        "label": "0.2"
+                        },
+                        {
+                        "value": "0.25",
+                        "label": "0.25"
+                        },
+                        {
+                        "value": "0.3",
+                        "label": "0.3"
+                        }
+                    ],
+                    "default": "0"
+                },
+
+
+
+                {
+                    "type": "header",
+                    "content": "Text"
+                },
+            
+            
+                {
+                    "type": "select",
+                    "id": "text_placement",
+                    "label": "Text Placement",
+                    "options": [
+            
+                        {
+                            "value": "top-left",
+                            "label": "Top Left"
+                        },
+                        {
+                            "value": "center-left",
+                            "label": "Center Left"
+                        },
+                        {
+                            "value": "bottom-left",
+                            "label": "Bottom Left"
+                        },
+                        {
+                            "value": "top-center",
+                            "label": "Top Center"
+                        },
+                        {
+                            "value": "center-center",
+                            "label": "Center Center"
+                        },
+                        {
+                            "value": "bottom-center",
+                            "label": "Bottom Center"
+                        },
+                        {
+                            "value": "top-right",
+                            "label": "Top Right"
+                        },
+                        {
+                            "value": "center-right",
+                            "label": "Center Right"
+                        },
+                        {
+                            "value": "bottom-right",
+                            "label": "Bottom Right"
+                        }
+            
+            
+                    ],
+                    "default": "center-center"
+                },
+                
+                {
+                    "type": "html",
+                    "id": "title",
+                    "label": "Title"
+                },
+            
+                  {
+                    "type": "select",
+                    "id": "title_font",
+                    "options": [
+                      {
+                        "value": "Chalet-NY",
+                        "label": "Chalet NY"
+                      },
+                      {
+                        "value": "CutiveMono-Regular",
+                        "label": "CutiveMono Regular"
+                      },
+                      {
+                        "value": "FormulaCondensed-Light",
+                        "label": "Formula Condensed Light"
+                      },
+                      {
+                        "value": "FormulaCondensed-Regular",
+                        "label": "Formula Condensed Regular"
+                      },
+                      {
+                        "value": "FormulaCondensed-Bold",
+                        "label": "Formula Condensed Bold"
+                      },
+                      {
+                        "value": "FormulaCondensed-Black",
+                        "label": "Formula Condensed Black"
+                      }
+            
+                    ],
+                    "default": "FormulaCondensed-Light",
+                    "label": "Title Font"
+                  },
+            
+                  {
+                    "type": "range",
+                    "id": "title_size",
+                    "min": 12,
+                    "max": 80,
+                    "step": 1,
+                    "unit": "px",
+                    "label": "Title Size",
+                    "default": 65
+                  },
+
+                  {
+                    "type": "range",
+                    "id": "title_letter_spacing",
+                    "min": 0,
+                    "max": 20,
+                    "step": 1,
+                    "unit": "px",
+                    "label": "Title Letter Spacing",
+                    "default": 10
+                },
+                {
+                    "type": "range",
+                    "id": "title_margin_bottom",
+                    "min": 0,
+                    "max": 60,
+                    "step": 1,
+                    "unit": "px",
+                    "label": "Title Margin Bottom",
+                    "default": 30
+                },
+                  {
+                    "type": "color",
+                    "id": "title_color",
+                    "label": "Title Color",
+                    "default": "#000000"
+                },
+            
+                {
+                    "type": "text",
+                    "id": "cta_text",
+                    "label": "CTA Text"
+                },
+                {
+                    "type": "url",
+                    "id": "cta_link",
+                    "label": "CTA Link"
+                },
+            
+                {
+                    "type": "radio",
+                    "id": "cta_type",
+                    "label": "CTA Type",
+                    "options": [
+                        {
+                        "value": "button",
+                        "label": "Button"
+                        },
+                        {
+                        "value": "link",
+                        "label": "Link"
+                        }
+                    ],
+                    "default": "button"
+                },
+            
+                {
+                    "type": "color",
+                    "id": "cta_color",
+                    "label": "CTA Color",
+                    "default": "#000000"
+                }
+
+
+            ]
+        }
+        
+    ],
+    
+    "presets": [
+        {
+            "name": "Article Editorial"
+        }
+    ]
+    
+
+    
+}
+
+{% endschema %}

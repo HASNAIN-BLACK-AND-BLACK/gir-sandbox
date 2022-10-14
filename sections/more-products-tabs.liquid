@@ -1,0 +1,207 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'section-more-products-tabs.css' | asset_url | stylesheet_tag }}
+
+
+<script src="{{ 'jquery-ui.min.js' | asset_url }}"></script>
+<script src="{{ 'sly.min.js' | asset_url }}"></script> 
+
+
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+  padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+}
+
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+
+{%- endstyle -%}
+
+
+
+<div class="product-tabs__wrapper section-{{ section.id }}-padding">
+  <div class="theme-tabs-nav">
+    <ul>
+        {% for block in section.blocks %}
+            {% if block.settings.products != blank %}
+                <li {% if forloop.first %}class="active"{% endif %}><a href="#{{block.settings.tab_name | handleize}}">{{block.settings.tab_name}}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+  <div class="theme-tabs-content">
+    
+
+      
+    {% for block in section.blocks %}
+        {% if block.settings.products != blank %}
+        <div id="{{block.settings.tab_name | handleize}}" class="theme-tab-content" {% if forloop.first %}style="display: block;"{% endif %}>
+            <div class="wrap">
+                <ul class="fc-slick-custom-arrows">
+                  <li class="arrow-prev-{{forloop.index}}">{% include 'icon-left' %}</li>
+                  <li class="arrow-next-{{forloop.index}}">{% include 'icon-right' %}</li>
+                </ul>
+                
+                {% assign recommended_products =  block.settings.products %}
+                <div class="frame-{{forloop.index}}">
+                    <div class="more-products">
+                        {% for tabProduct in recommended_products  %}     
+                            <div class="tab-product-card">
+                                {% render 'card-product', card_product: tabProduct, outFitImage: block.settings.show_outfit, showSwatches: block.settings.show_swatches  %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="scrollbar scrollbar-{{forloop.index}}">
+                  <div class="handle">
+                    <div class="mousearea"></div>
+                  </div>
+                </div> 
+              </div>
+
+      <script>
+
+      $(document).ready(function(){
+        (function () {
+          var $frame = $('.frame-{{forloop.index}}'); 
+          var $wrap  = $frame.parent();
+          // Call Sly on frame
+            $frame.sly({
+              horizontal: 1,
+              itemNav: 'basic',
+              smart: 1,
+              mouseDragging: 1,
+              touchDragging: 1,
+            // scrollSource: '.frame',
+              releaseSwing: 1,
+              startAt: 0,
+              scrollBar: $wrap.find('.scrollbar-{{forloop.index}}'),
+              scrollBy: 1, 
+              speed: 1000,
+              elasticBounds: 1,
+              easing: 'easeOutExpo',
+              dragHandle: 1,
+              dynamicHandle: 1, 
+              clickBar: 1, 
+              cycleBy: null,
+        
+              // Buttons
+              prevPage: $wrap.find('.arrow-prev-{{forloop.index}}'),
+              nextPage: $wrap.find('.arrow-next-{{forloop.index}}')
+              });
+          }()); 
+            $(window).resize(function(e) {
+              $('.frame-{{forloop.index}}').sly('reload');
+            }); 
+
+          
+        }) 
+      </script>
+
+        {% endif %}
+      </div>
+    {% endfor %}
+
+   
+  </div>
+</div>
+
+<script>
+
+$(document).ready(function(){
+$('.theme-tabs-nav li:first-child').addClass('active');
+
+    $('.theme-tab-content').hide();
+    $('.theme-tab-content:first').show();
+    
+    //$('.frame').sly('reload');
+
+    // Click function
+    $('.theme-tabs-nav li').click(function(){
+      $('.theme-tabs-nav li').removeClass('active');
+      $(this).addClass('active');
+      $('.theme-tab-content').hide();
+      
+      var activeTab = $(this).find('a').attr('href');
+      $(activeTab).fadeIn();
+      return false;
+    });
+})
+</script>
+
+
+{% schema %}
+{
+  "name": "More Product tabs",
+  "tag": "section",
+  "class": "product-tabs-section section",
+  "settings": [
+	{
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+        "name": "Tabs",
+        "type": "products",
+        "settings": [
+            {
+                "type": "text",
+                "id": "tab_name",
+                "label": "Tab Name"
+            },
+            {
+                "type": "product_list",
+                "id": "products",
+                "label": "Products List"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_outfit",
+                "label": "Show Outfit Image",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "show_swatches",
+                "label": "Show Swatches",
+                "default": true
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "More Product tabs"
+    }
+  ]
+}
+{% endschema %}

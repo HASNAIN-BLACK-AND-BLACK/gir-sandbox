@@ -1,0 +1,259 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- paginate blog.articles by 20 -%}
+  <div class="main-blog section-{{ section.id }}-padding">
+
+    <div class="blog-filter">
+      <div class="filter-blog-by active" id="blog-all" aria-expanded="true"> 
+        <a aria-label="{{ section.settings.article-filter-text1 }}" href="#" title="{{ section.settings.article-filter-text1 }}" class="blog-filter-name"> {{ section.settings.article-filter-text1 }} </a>
+      </div>
+      <div class="filter-blog-by" id="blog-latest" aria-expanded="false"> 
+        <a aria-label="{{ section.settings.article-filter-text2 }}" href="#" title="{{ section.settings.article-filter-text2 }}" class="blog-filter-name"> {{ section.settings.article-filter-text2 }} </a>
+      </div>
+      <div class="filter-blog-by" id="blog-collections" aria-expanded="false"> 
+        <a aria-label="{{ section.settings.article-filter-text3 }}" href="#" title="{{ section.settings.article-filter-text3 }}" class="blog-filter-name"> {{ section.settings.article-filter-text3 }} </a>
+      </div>
+    </div>
+
+    <div class="page-width main_blog_page_container">
+      <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}" data-blog-filter="blog-all">
+        {%- for article in blog.articles -%}
+          <div class="blog-articles__article article">
+            {%- render 'article-card',
+              article: article,
+              media_height: section.settings.image_height,
+              media_aspect_ratio: article.image.aspect_ratio,
+              show_image: section.settings.show_image,
+              show_date: section.settings.show_date,
+              show_author: section.settings.show_author,
+              show_excerpt: section.settings.show_excerpt,
+              show_article_cta: section.settings.show_article_cta,
+              article_cta_text: section.settings.article-cta-text
+            -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="blog-articles hidden{% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}" data-blog-filter="blog-latest">
+        {%- for article in blog.articles -%}
+          {%- if article.tags contains "latest" -%}
+            <div class="blog-articles__article article">
+              {%- render 'article-card',
+                article: article,
+                media_height: section.settings.image_height,
+                media_aspect_ratio: article.image.aspect_ratio,
+                show_image: section.settings.show_image,
+                show_date: section.settings.show_date,
+                show_author: section.settings.show_author,
+                show_excerpt: section.settings.show_excerpt,
+                show_article_cta: section.settings.show_article_cta,
+                article_cta_text: section.settings.article-cta-text 
+              -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="blog-articles hidden{% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}" data-blog-filter="blog-collections">
+        {%- for article in blog.articles -%}
+          {%- if article.tags contains "collections" -%}
+            <div class="blog-articles__article article">
+              {%- render 'article-card',
+                article: article,
+                media_height: section.settings.image_height,
+                media_aspect_ratio: article.image.aspect_ratio,
+                show_image: section.settings.show_image,
+                show_date: section.settings.show_date,
+                show_author: section.settings.show_author,
+                show_excerpt: section.settings.show_excerpt,
+                show_article_cta: section.settings.show_article_cta,
+                article_cta_text: section.settings.article-cta-text 
+              -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+
+      {%- if paginate.pages > 1 -%}
+        {%- render 'pagination', paginate: paginate -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.main-blog.settings.layout.options__1.label"
+        },
+        {
+          "value": "collage",
+          "label": "t:sections.main-blog.settings.layout.options__2.label"
+        }
+      ],
+      "default": "collage",
+      "label": "t:sections.main-blog.settings.layout.label",
+      "info": "t:sections.main-blog.settings.layout.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "text",
+      "id": "article-filter-text1",
+      "default": "All Stories",
+      "label": "Articles Filter Text 1"
+    },
+    {
+      "type": "text",
+      "id": "article-filter-text2",
+      "default": "Latest",
+      "label": "Articles Filter Text 2"
+    },
+    {
+      "type": "text",
+      "id": "article-filter-text3",
+      "default": "Collections",
+      "label": "Articles Filter Text 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_article_cta",
+      "label": "Show Article CTA",
+      "default":true
+    },
+    {
+      "type": "text",
+      "id": "article-cta-text",
+      "default": "READ",
+      "label": "Article CTA Text"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-blog.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-blog.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-blog.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-blog.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.main-blog.settings.image_height.label",
+      "info": "t:sections.main-blog.settings.image_height.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "default": false,
+      "label": "Show Excerpt"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-blog.settings.paragraph.content"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  $('.filter-blog-by').click(function(){
+    if(!this.classList.contains("active")){
+      $('.filter-blog-by').removeClass("active");
+      $('.filter-blog-by').attr("aria-expanded","false");
+      $(this).addClass('active');
+      $(this).attr("aria-expanded","true");
+      let blogId =  this.id;
+      $('.blog-articles').each(function(i,obj){
+        if(blogId == obj.getAttribute('data-blog-filter')){
+          obj.classList.remove("hidden");
+          obj.classList.add("selected");
+        } else{
+          obj.classList.remove("selected");
+          obj.classList.add("hidden");
+        }
+      });
+    }
+  })
+</script>

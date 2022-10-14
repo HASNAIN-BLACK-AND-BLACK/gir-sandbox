@@ -1,0 +1,30 @@
+<media-gallery id="MediaGallery-{{ section.id }}" role="region" {% if section.settings.enable_sticky_info %}class="product__media-gallery"{% endif %} aria-label="{{ 'products.product.media.gallery_viewer' | t }}" data-desktop-layout="{{ section.settings.gallery_layout }}">
+    <div id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter">
+
+      <ul class="product__media-list contains-media grid grid--peek list-unstyled" role="list">
+        {%- liquid
+          assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src'
+          assign media_count = product.media.size
+          if section.settings.hide_variants
+            assign media_count = media_count | minus: variant_images.size | plus: 1
+          endif
+
+          if section.settings.media_size == 'large'
+            assign media_width = 0.65
+          elsif section.settings.media_size == 'medium'
+            assign media_width = 0.55
+          elsif section.settings.media_size == 'small'
+            assign media_width = 0.45
+          endif
+        -%}
+
+        {%- for media in product.media -%}
+            <li id="Slide-{{ section.id }}-{{ media.id }}" class="product__media-item grid__item slider__slide">
+              {% render 'product-thumbnail', media: media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+        {%- endfor -%}
+      </ul>
+      
+    </div>
+
+  </media-gallery>

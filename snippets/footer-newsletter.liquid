@@ -1,0 +1,168 @@
+<div class="footer-form-inner footer-newsletter-wrap general-newsletter footer-block__newsletter">
+  <div class="klaviyo-newsletter">
+
+    
+    <div class="email-form email-form-{{section.id}} popup-form-inner">
+
+      <div class="nl-form-wrap">
+  
+      {% unless block.settings.email_newsletter_heading == blank %}
+        <div class="nl-popup-heading success-hide">
+          <h2 class="footer-block__heading">{{block.settings.email_newsletter_heading}}</h2>
+        </div>
+      {% endunless %}
+  
+      <form novalidate id="email_newsletter-{{section.id}}" class="custom-form" action="//manage.kmail-lists.com/subscriptions/subscribe" method="POST">
+      <input type="hidden" name="g" value="{{block.settings.list_id}}">
+  
+        <div class="newsletter-form__field-wrapper">
+  
+          
+  
+          <div class="field email-field">
+            <input id="k_id_email" type="email" name="email" class="field__input" value="" placeholder="Enter your email">
+            <div class="newsletter-email-error error-message" style="display:none">{{block.settings.email_error_msg}}</div>
+          </div>
+  
+          <div class="form-submit-btn">
+            <button type="submit" class="newsletter-form__button email-form-submit field__button" id="ns_subscribe">
+              <img src="{{'right-arrow.svg' | asset_url }}" alt="Arrow Icon">
+            </button>
+          </div>
+
+          {% unless block.settings.email_privacy_agreement == blank %}
+          <div class="field checkbox-field">
+            <label class="checkbox-label">
+              <input id="privacy_agreement" type="checkbox" name="newsletter" class="email-checkbox newsletter_checkbox" value="privacy_agreement" checked required>
+              <span class="checkmark" tabindex="0"></span>
+              <div class="privacy-agreement-text">
+                {{block.settings.email_privacy_agreement}}
+              </div>
+            </label>
+          </div>
+          {% endunless %}
+
+        </div>
+  
+        
+      </form>
+  
+      
+      </div>
+  
+      {% if block.settings.phone_form_trigger != blank %}
+        <div class="form-trigger phone-form-trigger">
+          <span class="link uppercase text-underline" tabindex="0">{{block.settings.phone_form_trigger}}</span>
+        </div>
+      {% endif %}
+  
+      <div class="newsletter-success-message" style="display: none;">
+        <h3 class="ns-success-message">{{block.settings.email_success_msg}}</h3>
+      </div>
+  
+    </div>
+  
+    <div class="phone-number-form phone-form-{{section.id}} bottom-nl-popup-inner popup-form-inner">
+  
+      <div class="nl-form-wrap">
+      {% unless block.settings.phone_newsletter_heading == blank %}
+        <div class="nl-popup-heading">
+          <h2 class="footer-block__heading">{{block.settings.phone_newsletter_heading}}</h2>
+        </div>
+      {% endunless %}
+  
+      <div id="phone_form-{{section.id}}" class="custom-form">
+        <div class="newsletter-form__field-wrapper">
+  
+         
+  
+          <div class="field phone-field">
+            <input id="k_id_phone" type="phone" name="phone_number" class="field__input js_input_phone" value="" placeholder="Enter your phone" required>
+            <div class="newsletter-phone-error error-message" style="display:none">{{block.settings.phone_error_msg}}</div>
+          </div>
+  
+          <div class="form-submit-btn">
+            <button type="submit" class="newsletter-form__button phone-form-submit field__button" id="footer_phone_subscribe">
+              <img src="{{'right-arrow.svg' | asset_url }}" alt="Arrow Icon">
+            </button>
+          </div>
+
+          {% if block.settings.phone_privacy_agreement != blank %}
+          <div class="field checkbox-field">
+            <label class="checkbox-label">
+              <input id="phone_privacy_agreement" type="checkbox" name="phone-newsletter" class="phone-checkbox newsletter_checkbox" value="phone-newsletter" checked required>
+              <span class="checkmark" tabindex="0"></span>
+              <div class="privacy-agreement-text">
+                {{block.settings.phone_privacy_agreement}}
+              </div>
+            </label>
+          </div>
+          {% endif %}
+
+        </div>
+        
+      </div>
+      
+    </div>
+  
+    {% if block.settings.email_form_trigger != blank %}
+      <div class="form-trigger email-form-trigger">
+        <span class="link uppercase text-underline" tabindex="0">{{block.settings.email_form_trigger}}</span>
+      </div>
+    {% endif %}
+  
+    <div class="newsletter-success-message phone-success-msg" style="display: none;">
+      <h3 class="ns-success-message">{{block.settings.phone_success_msg}}</h3>
+    </div>
+  </div>
+
+
+  </div>
+</div>
+
+
+<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script> 
+{% render 'newsletter-js' %} 
+
+<script> 
+  // klaviyo api for custom form submit 
+  KlaviyoSubscribe.attachToForms('#email_newsletter-{{section.id}}', {
+    hide_form_on_success: true,
+    success: function ($form) {
+      $('#email_newsletter-{{section.id}}').parent('.nl-form-wrap').hide();
+      $('.email-form-{{section.id}}').find('.form-trigger').hide();
+      $('#email_newsletter-{{section.id}}').parents('.popup-form-inner').find('.newsletter-success-message').show();
+    },
+    extra_properties: {
+      $source: 'GIR Footer Newsletter',
+      $method_type: "Custom Klaviyo Form"
+    }
+  });
+
+  // PostScript Code
+
+  $("#footer_phone_subscribe").on('click',function(){
+    let mobileNo = $(".footer .js_input_phone[type=phone]").val();
+    var phoneField = $(this).parents('#phone_form-{{section.id}}').find('.phone-field').find('.field__input');
+    var acceptAgreement = $(this).parents('.custom-form').find('.checkbox-field').find('.phone-checkbox').is(":checked");
+
+    if (acceptAgreement == true && phoneField.val() !='') {
+      subscribePhone(mobileNo)
+      .then(response=>{
+        
+        // Code to hide other input 
+        
+        $('#phone_form-{{section.id}}').parent('.nl-form-wrap').hide();
+        $('.phone-form-{{section.id}}').find('.form-trigger').hide();
+        $('.phone-form-{{section.id}}').find(".phone-success-msg").show();
+
+      },error=> {
+        phoneField.siblings('.newsletter-phone-error').show();
+        phoneField.siblings('.newsletter-phone-error').html(error);
+
+      })
+    }
+
+  })
+
+</script>

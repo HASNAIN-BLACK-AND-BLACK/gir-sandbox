@@ -1,0 +1,173 @@
+{{ 'section-two-images.css' | asset_url | stylesheet_tag }}
+
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  {% for block in section.blocks %}
+    .image.two-images__image-text h2.heading-block-{{ forloop.index }}{
+      font-size: {{ block.settings.heading_size | append: 'px' }};
+    }
+    @media screen and (max-width: 992px){
+      .image.two-images__image-text h2.heading-block-{{ forloop.index }}{
+        font-size: 3rem;
+      }
+    }
+  {% endfor %}
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+    <div class="two-images__row">
+      {%- for block in section.blocks -%}
+        <div class="two-images__blocks">
+          <div class="image two-images__image">
+			      <img src="{{block.settings.image | img_url : 'master'}}" class="small-hide">
+			      <img src="{{block.settings.image_mbl | img_url : 'master'}}" class="medium-hide large-up-hide">
+          </div>
+          {% if block.settings.heading != blank or block.settings.button_label != blank %}
+              <div class="image two-images__image-text">
+                {% if block.settings.heading != blank %}
+                    <div class="content_empty"> </div>
+                    <h2 class="family-{{ block.settings.font_family_heading }} heading-block-{{ forloop.index }}">{{block.settings.heading}}</h2>
+                {% endif %}
+                {% if block.settings.button_label and block.settings.button_label != blank %}
+                  <div class="image-button">
+                    <a href="{{block.settings.button_link}}" class="button button--primary btn-white btn-lg">
+                      {{block.settings.button_label}}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+          {% endif %}
+      	</div>
+      {%- endfor -%}
+  </div>
+
+{% schema %}
+{
+  "name": "Two Images",
+  "tag": "section",
+  "class": "two-images-section section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mbl",
+          "label": "Mobile Image"
+        },
+		    {
+          "type": "text",
+          "id": "heading",
+		      "label": "Heading",
+          "default": "Talk about your brand"
+        },
+        {
+          "type": "range",
+          "id": "heading_size",
+          "min": 40,
+          "max": 80,
+          "step": 5,
+          "unit": "px",
+          "label": "Heading size",
+          "default": 65
+        },
+        {
+          "type": "select",
+          "id": "font_family_heading",
+          "options": [
+            {
+              "value": "Chalet-NY",
+              "label": "Chalet-NY"
+            },
+            {
+              "value": "CutiveMono-Regular",
+              "label": "CutiveMono-Regular"
+            },
+            {
+              "value": "FormulaCondensed-Black",
+              "label": "FormulaCondensed-Black"
+            },
+            {
+              "value": "FormulaCondensed-Bold",
+              "label": "FormulaCondensed-Bold"
+            },
+            {
+              "value": "FormulaCondensed-Light",
+              "label": "FormulaCondensed-Light"
+            },
+            {
+              "value": "FormulaCondensed-Regular",
+              "label": "FormulaCondensed-Regular"
+            }
+          ],
+          "default": "Chalet-NY",
+          "label": "Heading Font"
+        },
+		    {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label"
+        },
+		    {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Images",
+      "blocks": [
+      ]
+    }
+  ]
+}
+{% endschema %}

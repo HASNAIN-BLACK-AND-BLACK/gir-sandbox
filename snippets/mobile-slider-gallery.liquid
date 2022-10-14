@@ -1,0 +1,80 @@
+      {% assign maleImages = product.metafields.custom.male_image_list.value %} 
+      {% assign femaleImages = product.metafields.custom.female_image_list.value %} 
+
+      {% assign maleImagesCount = maleImages.count %}
+      {% assign femaleImagesCount = femaleImages.count %}
+    
+      {% assign imagesCount = maleImagesCount | plus: femaleImagesCount %}
+
+      <div class="wrap">
+        <div class="mb-images-frame">
+          <div class="product__media-item-metafield">
+
+            {% if product.metafields.custom.male_image_list != blank and collection.metafields.custom.gender == "Male" %}
+
+
+                {%- for maleMedia in maleImages -%} 
+                <div class="mb-image-slide">
+                    <a href="{{ maleMedia | img_url: 'master' }}" data-fancybox="pdp-mb-slider-gallery" class="zoom">
+                    <img src="{{ maleMedia | img_url : 'master' }}">
+                    </a>
+                </div>
+                {% endfor %}
+
+                {%- for femaleImage in femaleImages -%} 
+                    <div class="mb-image-slide">
+                    <a href="{{ femaleImage | img_url: 'master' }}" data-fancybox="pdp-mb-slider-gallery" class="zoom">
+                        <img src="{{ femaleImage | img_url : 'master' }}">
+                    </a>
+                    </div>
+                {% endfor %}
+
+
+            {% elsif product.metafields.custom.female_image_list != blank and collection.metafields.custom.gender == "Female" %}
+
+
+                {%- for femaleImage in femaleImages -%} 
+                    <div class="mb-image-slide">
+                    <a href="{{ femaleImage | img_url: 'master' }}" data-fancybox="pdp-mb-slider-gallery" class="zoom">
+                        <img src="{{ femaleImage | img_url : 'master' }}">
+                    </a>
+                    </div>
+                {% endfor %}
+
+                {%- for maleMedia in maleImages -%} 
+                <div class="mb-image-slide">
+                    <a href="{{ maleMedia | img_url: 'master' }}" data-fancybox="pdp-mb-slider-gallery" class="zoom">
+                    <img src="{{ maleMedia | img_url : 'master' }}">
+                    </a>
+                </div>
+                {% endfor %}
+
+            {% else %}
+
+                {%- for femaleImage in femaleImages -%} 
+                    <div class="mb-image-slide">
+                    <a href="{{ femaleImage | img_url: 'master' }}" data-fancybox="pdp-mb-slider-gallery" class="zoom">
+                    <img src="{{ femaleImage | img_url : 'master' }}">
+                    </a>
+                    </div>
+                {% endfor %}
+
+                {%- for maleMedia in maleImages -%} 
+                    <div class="mb-image-slide">
+                    <a href="{{ maleMedia | img_url: 'master' }}" data-fancybox="pdp-mb-slider-gallery" class="zoom">
+                    <img src="{{ maleMedia | img_url : 'master' }}">
+                    </a>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+
+
+          </div>
+        </div>
+        <div class="scrollbar mb-images-scroll">
+          <div class="handle">
+            <div class="mousearea"></div>
+          </div>
+        </div> 
+      </div>

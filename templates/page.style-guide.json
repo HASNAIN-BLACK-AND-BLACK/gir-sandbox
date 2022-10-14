@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "165635747792dbe39b": {
+      "type": "newsletter",
+      "settings": {
+        "bg_color": "#F6EBD8",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "16581567846bae34fb": {
+      "type": "style-guide",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "165635747792dbe39b",
+    "16581567846bae34fb"
+  ]
+}

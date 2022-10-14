@@ -1,0 +1,223 @@
+.article_sec_ninth_container {
+    display: none;
+}
+
+.sub-categories {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.sub-categories {
+    /* border-bottom: 1px solid var(--color-grey-2); */
+    width: 100%;
+}
+
+.sub-categories::-webkit-scrollbar {
+    display: none;
+}
+
+.sub-categories div+div {
+    margin-left: 4rem;
+}
+
+.sub-categories div a {
+    color: var(--color-grey-2);
+    display: block;
+    letter-spacing: .02em;
+    padding: .65rem 0;
+    position: relative;
+    text-decoration: none;
+}
+
+.sub-categories div a:hover,
+.sub-categories div a.active {
+    color: var(--color-black);
+}
+
+.sub-categories div a:hover,
+.sub-categories div a:focus,
+.sub-categories div a:focus-within,
+.sub-categories div a:visited {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sub-categories div a.active,
+.sub-categories div a:hover {
+    border-bottom: 0.5px solid var(--color-black);
+    transition: all var(--duration-defa t) ease;
+}
+
+/*  .sub-categories li a:hover::after,
+ .sub-categories li a.active::after {
+    width: 100%;
+} */
+
+/* .sub-categories:after, */
+.sub-categories div a:hover:after,
+.sub-categories div a.active:after {
+    display: none;
+}
+
+.sidebar-menu {
+    border-top: 0.5px solid rgba(126, 122, 120, 0.4);;
+}
+
+.sub-categories::after {
+    content: "";
+    border-bottom: 0.5px solid rgba(126, 122, 120, 0.4);;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.sidebar-menu-link-wrapper:first-of-type {
+    margin-left: 14px;
+}
+
+.sidebar-menu-link {
+    padding-bottom: 5px;
+}
+
+@media screen and (max-width:990px) {
+    .article_sec_ninth_container {
+        display: block;
+    }
+
+    .article_sec_ninth_container .sub-categories {
+        display: flex;
+        overflow: auto;
+        overflow-x: scroll;
+        max-width: unset;
+        margin-left: unset;
+        justify-content: flex-start !important;
+        flex-flow: row nowrap;
+        padding-left: 1.4rem;
+        padding-right: 1.4rem;
+    }
+
+    .sub-categories div {
+        max-width: max-content;
+        min-width: max-content;
+    }
+
+    .sub-categories div+div {
+        margin-left: 2.1rem;
+    }
+
+    .sub-categories div a {
+        padding: 0.45rem 0;
+    }
+
+    /*  .sub-categories li a::after {
+        bottom: 0;
+    } */
+    .sidebar-contact-pages-main {
+        flex-direction: column;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+
+    .sidebar-container {
+        width: 100%;
+        height: auto;
+        background-color: #ffffff;
+        z-index: 9999;
+    }
+
+    .pages-content {
+        width: 100%;
+        padding-top: 4rem;
+        padding-left: 2.6rem;
+        padding-right: 2.6rem;
+    }
+
+    .sidebar-menu {
+        padding-top: 1rem;
+        display: flex;
+        align-items: center;
+        overflow: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        overflow-x: scroll;
+        max-width: unset;
+        margin-left: unset;
+        justify-content: flex-start;
+        flex-flow: row nowrap;
+    }
+
+    .sidebar-menu:after {
+        content: '';
+        border-bottom: 0.5px solid rgba(126, 122, 120, .4);
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+
+    .sidebar-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sidebar-menu-link {
+        position: relative;
+        white-space: nowrap;
+        float: left;
+        cursor: pointer;
+        outline: 0;
+        box-shadow: none;
+        padding-bottom: 1rem;
+    }
+
+    .sidebar-menu-link.active {
+        color: var(--color-black);
+        /* text-decoration: underline;
+        text-underline-offset: 1.3rem;
+        text-decoration-thickness: 1px;
+        outline: 0!important;
+        box-shadow: none; */
+
+        text-decoration: none;
+        color: #000000;
+        border-bottom: 0.5px solid #000000;
+    }
+
+    .sidebar-menu-link-wrapper {
+        margin-bottom: 0;
+    }
+
+    .mobile-text-size {
+        font-size: 1.6rem;
+    }
+
+    .margin-top-sidebar {
+        top: 65px;
+        transition: 0.91s;
+    }
+
+    .sidebar-menu-link-wrapper a {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        padding-right: 0;
+        margin-right: 2.1rem;
+    }
+
+    .hide-on-desktop {
+        display: block;
+    }
+
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .sidebar-container {
+        z-index: 0;
+    }
+
+    .sidebar-menu-link-wrapper a {
+        padding-bottom: 5px;
+    }
+
+    .sidebar-menu {
+        padding-top: 5px;
+    }
+}

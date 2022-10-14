@@ -1,0 +1,414 @@
+{
+  "sections": {
+    "1662503735e3564ef1": {
+      "type": "section-one-article-2",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "padding_left": 200,
+        "padding_right": 144,
+        "main_heading": "",
+        "heading_alignment": "align-center",
+        "subheading": "DISCOVER GIR",
+        "subheading_color": "#f2a900",
+        "subheading_alignment": "align-center",
+        "show_badge": false,
+        "badge": "",
+        "badge_alignment": "align-left",
+        "back_to_blog": "",
+        "heading_color": "#343434",
+        "show_featured_image": false,
+        "custom_image": "shopify:\/\/shop_images\/Screen_Shot_2022-09-06_at_6.21.31_PM.png",
+        "custom_css": ""
+      }
+    },
+    "1659540947467f1669": {
+      "type": "section-ninth-article-1",
+      "disabled": true,
+      "settings": {
+        "blog": "gir-world",
+        "post_limit": 5,
+        "color_scheme": "background-1"
+      }
+    },
+    "main": {
+      "type": "section-one-article-2",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_left": 0,
+        "padding_right": 0,
+        "main_heading": "",
+        "heading_alignment": "align-center",
+        "subheading": "DISCOVER GIR",
+        "subheading_color": "#f2a900",
+        "subheading_alignment": "align-bottom",
+        "show_badge": false,
+        "badge": "",
+        "badge_alignment": "align-right",
+        "back_to_blog": "All Stories",
+        "heading_color": "#000000",
+        "show_featured_image": false,
+        "custom_image": "shopify:\/\/shop_images\/GIR_EDIT_R03_Page_104_Image_0001_71ad5e6d-9271-4336-b95a-126dfdbbcafb.jpg",
+        "custom_css": ""
+      }
+    },
+    "165939628669fe40cf": {
+      "type": "section-four-article-1",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 40,
+        "desktop_image": "shopify:\/\/shop_images\/GIR_EDIT_R03_Page_104_Image_0001_71ad5e6d-9271-4336-b95a-126dfdbbcafb.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/GIR_EDIT_R03_Page_104_Image_0001_71ad5e6d-9271-4336-b95a-126dfdbbcafb.jpg",
+        "image_border": true,
+        "image_credits": "",
+        "show_featured_products": false,
+        "title": "Shop the look",
+        "heading_size": "h1",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "shop_the_look": "Click to shop the look",
+        "show_swatches": true
+      }
+    },
+    "16625229423d1be867": {
+      "type": "image-banner",
+      "blocks": {
+        "1662522942bad191e4-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Discover gir",
+            "heading_size": 75,
+            "font_family_heading": "Chalet-NY"
+          }
+        }
+      },
+      "block_order": [
+        "1662522942bad191e4-0"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/gigi2_020_copy.jpg",
+        "image_mbl": "shopify:\/\/shop_images\/gigi2_020_copy.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_height": "",
+        "auto_mb_height": true,
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "16593937685a8278e9": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "1413755e-a798-4f1a-854c-77e64dc5b60b": {
+          "type": "heading",
+          "settings": {
+            "heading": "ABOUT GUEST IN RESIDENCE:",
+            "heading_color": "#000000"
+          }
+        },
+        "41ec140e-7509-414f-a247-c0d6644e0188": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>We are a 100% cashmere knitwear brand founded in New York by Gigi  Hadid, who serves as Creative Director. We design pieces to honor timeless designs and craftsmanship while building a renewed version of heritage heirlooms for all generations.<\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "1413755e-a798-4f1a-854c-77e64dc5b60b",
+        "41ec140e-7509-414f-a247-c0d6644e0188"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "padding_left": 40,
+        "padding_right": 52,
+        "text_width": 870
+      }
+    },
+    "166250593993406c44": {
+      "type": "custom-video",
+      "settings": {
+        "heading": "",
+        "heading_size": 40,
+        "font_family_heading": "CutiveMono-Regular",
+        "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/50d7c23ced13439ab686f6e02f7995b7.mp4",
+        "mb_video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/f4d5d18632334a668f37553d95c65a55.mp4",
+        "button_text": "",
+        "button_link": "",
+        "full_width": true,
+        "padding_top": 76,
+        "padding_bottom": 92
+      }
+    },
+    "1659355233e90f1515": {
+      "type": "section-three-article-1",
+      "disabled": true,
+      "blocks": {
+        "48a1444f-fa0b-493a-832a-4ba2133e607b": {
+          "type": "products1",
+          "settings": {
+            "product": "base-layer-turtleneck-black"
+          }
+        },
+        "05f90186-23ec-4dde-8351-569ef21d9d3b": {
+          "type": "products2",
+          "settings": {
+            "product": "base-layer-turtleneck-black"
+          }
+        },
+        "6b7728c8-eaa9-4838-ba94-ab1e0903555a": {
+          "type": "products1",
+          "settings": {
+            "product": "shrunken-crew-steel"
+          }
+        }
+      },
+      "block_order": [
+        "48a1444f-fa0b-493a-832a-4ba2133e607b",
+        "05f90186-23ec-4dde-8351-569ef21d9d3b",
+        "6b7728c8-eaa9-4838-ba94-ab1e0903555a"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_left": 40,
+        "padding_right": 40,
+        "image1": "shopify:\/\/shop_images\/Screen_Shot_2022-09-02_at_4.29.28_PM.png",
+        "image1_border": true,
+        "image_credits1": "",
+        "image2": "shopify:\/\/shop_images\/tonne_142_R2.jpg",
+        "image2_border": true,
+        "image_credits2": "GUEST IN RESIDENCE 2022",
+        "show_featured_products": true,
+        "title": "Shop the look",
+        "heading_size": "h2",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "shop_the_look": "Click to shop the look",
+        "show_second_above": false,
+        "show_swatches": true
+      }
+    },
+    "166252335424863bee": {
+      "type": "image-banner",
+      "blocks": {
+        "1662523354c0d226da-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": 70,
+            "font_family_heading": "Chalet-NY"
+          }
+        },
+        "1662523354c0d226da-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "1662523354c0d226da-2": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "1662523354c0d226da-0",
+        "1662523354c0d226da-1",
+        "1662523354c0d226da-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/gigi_004_2_d46d35d7-b4d9-4bda-b389-18651d96f125.jpg",
+        "image_mbl": "shopify:\/\/shop_images\/gigi_004_2_d46d35d7-b4d9-4bda-b389-18651d96f125.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_height": "",
+        "auto_mb_height": true,
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "1659533370b034f1f6": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "750b95bf-9a34-4146-a2d3-7626374376d9": {
+          "type": "heading",
+          "settings": {
+            "heading": "ABOUT gigi hadid:",
+            "heading_color": "#000000"
+          }
+        },
+        "5fa89ac5-7e38-4bf1-bcee-50f6f2071389": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>Celebrated supermodel Gigi Hadid (b. 1995) began her modeling career as a toddler when she appeared in a campaign at two years old. She signed with IMG models when she was just 17.<\/p>",
+            "heading_color": "#000000"
+          }
+        },
+        "56594926-d439-419d-aedf-b21f3108977d": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "750b95bf-9a34-4146-a2d3-7626374376d9",
+        "5fa89ac5-7e38-4bf1-bcee-50f6f2071389",
+        "56594926-d439-419d-aedf-b21f3108977d"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 50,
+        "padding_bottom": 0,
+        "padding_left": 40,
+        "padding_right": 52,
+        "text_width": 870
+      }
+    },
+    "49b8f6e9-06c3-4205-916f-1ecbe33e810f": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "8533cfe5-5e62-43ef-836a-e0d47c0bb01a": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>Alongside modeling, Hadid has designed several capsule fashion collections with other brands. Gigi has also taken up photography, shooting campaigns, and editorials for Versace, Miu Miu, Weekend Max Mara, V Magazine, and i-D Magazine.<\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "8533cfe5-5e62-43ef-836a-e0d47c0bb01a"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 10,
+        "padding_bottom": 0,
+        "padding_left": 40,
+        "padding_right": 52,
+        "text_width": 870
+      }
+    },
+    "1efe2aa9-0459-4e1c-a46c-5b9bf64f6544": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "907271e9-2f9b-45e7-a865-22625534d8b6": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>With lifelong experience as a model and creative, Guest In Residence is Hadid’s way of paying homage to those who taught her, paving the way for the next generation of creatives, all while pioneering a modernized take on heritage.<\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "907271e9-2f9b-45e7-a865-22625534d8b6"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 10,
+        "padding_bottom": 0,
+        "padding_left": 40,
+        "padding_right": 52,
+        "text_width": 870
+      }
+    },
+    "afd5eab4-f11f-4821-8999-7da97bdf25c9": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "0257e76a-7294-42d9-b69a-5ce7b439e8d4": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>For more information:<\/p><p>Follow us @guestinresidence or email us at contact@guestinresidence.com.<\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "0257e76a-7294-42d9-b69a-5ce7b439e8d4"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_left": 40,
+        "padding_right": 52,
+        "text_width": 870
+      }
+    },
+    "165953710795f99ca4": {
+      "type": "section-eighth-article-1",
+      "disabled": true,
+      "settings": {
+        "heading": "MORE STORIES",
+        "heading_size": "h1",
+        "blog": "gir-world",
+        "post_limit": 5,
+        "columns_desktop": 3,
+        "color_scheme": "background-1",
+        "show_image": true,
+        "show_date": false,
+        "show_author": false,
+        "show_view_all": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "1662503735e3564ef1",
+    "1659540947467f1669",
+    "main",
+    "165939628669fe40cf",
+    "16625229423d1be867",
+    "16593937685a8278e9",
+    "166250593993406c44",
+    "1659355233e90f1515",
+    "166252335424863bee",
+    "1659533370b034f1f6",
+    "49b8f6e9-06c3-4205-916f-1ecbe33e810f",
+    "1efe2aa9-0459-4e1c-a46c-5b9bf64f6544",
+    "afd5eab4-f11f-4821-8999-7da97bdf25c9",
+    "165953710795f99ca4"
+  ]
+}

@@ -1,0 +1,359 @@
+.nl-popup-heading h3 {
+     font-size: 24px;
+     line-height: 39px;
+     letter-spacing: 0.02em;
+     text-transform: uppercase;
+     color: #090909;
+     margin-bottom: 10px;
+     text-align: left;
+     margin-top: 0px;
+     font-family: 'CutiveMono-Regular';
+  	font-weight: 400;
+}
+
+.bottom-nl-popup-form {
+     position: fixed;
+     bottom: -100%;
+     width: 100%;
+     transition: 0.5s;
+     padding: 40px;
+     margin-top: 30px;
+     background: #FFFFFF;
+     border-radius: 12px 12px 0px 0px;
+     left: 0;
+     z-index: 30;
+     min-height: 240px;
+     opacity: 0;
+     visibility: hidden;
+}
+.bottom-nl-popup-form.open {
+     bottom: 0;
+     opacity: 1;
+     visibility: visible;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .field:after {
+     display: none;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .field.checkbox-field {
+     margin-bottom: 20px;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .as-field__input {
+     background-color: transparent;
+     flex: 1 0 0;
+     margin-right: 32px;
+     font-family: 'CutiveMono-Regular';
+     outline: none;
+     box-shadow: none;
+     padding: 28px 20px 10px 0;
+     border: 0;
+     border-bottom: 1px solid #000;
+     border-radius: 0;
+     font-size: 16px;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .as-field__input:focus::-webkit-input-placeholder {
+     opacity: 0;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .as-field__input:focus:-ms-input-placeholder {
+     opacity: 0;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .as-field__input:focus::placeholder {
+     opacity: 0;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .as-field__input::-webkit-input-placeholder {
+    /* Edge */
+     font-size: 16px;
+     color: #000;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .as-field__input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+     font-size: 16px;
+     color: #000;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .as-field__input::placeholder {
+     font-size: 16px;
+     color: #000;
+}
+.bottom-nl-popup-form .newsletter-form__button {
+     flex: 0 0 auto;
+     position: initial;
+     width: auto;
+     padding: 15px 20px;
+     border: 1px solid #000000;
+     border-radius: 3px;
+     font-size: 16px;
+     line-height: 24px;
+     letter-spacing: 0.02em;
+     text-transform: uppercase;
+     color: #000;
+     min-width: 308px;
+     width: calc(100% - 10px);
+     font-family: 'CutiveMono-Regular';
+}
+.bottom-nl-popup-form .bottom-nl-popup-form .newsletter-form__button:hover {
+     background-color: #000 !important;
+     color: #fff;
+}
+.bottom-nl-popup-form .bottom-nl-popup-form .newsletter-form__button:focus {
+     background-color: #fff;
+     color: #000;
+     border-color: #9dba4a;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .field {
+     align-items: center;
+}
+.bottom-nl-popup-form .bottom-nl-popup-inner {
+     max-width: 1366px;
+     margin: 0 auto;
+}
+.bottom-nl-popup-form .newsletter-form__button:hover {
+     background-color: #000;
+     color: #fff;
+}
+ .banner__content.banner__content--middle-center {
+     max-width: 100% !important;
+}
+ img.mobile-image {
+     display: none !important;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper p {
+     margin: 0;
+}
+.bottom-nl-popup-form .password-page-main .newsletter-form__field-wrapper p {
+    display: inline;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .field.checkbox-field {
+     margin-bottom: 0;
+}
+ .pw-social-icon {
+     position: fixed;
+     z-index: 16;
+     bottom: 40px;
+     right: 40px;
+     cursor: pointer;
+}
+ .pw-social-icon a {
+     display: block;
+     width: 26px;
+}
+ .pw-social-icon a img {
+     width: 100%;
+}
+ .bottom-nl-popup-form .newsletter-form__message {
+     font-size: 25px;
+     text-align: left;
+     max-width: 1200px;
+     margin: 0 auto;
+     line-height: 32px;
+     font-weight: 400;
+     font-family: CutiveMono-Regular;
+     text-transform: uppercase;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper {
+     display: flex !important;
+     flex-wrap: wrap;
+     align-items: center;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .field.checkbox-field {
+     flex: 0 0 100%;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .field {
+     flex: 1 0 0;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .form-submit-btn {
+     flex: 0 0 auto;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .field {
+     position: relative;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper .field .error-message {
+     position: absolute;
+     right: 35px;
+     top: 17px;
+     color: #B5170D;
+     font-family: 'CutiveMono-Regular';
+     font-size: 16px;
+     text-transform: uppercase;
+}
+ label.checkbox-label.not-checked p, label.checkbox-label.not-checked p a, label.checkbox-label.not-checked a, label.checkbox-label.not-checked .privacy-agreement-text {
+     color: #B5170D;
+}
+
+ label.checkbox-label.not-checked .checkmark {
+     border-color: #B5170D;
+}
+
+label.checkbox-label.not-checked input:checked + span + div p, label.checkbox-label.not-checked input:checked + span + div a {
+    color: #090909;
+}
+label.checkbox-label.not-checked input:checked + span.checkmark {
+	border-color: #000;
+}
+span.nl-popup-trigger {
+     display: block;
+     cursor: pointer;
+ }
+.bottom-nl-popup-trigger .nl-popup-trigger:hover {
+     color: #f2a900;
+}
+ span.nl-form-close {
+     position: absolute;
+     top: 30px;
+     right: 30px;
+     cursor: pointer;
+}
+ span.nl-form-close img {
+     width: 24px;
+     height: 24px;
+}
+
+.privacy-agreement-text {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: .02em;
+    color: #090909;
+    text-decoration: none;
+    text-align: left;
+    font-family: 'CutiveMono-Regular';
+}
+
+.privacy-agreement-text a {
+        font-size: 14px;
+    line-height: 24px;
+    letter-spacing: .02em;
+    color: #000;
+    text-align: left;
+    font-family: CutiveMono-Regular;
+    cursor: pointer;
+    text-decoration: underline;
+      text-underline-offset: 0.5rem;
+}
+
+.privacy-agreement-text a:hover {
+  color: #7e7a78;
+
+}
+span.nl-popup-trigger img {
+     width: 110px;
+     /* height: 110px; */
+ }
+.newsletter-sticky-btn img {
+    -webkit-animation: rotation 6s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+
+ .password-page-main .newsletter-form {
+     max-width: 100%;
+}
+.bottom-nl-popup-form .checkbox-label .checkmark {
+     height: 36px;
+     width: 36px;
+     position: relative;
+     display: block;
+     border: 1px solid #000000;
+     border-radius: 6px;
+     padding: 5px;
+     cursor: pointer;
+     flex: 0 0 auto;
+}
+.bottom-nl-popup-form .checkbox-label .checkmark:before {
+     content: '';
+     width: 100%;
+     height: 100%;
+     background-color: #000;
+     display: none;
+     border-radius: 3px;
+}
+.bottom-nl-popup-form .checkbox-label input:checked + .checkmark:before {
+     display: block;
+}
+.bottom-nl-popup-form .checkbox-label {
+     display: flex;
+     flex-wrap: wrap;
+     align-items: flex-start;
+  	 width: 100%;
+}
+.bottom-nl-popup-form .checkbox-label div {
+     flex: 1 0 0;
+     margin-left: 20px;
+}
+.bottom-nl-popup-form .checkbox-label input[type=checkbox] {
+     position: absolute;
+     opacity: 0;
+     z-index: 1;
+     cursor: pointer;
+}
+.bottom-nl-popup-form .newsletter-form__field-wrapper p {
+    display: inline;
+}
+
+.bottom-nl-popup-form  .form-success .success-hide { display: none !important; }
+
+.popup-nl-message.show-msg {
+     display: block;
+ }
+ 
+ .popup-nl-message {
+     display: none;
+ }
+ .hp-middle-nl-inner .privacy-agreement-text a {
+     color: #000;
+ }
+ .hp-middle-nl-inner .privacy-agreement-text a:hover {
+     color: #7e7a78;
+ }
+@media only screen and (max-width: 992px){
+     .bottom-nl-popup-form .newsletter-form__field-wrapper .field .error-message {
+          position: absolute;
+          font-size: 10px;
+          left: 0;
+          bottom: -14px !important;
+          top: auto;
+          line-height: normal;
+     }
+     .hp-middle-nl-inner .privacy-agreement-text {
+          max-width: 100%;
+     }
+     .bottom-nl-popup-form .newsletter-form__field-wrapper .field {
+     display: block;
+     text-align: left;
+     }
+     
+     .bottom-nl-popup-form .newsletter-form__field-wrapper .as-field__input {
+     margin: 0;
+     width: 100%;
+     }
+     .bottom-nl-popup-form .newsletter-form__field-wrapper {
+          display: block !important;
+      }
+}
+
+@media only screen and (max-width: 750px){
+
+     .bottom-nl-popup-form .checkbox-label .checkmark {
+          height: 22px;
+          width: 22px;
+          padding: 3px;
+          border-radius: 3.5px;
+      }
+      
+      .bottom-nl-popup-form .checkbox-label .checkmark:before {
+          border-radius: 1.83333px;
+      }
+      .bottom-nl-popup-form .newsletter-form__button {
+          width: 100%;
+      }
+      .newsletter-form__field-wrapper .field__input {
+          font-size: 14px;
+      }
+}

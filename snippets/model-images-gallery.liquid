@@ -1,0 +1,169 @@
+<media-gallery id="MediaGallery-{{ section.id }}" role="region" {% if section.settings.enable_sticky_info %}class="product__media-gallery"{% endif %} aria-label="{{ 'products.product.media.gallery_viewer' | t }}" data-desktop-layout="{{ section.settings.gallery_layout }}">
+    <div id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter">
+
+      <ul {% if product.images.size > 3%}id="pdp_media_slider"{% endif %} class="product__media-list contains-media grid grid--peek list-unstyled" role="list">
+        {% assign modelImages = product.metafields.custom.model_images.value %}
+        {%- for media in modelImages -%}
+
+          {% if media.alt == 'Female' and collection.metafields.custom.gender == "Female" %}
+            <li id="Slide-{{ section.id }}-{{ media.id }}" class="product__media-item grid__item slider__slide{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
+              {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+              {% render 'product-thumbnail', media: media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+
+            {% elsif media.alt == 'Male' and collection.metafields.custom.gender == "Male"  %}
+
+            <li id="Slide-{{ section.id }}-{{ media.id }}" class="product__media-item grid__item slider__slide{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
+              {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+              {% render 'product-thumbnail', media: media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+
+          {% endif %}
+        {%- endfor -%}
+
+        {%- for media in modelImages -%}
+
+          {% if media.alt != 'Female' and  media.alt != 'Male' %}
+            <li id="Slide-{{ section.id }}-{{ media.id }}" class="product__media-item grid__item slider__slide{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
+              {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+              {% render 'product-thumbnail', media: media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+          {% endif %}
+        {%- endfor -%}
+
+        {%- for media in modelImages -%}
+
+        {% if media.alt != 'Female' and  media.alt != 'Male' %}
+          <li id="Slide-{{ section.id }}-{{ media.id }}" class="product__media-item grid__item slider__slide{% if product.selected_or_first_available_variant.featured_media == null and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}">
+            {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+            {% render 'product-thumbnail', media: media, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+          </li>
+        {% endif %}
+      {%- endfor -%}
+
+      </ul>
+
+      {% if product.images.size > 3%}
+      <ul id="media-thumbnails" class="stay">
+        {%- for image in product.images -%}
+
+          {% if image.alt == 'Female' and collection.metafields.custom.gender == "Female" %}
+            <li>
+              <img src="{{image | img_url : '200x'}}" alt="{{image.alt}}">
+            </li>
+          {% elsif image.alt == 'Male' and collection.metafields.custom.gender == "Male"  %}
+            <li>
+              <img src="{{image | img_url : '200x'}}" alt="{{image.alt}}">
+            </li>
+          {% endif %}
+        {% endfor %}
+
+        {%- for image in product.images -%}
+
+          {% if image.alt != 'Female' and  image.alt != 'Male' %}
+            <li>
+              <img src="{{image | img_url : '200x'}}" alt="{{image.alt}}">
+            </li>
+          {% endif %}
+        {% endfor %}
+
+
+      </ul>
+      {% endif %}
+    </div>
+
+  </media-gallery>
+
+  <script>
+    $(document).ready(function(){
+
+
+      
+
+          // slider #2
+          const slick_2 = $("#pdp_media_slider");
+          slick_2.slick({
+            dots: false,
+            vertical: true,
+            verticalSwiping: false,
+            infinite: false, 
+            slidesToShow: {{product.media.size}},
+            slidesToScroll: 3,
+            arrows: false,
+            asNavFor: '#media-thumbnails'
+          });
+
+          $('#media-thumbnails').slick({
+            slidesToShow: 15,
+            slidesToScroll: 3,
+            asNavFor: '#pdp_media_slider',
+            dots: false,
+            arrows: false,
+            infinite: false,
+            centerMode: true,
+            focusOnSelect: true,
+            vertical: true,
+            verticalSwiping: true
+          });
+
+          
+      $('.product__media-wrapper .slick-slide [data-fancybox="pdp-gallery"]').fancybox({
+        buttons: [
+          "zoom",
+          "fullScreen",
+          "close"
+        ],
+        infobar: false,
+        toolbar: true,
+        baseClass: "pdp-fancy-box",
+        btnTpl: {
+        arrowLeft:
+          '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
+          '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">' +
+          '<line x1="8.70711" y1="12.832" x2="18" y2="22.125" stroke="black" stroke-linecap="round"/>' +
+          '<line x1="17.9055" y1="3.7071" x2="8.70632" y2="12.8354" stroke="black" stroke-linecap="round"/>' +
+          "</svg>" +
+          "</button>",
+
+        arrowRight:
+          '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}">' +
+          '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">' +
+          '<line x1="17.2929" y1="13.168" x2="7.99997" y2="3.87504" stroke="black" stroke-linecap="round"/>' +
+          '<line x1="8.09453" y1="22.2929" x2="17.2937" y2="13.1646" stroke="black" stroke-linecap="round"/>' +
+          "</svg>" +
+          "</button>"
+      },
+      onInit : function( instance ) {
+        instance.$refs.toolbar.find('.fancybox-zoom').on('click', function() {
+          if ( instance.isScaledDown() ) {
+            instance.scaleToActual();
+          } else {
+            instance.scaleToFit();
+          }
+        });
+        }
+      });
+
+      
+      $('.mobile-product-images [data-fancybox="pdp-gallery"]').fancybox({
+        buttons: [
+          "close"
+        ],
+        infobar: false,
+        toolbar: true,
+        baseClass: "pdp-fancy-box pdp-slider-fancy-box",
+      onInit : function( instance ) {
+        instance.$refs.toolbar.find('.fancybox-zoom').on('click', function() {
+          if ( instance.isScaledDown() ) {
+            instance.scaleToActual();
+          } else {
+            instance.scaleToFit();
+          }
+        });
+        } 
+      });
+
+          
+      })
+  </script>
+

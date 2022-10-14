@@ -1,0 +1,16 @@
+<style>
+    /* Color Swatch from Metafields */
+    
+    {% assign color_swatch_name_list = shop.metafields.globals.color_swatch_name %}
+    {% assign color_swatch_hex_list = shop.metafields.globals.color_swatch_hex %}
+
+    {% if color_swatch_name_list.size != 0 and color_swatch_hex_list.size != 0 %}
+        {% for color_swatch_name in color_swatch_name_list %}
+            {% assign color_swatch_hex = color_swatch_hex_list[forloop.index0] %}
+            {% assign color_swatch_handle = color_swatch_name | handle %}
+            .color-swatch[data-swatch-color="{{color_swatch_handle}}"] {background-color: {{color_swatch_hex}}}
+        {% endfor %}
+    {% endif %}
+
+  
+</style>

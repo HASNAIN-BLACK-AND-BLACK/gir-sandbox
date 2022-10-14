@@ -1,0 +1,292 @@
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-article-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-featured-blog.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-article-card.css' | asset_url | stylesheet_tag }}</noscript>
+
+{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'jquery-ui.min.js' | asset_url }}"></script>
+<script src="{{ 'sly.min.js' | asset_url }}"></script> 
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .featured-blog h2.blog__title{
+    font-size: {{ section.settings.heading_size | append: 'px' }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .section-{{ section.id }}-padding {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign posts_displayed = section.settings.blog.articles_count
+  if section.settings.post_limit <= section.settings.blog.articles_count
+    assign posts_exceed_limit = true
+    assign posts_displayed = section.settings.post_limit
+  endif
+-%}
+<div class="featured-blog blog gradient{% if section.settings.heading == blank %} no-heading{% endif %}">
+  <div class="page-width-desktop isolate{% if posts_displayed < 3 %} page-width-tablet{% endif %} section-{{ section.id }}-padding">
+    {%- unless section.settings.heading == blank -%}
+      <div class="title-wrapper-with-link{% if posts_displayed > 2 %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
+        <h2 class="blog__title family-{{ section.settings.font_family_heading }}">{{ section.settings.heading | escape }}</h2>
+
+        {%- if section.settings.show_view_all -%}
+          <div class="blog__view-all">
+            <a href="{{ section.settings.blog.url }}" class="blog__button button">
+              {{ 'sections.featured_blog.view_all' | t }}
+            </a>
+          </div>
+      {%- endif -%}
+        
+      </div>
+    {%- endunless -%}
+    {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+    <div class="fb-wrap">
+      <div class="fb-frame">
+        <ul class="blog__posts articles-wrapper contains-card" role="list">
+          {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
+            <li class="fb-slide blog__post grid__item article slider__slide">
+              {% render 'article-card', blog: section.settings.blog, article: article, media_aspect_ratio: 1.66, show_image: section.settings.show_image, show_date: section.settings.show_date, show_author: section.settings.show_author, show_excerpt: false %}
+            </li>
+          {%- endfor -%}
+        </ul>
+
+      </div>
+    </div>
+      
+    {%- else -%}
+      <div class="blog-placeholder">
+        <div class="placeholder media media--landscape">
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+        <div class="blog-placeholder__content">
+          <h2>
+            {{ 'sections.featured_blog.onboarding_title' | t }}
+          </h2>
+          <p class="rte-width">
+            {{ 'sections.featured_blog.onboarding_content' | t }}
+          </p>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    (function () {
+    var $frame = $('.fb-frame'); 
+    var $wrap  = $frame.parent();
+  
+    // Call Sly on frame
+      $frame.sly({
+        horizontal: 1,
+        itemNav: 'basic',
+        smart: 1,
+        mouseDragging: 1,
+        touchDragging: 1,
+        releaseSwing: 1,
+        startAt: 0,
+        //scrollBar: $wrap.find('.scrollbar'),
+        speed: 1000,
+        elasticBounds: 1,
+        easing: 'easeOutExpo',
+        dragHandle: 1,
+        dynamicHandle: 1,
+        clickBar: 1, 
+        cycleBy: null,
+  
+        // Buttons
+        //prevPage: $wrap.find('.arrow-prev'),
+        //nextPage: $wrap.find('.arrow-next')
+        });
+    }());
+  
+    $(window).resize(function(e) {
+      $('.fb-frame').sly('reload');
+    }); 
+  })
+  </script>
+
+{% schema %}
+{
+  "name": "t:sections.featured-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Blog posts",
+      "label": "t:sections.featured-blog.settings.heading.label"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "font_family_heading",
+      "options": [
+        {
+          "value": "Chalet-NY",
+          "label": "Chalet-NY"
+        },
+        {
+          "value": "CutiveMono-Regular",
+          "label": "CutiveMono-Regular"
+        },
+        {
+          "value": "FormulaCondensed-Black",
+          "label": "FormulaCondensed-Black"
+        },
+        {
+          "value": "FormulaCondensed-Bold",
+          "label": "FormulaCondensed-Bold"
+        },
+        {
+          "value": "FormulaCondensed-Light",
+          "label": "FormulaCondensed-Light"
+        },
+        {
+          "value": "FormulaCondensed-Regular",
+          "label": "FormulaCondensed-Regular"
+        }
+      ],
+      "default": "CutiveMono-Regular",
+      "label": "Heading Font"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.post_limit.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.columns_desktop.label"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_image.label",
+      "info": "t:sections.featured-blog.settings.show_image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.featured-blog.settings.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_view_all.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "News"
+      }
+    }
+  ]
+}
+{% endschema %}

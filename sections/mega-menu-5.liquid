@@ -1,0 +1,167 @@
+{% include 'mega-menu' %}
+
+
+
+{% schema %}
+  {
+    "name": "Mega Menu 5",
+    "class": "mega-menu-section",
+    "settings": [
+		{
+          "type": "text",
+          "id": "menu_handle",
+          "label": "Menu Handle"
+       	}
+	],
+  	"blocks": [
+        {
+   		"type": "menu",
+        "name": "Menu",
+        "settings": [
+        	{
+              "type": "text",
+              "id": "heading",
+              "label": "Heading"
+            },
+        	{
+              "type": "link_list",
+              "id": "megamenu_linklist",
+              "label": "Menu"
+            },
+            {
+              "type": "select",
+              "id": "menu_alignment",
+              "label": "Menu Alignment",
+              "default": "right",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "Center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ]
+            },
+            {
+              "type": "range",
+              "id": "column_width",
+              "min": 20,
+              "max": 100,
+              "step": 5,
+              "default": 25,
+              "unit": "%",
+              "label": "Column Width"
+            }
+        ]
+      },
+		{
+   		"type": "image",
+        "name": "Image",
+        "settings": [
+			{
+              "type": "text",
+              "id": "heading",
+              "label": "Heading"
+            },
+        	{
+              "type": "image_picker",
+              "id": "megamenu_image",
+              "label": "Image"
+            },
+        	{
+              "type": "url",
+              "id": "megamenu_image_link",
+              "label": "Image Link"
+            },
+            {
+              "type": "range",
+              "id": "column_width",
+              "min": 20,
+              "max": 100,
+              "step": 5,
+              "default": 25,
+              "unit": "%",
+              "label": "Column Width"
+            },
+			{
+				"type": "checkbox",
+				"id": "hide_mb",
+				"label": "Hide on mobile",
+				"default": true
+			}
+        ]
+      },
+		{
+   		"type": "video",
+        "name": "Video",
+        "settings": [
+			{
+              "type": "text",
+              "id": "heading",
+              "label": "Heading"
+            },
+        	{
+              "type": "url",
+              "id": "megamenu_video",
+              "label": "Video Link"
+            },
+            {
+              "type": "range",
+              "id": "column_width",
+              "min": 20,
+              "max": 100,
+              "step": 5,
+              "default": 25,
+              "unit": "%",
+              "label": "Column Width"
+            },
+			{
+				"type": "checkbox",
+				"id": "hide_mb",
+				"label": "Hide on mobile",
+				"default": true
+			}
+        ]
+      },
+		{
+   		"type": "aritcle",
+        "name": "Featured Articles",
+        "settings": [
+        	{
+              "type": "text",
+              "id": "heading",
+              "label": "Heading"
+            },
+			{
+              "type": "blog",
+              "id": "featured_blog",
+              "label": "Featured Blog"
+            },
+            {
+              "type": "range",
+              "id": "column_width",
+              "min": 20,
+              "max": 100,
+              "step": 5,
+              "default": 25,
+              "unit": "%",
+              "label": "Column Width"
+            },
+			{
+				"type": "checkbox",
+				"id": "hide_mb",
+				"label": "Hide on mobile",
+				"default": false
+			}
+        ]
+      }
+   ]
+  }
+{% endschema %}
+

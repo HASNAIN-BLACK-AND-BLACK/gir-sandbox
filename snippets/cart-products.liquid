@@ -1,0 +1,119 @@
+{% assign name_temp = cart-products %}
+
+<div x-ref="cart_content" class="cart_content">
+    <div class="cart-notification__header" x-show="showMiniCart">
+      <h5 class="cart-notification__heading caption-large text-body" x-show="showMiniCart">{{ 'general.cart.view' | t }} (<span class="cart_item_count">{{ cart.item_count }}</span>)</h5>
+      <button type="button" @click="cart_functioality.animate_drawer('showMiniCart')" class="cart-notification__close modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
+        <svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="#icon-close"></svg>
+      </button>
+    </div>
+    <div id="cart-notification-product" x-show="showMiniCart" class="cart-notification-product">
+      {% if cart.item_count > 0 %}
+      {% assign total_savings = 0 %}
+      <form>
+        <div class="cart_items_parent">
+          {% for item in cart.items %}
+            <div class="cart-item">
+              <div class="cart-item-flex">
+                <div class="cart-item-media w-30">
+                  {% if item.image %}
+                    {{ item.image | image_url: width: 100 | image_tag: loading: 'lazy', class: 'w-full pr-3' }}
+                  {% endif %}
+                </div>
+                <div class="cart-item-media w-70">
+                  <div class="cart-info-flex">
+                    <div class="info-content">
+                      <h3 class="cart-product-title"><a href="{{ item.url }}" class="link" title="{{ item.product.title }}">{{ item.product.title }}</a></h3>
+                      {%- if item.product.has_only_default_variant == false -%}
+                        {%- for option in item.options_with_values -%}
+                          {% if option.name == 'Color' %}
+                            <p class="cart-item-title">{{ option.value }}</p>
+                          {% endif %}
+                        {%- endfor -%}
+                      {%- endif -%}
+                      {%- if item.product.has_only_default_variant == false -%}
+                        {%- for option in item.options_with_values -%}
+                          {% if option.name == 'Size' %}
+                            <p class="cart-item-title">{{ option.value }}</p>
+                          {% endif %}
+                        {%- endfor -%}
+                      {%- endif -%}
+                      {% if item.line_level_discount_allocation.size > 0 %}
+                        {% assign item_discount = item.original_price | minus: item.price %}
+                          <div class="cart-item-price">
+                            <span class="money">{{ item.price | money | replace: ' ', ''}}</span>
+                          </div>
+                          <div class="cart-item-price discount">
+                            <span class="money">{{ item.original_price | money | replace: ' ', ''}}</span>
+                          </div>
+                        {% for discount_allocation in item.line_level_discount_allocation %}
+                          <div class="cart-discount-list">
+                            <i>{{ discount_allocation.discount_application.title }}</i>
+                          </div>
+                        {% endfor %}
+                      {% endif %}
+                      <!-- <p class="cart-item-quantity">Quantity: <span>{{ item.quantity }}</span></p> -->
+                      <quantity-input class="quantity">
+                        <button class="quantity__button no-js-hidden" name="minus" type="button" @click.debounce="cart_functioality.updateItemCart({{ item.index | plus: 1 }}, {{ item.quantity | minus: 1 }})">
+                          <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
+                          {% render 'icon-minus' %}
+                        </button>
+                        <input class="quantity__input"
+                          type="number"
+                          name="updates[]"
+                          value="{{ item.quantity }}"
+                          min="0"
+                          aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                          id="Quantity-{{ item.index | plus: 1 }}"
+                          data-index="{{ item.index | plus: 1 }}"
+                          readonly
+                        >
+                        <button class="quantity__button no-js-hidden" name="plus" type="button" @click.debounce="cart_functioality.updateItemCart({{ item.index | plus: 1 }}, {{ item.quantity | plus: 1 }})">
+                          <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
+                          {% render 'icon-plus' %}
+                        </button>
+                      </quantity-input>
+                      <div class="cart-item-price {% if item.product.compare_at_price > item.price %}text-red-700{% endif %}">
+                          <span class="money">{{ item.price | money | replace: ' ', '' }}</span>
+                          {% if item.product.price > item.price %}
+                            {% assign item_saving = item.product.compare_at_price | minus: item.price %}
+                            {% assign total_savings = total_savings | plus: item_saving %}
+                            <br>
+                            <s>{{ item.product.compare_at_price | money | replace: ' ', '' }}</s>
+                          {% endif %}
+                        </div>
+                          <button type="button" class="cart-item-remove link link--underline" id="{{ forloop.index }}" title="remove {{ item.product.title }}"
+                            @click="cart_functioality.updateItemCart({{ forloop.index }}, 0)">
+                            Remove
+                        </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    </form>
+        {% else %}
+        <p class="no-cart-item">{{ 'sections.cart.empty_cart' | t }}</p>
+      {% endif %}
+    </div>
+    {% if cart.item_count > 0 %}
+      <div class="cart-notification__links border" x-show="showMiniCart">
+        <div class="cart-subtotal">
+          <p class="subtotal-text">{{ 'sections.cart.subtotal' |t }}</p>
+          <p>{{ cart.total_price | money | replace: ' ', '' }}</p>
+        </div>
+
+        <a href="/checkout" id="cart-checkout-button" class="button button--secondary button--full-width">{{ 'sections.cart.checkout' | t }}</a>
+
+        <a href="{{ routes.cart_url }}" id="cart-notification-button" class="button button--secondary button--full-width">{{ 'sections.cart.mini_cart_btn' | t }}</a>
+        
+        <button type="button" class="link button-label btn-continue-shop" @click="cart_functioality.animate_drawer('showMiniCart')">{{ 'sections.cart.continue_shopping' | t }}</button> 
+      </div>
+      {% else %}
+      <div class="cart-notification__links empty" x-show="showMiniCart">
+        <button type="button" id="cart-notification-button" class="link button-label btn-continue-shop" @click="cart_functioality.animate_drawer('showMiniCart')">{{ 'sections.cart.continue_shopping' | t }}</button>
+      </div>
+    {% endif %}
+</div>

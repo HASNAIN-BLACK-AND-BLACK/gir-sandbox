@@ -1,0 +1,178 @@
+<div class="mega-menu-main" data-id="{{section.settings.menu_handle}}" id="{{section.settings.menu_handle}}" tabindex="-1">
+  <div class="mega-menu-inner">
+    <div class="flex-row">
+	
+      {% for block in section.blocks %}
+      
+      	{% case block.type %}
+        
+      	{% when 'menu' %}
+      
+      		<div class="mega-menu-column mm-menu-block menu-alignment-{{block.settings.menu_alignment}}" style="flex: 0 0 {{block.settings.column_width}}%;">
+              
+      			{% assign megaMenuLinks = block.settings.megamenu_linklist %}
+              
+              {% if megaMenuLinks.links.size > 7 %}
+              	<ul class="{% if megaMenuLinks.links.size > 7 %}inline-menu{% endif %}">
+                  
+                  {% for link in megaMenuLinks.links limit: 7 %}
+                      <li><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+                  {% endfor %}
+                  
+                </ul>
+              
+                {% if megaMenuLinks.links.size > 7 %}
+                <ul class="{% if megaMenuLinks.links.size > 7 %}inline-menu{% endif %}">
+
+                  {% for link in megaMenuLinks.links limit: 7 offset: 7 %}
+                  <li><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+                  {% endfor %}
+
+                </ul>
+
+                {% endif %}
+              
+              {% if megaMenuLinks.links.size > 14 %}
+              	<ul class="{% if megaMenuLinks.links.size > 14 %}inline-menu{% endif %}">
+                  
+                  {% for link in megaMenuLinks.links limit: 7 offset: 14 %}
+                      <li><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+                  {% endfor %}
+                  
+                </ul>
+              {% endif %}
+              {% else %}
+              
+              <ul>
+                  {% for link in megaMenuLinks.links %}
+                      <li><a href="{{link.url}}" title="{{link.title}}">{{link.title}}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+              
+              
+      		</div>
+
+      	{% when 'image' %}    
+            
+      		<div class="mega-menu-column mm-image-block {% if block.settings.hide_mb %}mm-hide-mobile{% endif %}" style="flex: 0 0 {{block.settings.column_width}}%;">
+              
+              {%- if block.settings.heading != blank -%}
+            	<h2>{{block.settings.heading}}</h2>
+            {%- endif -%}
+              
+              <div class="mm-image-wrap">
+              	<img src="{{block.settings.megamenu_image | img_url : 'master' }}" alt="{{block.settings.megamenu_image.alt}}">
+              </div>
+      		</div>
+
+        {% when 'video' %}
+
+            <div class="mega-menu-column mm-image-block {% if block.settings.hide_mb %}mm-hide-mobile{% endif %}" style="flex: 0 0 {{block.settings.column_width}}%;">
+                {%- if block.settings.heading != blank -%}
+                    <h2>{{block.settings.heading}}</h2>
+                {%- endif -%}
+                
+                <div class="mm-video-wrap">
+                <video width="100%" height="100%" autoplay="autoplay" muted>
+                    <source src="{{block.settings.megamenu_video}}" type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+        {% when 'aritcle' %}
+
+            {%- if block.settings.heading != blank -%}
+            <h2 class="mega-menu-title">{{block.settings.heading}}</h2>
+            {%- endif -%}
+
+
+            <div class="mega-menu-column mm-artcle-block {% if block.settings.hide_mb %}mm-hide-mobile{% endif %}" style="flex: 0 0 {{block.settings.column_width}}%;">       
+
+
+                <div class="mb-article-wrap">
+                <div class="mb-article-frame">
+                <div class="article-row">
+                    {% assign farticles = block.settings.featured_blog.articles %}   
+                    {% for article in farticles limit: 2 %}
+                    <div class="mm-article-wrap">
+                    <a href="{{ article.url }}">
+
+                        {%- if article.image -%}
+                        <img src="{{ article.image | img_url: '800x' }}" alt="">
+                        {%- endif -%}
+
+                        <h2>{{ article.title }}</h2>
+                    </a>
+                    </div>
+                    {% endfor %} 
+                </div>
+                </div>
+                </div>
+
+            </div>
+   
+            {% when 'editorial' %}
+
+            {%- if block.settings.heading != blank -%}
+            <h2 class="mega-menu-title">{{block.settings.heading}}</h2>
+            {%- endif -%}
+
+
+            <div class="mega-menu-column mm-artcle-block {% if block.settings.hide_mb %}mm-hide-mobile{% endif %}" style="flex: 0 0 {{block.settings.column_width}}%;">       
+
+
+                <div class="mb-article-wrap">
+                <div class="mb-article-frame">
+                <div class="article-row">
+
+                    {% if block.settings.edi_image_1 %}
+                    <div class="mm-article-wrap">
+                        <a href="{{ block.settings.edi_link_1 }}">
+    
+                            <img src="{{ block.settings.edi_image_1 | img_url: '800x' }}" alt="">
+    
+                            <h2>{{ block.settings.edi_title_1 }}</h2>
+                        </a>
+                        </div>  
+                    {% endif %}
+
+                    {% if block.settings.edi_image_2 %}
+                    <div class="mm-article-wrap">
+                        <a href="{{ block.settings.edi_link_2 }}">
+    
+                            <img src="{{ block.settings.edi_image_2 | img_url: '800x' }}" alt="">
+    
+                            <h2>{{ block.settings.edi_title_2 }}</h2>
+                        </a>
+                        </div>  
+                    {% endif %}
+
+
+                    {% if block.settings.edi_image_3 %}
+                    <div class="mm-article-wrap">
+                        <a href="{{ block.settings.edi_link_3 }}">
+    
+                            <img src="{{ block.settings.edi_image_3 | img_url: '800x' }}" alt="">
+    
+                            <h2>{{ block.settings.edi_title_3 }}</h2>
+                        </a>
+                        </div>  
+                    {% endif %}
+
+
+                </div>
+                </div>
+                </div>
+
+            </div>
+   
+
+
+      	{% endcase %}
+
+      {% endfor%}
+      
+    </div>
+  </div>
+</div>

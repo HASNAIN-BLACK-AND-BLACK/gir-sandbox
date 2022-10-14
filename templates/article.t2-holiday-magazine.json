@@ -1,0 +1,137 @@
+{
+  "sections": {
+    "16620712134a14d081": {
+      "type": "image-banner",
+      "blocks": {
+        "16620712138595f3ef-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "CASHMERE GUIDE",
+            "heading_size": 70,
+            "font_family_heading": "FormulaCondensed-Bold"
+          }
+        }
+      },
+      "block_order": [
+        "16620712138595f3ef-0"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/GIR_0044_GROUP_005.jpg",
+        "image_mbl": "shopify:\/\/shop_images\/GIR_0044_GROUP_005.jpg",
+        "image_overlay_opacity": 20,
+        "image_height": "small",
+        "adapt_height_first_image": false,
+        "desktop_height": "",
+        "auto_mb_height": false,
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "165939628669fe40cf": {
+      "type": "section-four-article-1",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 40,
+        "padding_bottom": 52,
+        "padding_left": 0,
+        "padding_right": 0,
+        "desktop_image": "shopify:\/\/shop_images\/Screen_Shot_2022-09-01_at_5.31.15_PM.png",
+        "mobile_image": "shopify:\/\/shop_images\/Screen_Shot_2022-09-01_at_5.31.15_PM.png",
+        "image_border": false,
+        "image_credits": "",
+        "show_featured_products": false,
+        "title": "Shop the look",
+        "heading_size": "h1",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "shop_the_look": "Click to shop the look",
+        "show_swatches": true
+      }
+    },
+    "16593937685a8278e9": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "1413755e-a798-4f1a-854c-77e64dc5b60b": {
+          "type": "heading",
+          "settings": {
+            "heading": "OUR KNITWEAR IS CONSTRUCTED TO LAST FOR YEARS, SO YOU CAN WEAR THEM , LOVE THEM , AND, HOPEFULLY, PASS THEM DOWN. HOWEVER , CASHMERE CARE IS CRUCIAL TO KEEP YOUR KNITS OF HEIRLOOM QUALITY. WE’VE PROVIDED SOME LEARNINGS THAT MAY HELP INFORM YOUR GARMENT CARE JOURNEY.",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "1413755e-a798-4f1a-854c-77e64dc5b60b"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 60,
+        "padding_left": 40,
+        "padding_right": 40,
+        "text_width": 900
+      }
+    },
+    "1662070596163cffdb": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "6e75a5c0-086f-4f07-a583-3a9c49d12341": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>HOW TO WASH<\/p><p>Because cashmere is designed to protect goats in harsh climates, it’s surprisingly durable. Our recommendation for washing is simple and natural. If a garment is lightly soiled, let it have some fresh air to refresh the natural oils that maintain softness. When a garment is heavily soiled, gently hand wash it and leave it to dry flat on a drying rack or towel. <\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "6e75a5c0-086f-4f07-a583-3a9c49d12341"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 30,
+        "padding_left": 40,
+        "padding_right": 40,
+        "text_width": 900
+      }
+    },
+    "16620705249312bf64": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "40223ac5-3dbc-4aee-8e31-b12163c908a5": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>HOW TO STORE<\/p><p>It's essential to store knit garments flat and folded to prevent stretching or misshaping. Cashmere contains keratin, which moths feed on; therefore, they are a harmful enemy to cashmere. Consequently, <br\/>we recommend placing natural deterrents around your knits, such as cedar balls or satchels containing lavender or mint. In addition, moths are attracted to worn garments, so we recommend cleaning garments before storing them to keep pests away. <\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "40223ac5-3dbc-4aee-8e31-b12163c908a5"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 30,
+        "padding_bottom": 80,
+        "padding_left": 40,
+        "padding_right": 40,
+        "text_width": 900
+      }
+    }
+  },
+  "order": [
+    "16620712134a14d081",
+    "165939628669fe40cf",
+    "16593937685a8278e9",
+    "1662070596163cffdb",
+    "16620705249312bf64"
+  ]
+}

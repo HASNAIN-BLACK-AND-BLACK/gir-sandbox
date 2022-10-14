@@ -1,0 +1,240 @@
+<media-gallery id="MediaGallery-{{ section.id }}" role="region" {% if section.settings.enable_sticky_info %}class="product__media-gallery"{% endif %} aria-label="{{ 'products.product.media.gallery_viewer' | t }}" data-desktop-layout="{{ section.settings.gallery_layout }}">
+    <div id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter">
+
+      {% assign maleImages = product.metafields.custom.male_image_list.value %} 
+      {% assign femaleImages = product.metafields.custom.female_image_list.value %} 
+
+      {% assign maleImagesCount = maleImages.count %}
+      {% assign femaleImagesCount = femaleImages.count %}
+
+      {% assign flatImagesCount = product.media.count %}
+    
+      {% assign imagesCount = maleImagesCount | plus: femaleImagesCount | plus: flatImagesCount %}
+
+    
+      <ul class="pdp_main_media-list product__media-list contains-media grid grid--peek list-unstyled" role="list">
+        {%- liquid
+
+          if section.settings.media_size == 'large'
+            assign media_width = 0.65
+          elsif section.settings.media_size == 'medium'
+            assign media_width = 0.55
+          elsif section.settings.media_size == 'small'
+            assign media_width = 0.45
+          endif
+        -%}
+
+         {%- if product.metafields.custom.female_image_list != blank and collection.metafields.custom.gender == "Female" -%}
+
+            {%- for femaleImage in femaleImages -%} 
+            <li id="pdp-desktop-gallery-image-female-{{forloop.index}}" class="product__media-item grid__item slider__slide data-media-id="{{ section.id }}-{{ femaleImage.id }}">
+                {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+                {% render 'product-thumbnail', media: femaleImage, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+            {% endfor %}
+
+            {%- for maleMedia in maleImages -%} 
+            <li id="pdp-desktop-gallery-image-male-{{forloop.index}}" class="product__media-item grid__item slider__slide data-media-id="{{ section.id }}-{{ maleMedia.id }}">
+                {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+                {% render 'product-thumbnail', media: maleMedia, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+            {% endfor %}
+
+
+        {%- elsif product.metafields.custom.male_image_list != blank and collection.metafields.custom.gender == "Male" -%}
+
+            {%- for maleMedia in maleImages -%} 
+            <li id="pdp-desktop-gallery-image-male-{{forloop.index}}" class="product__media-item grid__item slider__slide data-media-id="{{ section.id }}-{{ maleMedia.id }}">
+                {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+                {% render 'product-thumbnail', media: maleMedia, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+            {% endfor %}
+
+            {%- for femaleImage in femaleImages -%} 
+            <li id="pdp-desktop-gallery-image-female-{{forloop.index}}" class="product__media-item grid__item slider__slide data-media-id="{{ section.id }}-{{ femaleImage.id }}">
+                {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+                {% render 'product-thumbnail', media: femaleImage, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+            {% endfor %}
+
+        {%- else -%}
+                
+            {%- for femaleImage in femaleImages -%} 
+            <li id="pdp-desktop-gallery-image-female-{{forloop.index}}" class="product__media-item grid__item slider__slide data-media-id="{{ section.id }}-{{ femaleImage.id }}">
+                {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+                {% render 'product-thumbnail', media: femaleImage, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+            {% endfor %}
+
+            {%- for maleMedia in maleImages -%} 
+            <li id="pdp-desktop-gallery-image-male-{{forloop.index}}" class="product__media-item grid__item slider__slide data-media-id="{{ section.id }}-{{ maleMedia.id }}">
+                {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+                {% render 'product-thumbnail', media: maleMedia, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+            {% endfor %}
+
+            
+        {%- endif -%}
+
+
+        {%- for flatImage in product.media -%}
+            <li id="pdp-desktop-gallery-image-flat-{{forloop.index}}" class="product__media-item grid__item slider__slide data-media-id="{{ section.id }}-{{ flatImage.id }}">
+                {%- assign media_position = media_position | default: 0 | plus: 1 -%}
+                {% render 'product-thumbnail', media: flatImage, position: media_position, loop: section.settings.enable_video_looping, modal_id: section.id, xr_button: true, media_width: media_width, lazy_load: true %}
+            </li>
+        {%- endfor -%}
+        
+      </ul>
+
+      {% if imagesCount > 3%}
+        <ul id="media-thumbnails" class="stay">
+          {% if product.metafields.custom.female_image_list != blank and collection.metafields.custom.gender == "Female" %}
+              {%- for femaleImage in femaleImages -%} 
+              <li>
+                  <a href="#pdp-desktop-gallery-image-female-{{forloop.index}}" class="thumbnail-link" tabindex="0">
+                  <img src="{{femaleImage | img_url : '80x'}}" alt="{{femaleImage.alt}}">
+                  </a>
+              </li>
+              {% endfor %}
+              {%- for maleMedia in maleImages -%} 
+              <li>
+                  <a href="#pdp-desktop-gallery-image-male-{{forloop.index}}" class="thumbnail-link" tabindex="0">
+                  <img src="{{maleMedia | img_url : '80x'}}" alt="{{maleMedia.alt}}">
+                  </a>
+              </li>
+              {% endfor %}
+          {% elsif product.metafields.custom.male_image_list != blank and collection.metafields.custom.gender == "Male" %}
+              {%- for maleMedia in maleImages -%} 
+              <li>
+                  <a href="#pdp-desktop-gallery-image-male-{{forloop.index}}" class="thumbnail-link" tabindex="0">
+                  <img src="{{maleMedia | img_url : '80x'}}" alt="{{maleMedia.alt}}">
+                  </a>
+              </li>
+              {% endfor %}
+              {%- for femaleImage in femaleImages -%} 
+              <li>
+                  <a href="#pdp-desktop-gallery-image-female-{{forloop.index}}" class="thumbnail-link" tabindex="0">
+                  <img src="{{femaleImage | img_url : '80x'}}" alt="{{femaleImage.alt}}">
+                  </a>
+              </li>
+              {% endfor %}
+          {% else %}
+              {%- for femaleImage in femaleImages -%} 
+              <li>
+                  <a href="#pdp-desktop-gallery-image-female-{{forloop.index}}" class="thumbnail-link" tabindex="0">
+                  <img src="{{femaleImage | img_url : '80x'}}" alt="{{femaleImage.alt}}">
+                  </a>
+              </li>
+              {% endfor %}
+              {%- for maleMedia in maleImages -%} 
+              <li>
+                  <a href="#pdp-desktop-gallery-image-male-{{forloop.index}}" class="thumbnail-link" tabindex="0">
+                  <img src="{{maleMedia | img_url : '80x'}}" alt="{{maleMedia.alt}}">
+                  </a>
+              </li>
+              {% endfor %}
+          {% endif %}
+          {%- for flatImage in product.media -%}
+          <li>
+              <a href="#pdp-desktop-gallery-image-flat-{{forloop.index}}" class="thumbnail-link" tabindex="0">
+              <img src="{{flatImage | img_url : '80x'}}" alt="{{flatImage.alt}}">
+              </a>
+          </li>
+          {%- endfor -%}
+        </ul>
+      {% endif %}
+
+    </div>
+
+  </media-gallery>
+
+  <script>
+    $(document).ready(function(){
+
+    // Select all links with hashes
+     
+    $('a.thumbnail-link').on('click focus', function(event) {
+      if (
+          location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+          && 
+          location.hostname == this.hostname
+        ) {
+          // Figure out element to scroll to
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          // Does a scroll target exist?
+          if (target.length) {
+            event.preventDefault();
+            
+            $('html, body').animate({
+            
+              scrollTop: target.offset().top
+              
+            }, 500);
+          }
+        }
+        
+        // $('#shopify-section-header').addClass('shopify-section-header-sticky');
+      });
+        
+      var lastScrollTop = 0;
+      $(window).scroll(function(event){
+        var st = $(this).scrollTop();
+   
+        lastScrollTop = st;
+      });
+      
+      $(window).scroll(function() {    
+          var scroll = $(window).scrollTop();
+          var slideHeight = $('.pdp_main_media-list').height() / 1.10
+          //>=, not <=
+          if (scroll >= slideHeight) {
+              //clearHeader, not clearheader - caps H
+              $("#media-thumbnails").removeClass("stay");
+              $("#shopify-section-header").css({position: 'sticky'})
+          } else {
+            $("#media-thumbnails").addClass("stay");
+            $("#shopify-section-header").css({position: 'static'})
+          }
+      });
+
+      $('.product__media-wrapper [data-fancybox="pdp-gallery"]').fancybox({
+        buttons: [
+          "zoom",
+          "fullScreen",
+          "close"
+        ],
+        infobar: false,
+        toolbar: true,
+        baseClass: "pdp-fancy-box",
+        btnTpl: {
+        arrowLeft:
+          '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
+          '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">' +
+          '<line x1="8.70711" y1="12.832" x2="18" y2="22.125" stroke="black" stroke-linecap="round"/>' +
+          '<line x1="17.9055" y1="3.7071" x2="8.70632" y2="12.8354" stroke="black" stroke-linecap="round"/>' +
+          "</svg>" +
+          "</button>",
+
+        arrowRight:
+          '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}">' +
+          '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">' +
+          '<line x1="17.2929" y1="13.168" x2="7.99997" y2="3.87504" stroke="black" stroke-linecap="round"/>' +
+          '<line x1="8.09453" y1="22.2929" x2="17.2937" y2="13.1646" stroke="black" stroke-linecap="round"/>' +
+          "</svg>" +
+          "</button>"
+      },
+      onInit : function( instance ) {
+        instance.$refs.toolbar.find('.fancybox-zoom').on('click', function() {
+          if ( instance.isScaledDown() ) {
+            instance.scaleToActual();
+          } else {
+            instance.scaleToFit();
+          }
+        });
+        }
+      });
+   
+    })
+  </script>
+

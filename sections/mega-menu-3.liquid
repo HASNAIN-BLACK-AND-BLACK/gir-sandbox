@@ -1,0 +1,225 @@
+{% include 'mega-menu' %}
+
+
+
+{% schema %}
+  {
+    "name": "Mega Menu 3",
+    "class": "mega-menu-section",
+    "settings": [
+		{
+          "type": "text",
+          "id": "menu_handle",
+          "label": "Menu Handle"
+       	}
+	],
+  	"blocks": [
+        {
+   		"type": "menu",
+        "name": "Menu",
+        "settings": [
+        	{
+              "type": "text",
+              "id": "heading",
+              "label": "Heading"
+            },
+        	{
+              "type": "link_list",
+              "id": "megamenu_linklist",
+              "label": "Menu"
+            },
+            {
+              "type": "select",
+              "id": "menu_alignment",
+              "label": "Menu Alignment",
+              "default": "right",
+              "options": [
+                {
+                  "value": "left",
+                  "label": "Left"
+                },
+                {
+                  "value": "center",
+                  "label": "Center"
+                },
+                {
+                  "value": "right",
+                  "label": "Right"
+                }
+              ]
+            },
+            {
+              "type": "range",
+              "id": "column_width",
+              "min": 20,
+              "max": 100,
+              "step": 5,
+              "default": 25,
+              "unit": "%",
+              "label": "Column Width"
+            }
+        ]
+      },
+		{
+   		"type": "image",
+        "name": "Image",
+        "settings": [
+			{
+              "type": "text",
+              "id": "heading",
+              "label": "Heading"
+            },
+        	{
+              "type": "image_picker",
+              "id": "megamenu_image",
+              "label": "Image"
+            },
+        	{
+              "type": "url",
+              "id": "megamenu_image_link",
+              "label": "Image Link"
+            },
+            {
+              "type": "range",
+              "id": "column_width",
+              "min": 20,
+              "max": 100,
+              "step": 5,
+              "default": 25,
+              "unit": "%",
+              "label": "Column Width"
+            },
+			{
+				"type": "checkbox",
+				"id": "hide_mb",
+				"label": "Hide on mobile",
+				"default": true
+			}
+        ]
+      },
+		{
+   		"type": "video",
+        "name": "Video",
+        "settings": [
+			{
+              "type": "text",
+              "id": "heading",
+              "label": "Heading"
+            },
+        	{
+              "type": "url",
+              "id": "megamenu_video",
+              "label": "Video Link"
+            },
+            {
+              "type": "range",
+              "id": "column_width",
+              "min": 20,
+              "max": 100,
+              "step": 5,
+              "default": 25,
+              "unit": "%",
+              "label": "Column Width"
+            },
+			{
+				"type": "checkbox",
+				"id": "hide_mb",
+				"label": "Hide on mobile",
+				"default": true
+			}
+        ]
+      },
+
+
+      {
+        "type": "editorial",
+     "name": "Editorial List",
+     "settings": [
+         {
+           "type": "text",
+           "id": "heading",
+           "label": "Heading"
+         },
+
+         {
+            "type": "image_picker",
+            "id": "edi_image_1",
+            "label": "Editorial Image 1"
+          },
+
+          {
+            "type": "text",
+            "id": "edi_title_1",
+            "label": "Editorial Title 1"
+          },
+
+          {
+            "type": "url",
+            "id": "edi_link_1",
+            "label": "Editorial Link 1"
+            },
+
+        {
+            "type": "image_picker",
+            "id": "edi_image_2",
+            "label": "Editorial Image 2"
+            },
+
+            {
+            "type": "text",
+            "id": "edi_title_2",
+            "label": "Editorial Title 2"
+            },
+
+            {
+            "type": "url",
+            "id": "edi_link_2",
+            "label": "Editorial Link 2"
+            },
+
+            {
+                "type": "image_picker",
+                "id": "edi_image_3",
+                "label": "Editorial Image 3"
+                },
+    
+                {
+                "type": "text",
+                "id": "edi_title_3",
+                "label": "Editorial Title 3"
+                },
+    
+                {
+                "type": "url",
+                "id": "edi_link_3",
+                "label": "Editorial Link 3"
+            },
+
+
+         {
+           "type": "range",
+           "id": "column_width",
+           "min": 20,
+           "max": 100,
+           "step": 5,
+           "default": 25,
+           "unit": "%",
+           "label": "Column Width"
+         },
+         {
+           "type": "checkbox",
+           "id": "hide_mb",
+           "label": "Hide on mobile",
+           "default": false
+         }
+     ]
+   }
+
+
+
+
+
+   ]
+  }
+{% endschema %}
+

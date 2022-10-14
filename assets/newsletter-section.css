@@ -1,0 +1,293 @@
+.newsletter__wrapper {
+  padding-right: calc(4rem / var(--font-body-scale));
+  padding-left: calc(4rem / var(--font-body-scale));
+}
+
+.hp-middle-nl.bottom-nl-popup-form {
+  position: static;
+  padding: 0;
+  min-height: auto;
+  background-color: transparent;
+  border-radius: 0;
+  margin-top: 0;
+  visibility: visible;
+  opacity: 1;
+}
+
+.hp-middle-nl.bottom-nl-popup-form .hp-middle-nl-inner.bottom-nl-popup-inner {
+  max-width: 100%;
+}
+.hp-middle-nl-inner .privacy-agreement-text {
+  max-width: 60%;
+}
+
+
+
+@media screen and (min-width: 750px) {
+  .newsletter__wrapper {
+    padding-right: 9rem;
+    padding-left: 9rem;
+  }
+}
+
+.newsletter__wrapper > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.newsletter__wrapper > * + * {
+  margin-top: 2rem;
+}
+
+
+
+.newsletter__wrapper > * + .newsletter-form {
+  margin-top: 3rem;
+}
+
+.newsletter__subheading {
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.newsletter__wrapper .newsletter-form__field-wrapper {
+  max-width: 36rem;
+}
+
+.newsletter-form__field-wrapper .newsletter-form__message {
+  margin-top: 1.5rem;
+}
+
+.newsletter__button {
+  margin-top: 3rem;
+  width: fit-content;
+}
+
+.newsletter__wrapper .newsletter__subheading {
+    max-width: 100%;
+    margin: 0px;
+}
+
+.newsletter__wrapper .newsletter-form {
+    max-width: 100%;
+}
+
+.newsletter__wrapper .newsletter-form__field-wrapper {
+    max-width: 100%;
+}
+
+.newsletter__wrapper .newsletter-form__button {
+    display: block;
+    width: auto;
+    flex: 0 0 auto;
+    padding: 16px 20px;
+    min-width: 308px;
+    height: 56px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    margin-left: 10px;
+}
+
+.newsletter__wrapper .newsletter-form__field-wrapper .field:after {
+    display: none;
+}
+
+.newsletter__wrapper {
+  	padding-left: 5.8rem;
+    padding-right: 5.8rem;
+}
+
+.newsletter.newsletter--narrow {
+    padding: 0px;
+}
+
+.newsletter__wrapper .h1 {
+    font-weight: 400;
+    line-height: 39px;
+    letter-spacing: 0.02em;
+    color: #090909;
+    font-family: 'CutiveMono-Regular';
+    text-align: left;
+}
+
+.newsletter-form__field-wrapper .field__input {
+    max-width: 100%;
+    width: auto;
+    min-width: auto;
+    flex: 1 0 0;
+    border-bottom: 1px solid #090909;
+    padding: 16px 0px 10px 0;
+    margin-right: 10px;
+    height: 56px;
+    color: #000;
+    font-family: 'CutiveMono-Regular';
+    font-size: 16px;
+    -webkit-appearance: unset;
+    appearance: unset;
+}
+.homepage-newsletter-banner .newsletter-form__field-wrapper .field__input::placeholder {
+	color: #000;
+  font-family: 'CutiveMono-Regular';
+}
+.homepage-newsletter-banner .newsletter-form__field-wrapper .field__input::-ms-input-placeholder {
+	color: #000;
+  font-family: 'CutiveMono-Regular';
+}
+.homepage-newsletter-banner .newsletter-form__field-wrapper .field__input::-webkit-input-placeholder {
+	color: #000;
+  font-family: 'CutiveMono-Regular';
+}
+.field__label {
+    left: 0px;
+    font-size: 16px;
+    line-height: 39px;
+    letter-spacing: 0.02em;
+    color: #090909;
+    font-family: 'CutiveMono-Regular';
+}
+
+.hp-middle-nl-message.show-msg {
+  display: block;
+}
+
+.hp-middle-nl-message {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .newsletter__button {
+    flex-shrink: 0;
+    margin: 0 0 0 1rem;
+  } 
+  .custom-form .checkbox-field {
+      margin-bottom: 10px !important;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  .newsletter-form__field-wrapper .field__input {
+    flex: 0 0 100%;
+    margin-right: 0px;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  .email-field, .phone-field {
+      margin-bottom: 24px;
+  }
+  .form-trigger {
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  .phone-form-trigger span, .email-form-trigger span {
+      font-size: 12px;
+  }
+  .newsletter__wrapper .newsletter-form__button {
+      flex: 0 0 100%;
+      margin-left: 0px;
+      /* margin-top: 36px; */
+      width: 100%;
+  }
+  .nl-popup-heading h3 {
+    font-size: 16px !important;
+    line-height: 26px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .privacy-agreement-text, .privacy-agreement-text * {
+      max-width: 100%;
+      font-size: 11px !important;
+      line-height: 14px !important;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .bottom-nl-popup-form .checkbox-label .checkmark {
+    height: 22px;
+    width: 22px;
+    padding: 3px;
+    border-radius: 3px;
+  }
+
+  .bottom-nl-popup-form .checkbox-label .checkmark:before {
+      border-radius: 1px;
+  }
+
+  .privacy-agreement-text a {
+      text-underline-offset: 2px;
+  }
+
+  .newsletter__wrapper .newsletter-form__field-wrapper .field {
+      flex-wrap: wrap;
+  }
+
+  .newsletter__wrapper {
+      padding-left: 35px;
+      padding-right: 35px;
+  }
+  .newsletter-form__field-wrapper .field__input {
+    height: auto;
+    margin-top: 15px;
+  }
+  .bottom-nl-popup-form .newsletter-form__button {
+    font-size: 14px !important;
+  }
+  .newsletter__wrapper .h1 {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+  }
+  
+  .newsletter__wrapper .newsletter-form__field-wrapper .button--primary.btn-lg {
+      min-width: 100%;
+      margin-top: 36px;
+  }
+
+
+  .newsletter__wrapper>*+* {
+      margin-top: 0px;
+  }
+
+  .newsletter-form__field-wrapper .field__input {
+      padding: 8px 0px;
+  }
+
+  .field__label {
+      font-size: 14px;
+      letter-spacing: 0.02em;
+  }
+  
+  .newsletter-form__field-wrapper .button--primary.btn-white {
+      min-width: 100%;
+      margin-top: 24px;
+  }
+  .hp-middle-nl-inner h3 {
+    font-size: 16px !important;
+    line-height: 20px !important;
+    margin-bottom: 16px !important;
+    }
+
+    .hp-middle-nl-inner .privacy-agreement-text {
+        max-width: 100%;
+    }
+
+    .hp-middle-nl-inner .privacy-agreement-text p, .hp-middle-nl-inner .privacy-agreement-text p a, .hp-middle-nl-inner .privacy-agreement-text a, .hp-middle-nl-inner .privacy-agreement-text {
+        font-size: 11px;
+        line-height: 14px;
+        color: #000;
+    }
+
+    .hp-middle-nl-inner .checkbox-label .checkmark {
+        height: 22px !important;
+        width: 22px !important;
+        padding: 3px !important;
+        border-radius: 6px;
+    }
+
+    .hp-middle-nl-inner .newsletter-form__field-wrapper .as-field__input {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+    }
+}

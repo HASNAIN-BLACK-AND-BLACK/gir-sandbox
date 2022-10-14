@@ -1,0 +1,88 @@
+.article_sec_two_type2_container .two_images_first_container {
+    width: 468.25px;
+    height: 458.25px;
+    margin-top: 185px;
+}
+
+.article_sec_two_type2_container .two_image_one {
+    width: 458px;
+}
+
+.article_sec_two_type2_container .two_images_second_container {
+    width: 316.64px;
+    height: 387px;
+}
+
+.article_sec_two_type2_container .two_image_two {
+    width: 306.64px;
+    height: 387px;
+}
+
+.article_sec_two_type2_container .article_section_seventh {
+    max-width: 959px;
+    max-height: unset;
+    margin: 0 auto;
+}
+
+.article_sec_two_type2_container .two_image_credits.two_credit_two {
+    top: 75%;
+}
+
+.article_sec_two_type2_container .two_image_credits {
+    right: -72px;
+}
+
+@media screen and (max-width:990px) {
+    .article_sec_two_type2_container .two_images_first_container {
+        width: 159.89px;
+        height: 149.89px;
+        margin-top: 64px;
+    }
+
+    .article_sec_two_type2_container .two_image_one {
+        width: 149.89px;
+    }
+
+    .article_sec_two_type2_container .two_images_second_container {
+        width: 110.3px;
+        height: 126.59px;
+    }
+
+    .article_sec_two_type2_container .two_image_two {
+        width: 100.3px;
+        height: 126.59px;
+    }
+
+    .article_sec_two_type2_container .article_section_seventh {
+        max-width: 313px;
+    }
+
+    .article_sec_two_type2_container .article_two_images_inner_container.article_two_images_inner_container {
+        max-width: 313px;
+    }
+
+    .article_sec_two_type2_container .article_two_images_container {
+        padding: 0;
+    }
+
+    .article_sec_two_type2_container .two_image_credits {
+        right: -47px;
+    }
+
+    .article_sec_two_type2_container .two_image_credits {
+        top: 63%;
+    }
+
+    .article_sec_two_type2_container .two_image_credits.two_credit_two {
+        top: 56%;
+    }
+
+    .article_sec_two_type2_container .two_image_credits p {
+        font-size: 8px;
+        line-height: 7px;
+    }
+
+    .article_sec_two_type2_container.article_sec_two_type2_container {
+        padding-bottom: 14px;
+    }
+}

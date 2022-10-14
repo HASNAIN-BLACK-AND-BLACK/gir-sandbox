@@ -1,0 +1,121 @@
+{% comment %}
+    Renders cart notification
+
+    Accepts:
+    - color_scheme: {String} sets the color scheme of the notification (optional)
+
+    Usage:
+    {% render 'cart-notification' %}
+{% endcomment %}
+<!-- Mini Cart -->
+
+{% if template == 'cart' %}
+<style>
+  .cart_content{
+    display: none;
+  }
+</style>
+  <cart-notification>
+    <div class="cart-notification-wrapper page-width animate drawer"
+      x-data="{ 
+        showMiniCart: false,
+        updateMiniCart(){
+          // send fetch request
+          fetch('{{ routes.root_url }}?view=cart')
+          .then(response => response.text())
+          .then(cartData => {
+              $refs.cart_content_cart.innerHTML = cartData;
+              document.querySelector('.cart_item_count_update').innerText = document.querySelector('.cart_item_count').innerText;
+              document.querySelector('.cart_item_count_noti').innerText = document.querySelector('.cart_item_count').innerText;        
+          })
+        }
+      }"
+      x-show="showMiniCart"
+      @cart-updated.window="updateMiniCart" 
+      @toggle-cart.window="showMiniCart = !showMiniCart">
+      <div id="cart-notification-mini" 
+        x-show="showMiniCart" 
+        class="cart-notification focus-inset{% if color_scheme %} color-{{ color_scheme }} gradient{% endif %}" 
+        aria-modal="true" aria-label="{{ 'general.cart.item_added' | t }}" role="dialog" tabindex="-1">
+          {% assign template_page = template %}
+          {% render 'cart-products-cart' with template_page %}
+      </div>
+    </div>
+  </cart-notification>
+{% else %}
+<style>
+  .cart_content_cart{
+    display: none;
+  }
+</style>
+  <cart-notification>
+    <div class="cart-notification-wrapper page-width animate drawer"
+      x-data="{ 
+        showMiniCart: false,
+        updateMiniCart(){
+          // send fetch request
+          fetch('{{ routes.root_url }}?view=cart')
+          .then(response => response.text())
+          .then(cartData => {
+              $refs.cart_content.innerHTML = cartData;
+              document.querySelector('.cart_item_count_update').innerText = document.querySelector('.cart_item_count').innerText;
+              document.querySelector('.cart_item_count_noti').innerText = document.querySelector('.cart_item_count').innerText;        
+          })
+        }
+      }"
+      x-show="showMiniCart"
+      @cart-updated.window="updateMiniCart"
+      @toggle-cart.window="showMiniCart = !showMiniCart">
+      <div id="cart-notification-mini" 
+        x-show="showMiniCart" 
+        class="cart-notification focus-inset{% if color_scheme %} color-{{ color_scheme }} gradient{% endif %}" 
+        aria-modal="true" aria-label="{{ 'general.cart.item_added' | t }}" role="dialog" tabindex="-1">
+          {% assign template_page = template %}
+          {% render 'cart-products' with template_page %}
+      </div>
+    </div>
+  </cart-notification>
+{% endif %}
+
+<!-- cart notification -->
+<cart-notification>
+  <div class="cart-notification-wrapper page-width animate notifications hidden"
+  x-data="{ showMiniCartNotification: false,
+    uupdateMiniCart(){
+      // send fetch request
+      fetch('{{ routes.root_url }}?view=cart')
+      .then(response => response.text())
+      .then(cartData => {
+        document.querySelector('.cart_item_count_noti').innerText = document.querySelector('.cart_item_count').innerText;
+       
+      })
+    }
+  }">
+    <div id="cart-notification" 
+      class="cart-notification focus-inset{% if color_scheme %} color-{{ color_scheme }} gradient{% endif %}" 
+      aria-modal="true" aria-label="{{ 'general.cart.item_added' | t }}" role="dialog" tabindex="-1">
+        
+      <div class="cart-notification__header no-border">
+        <h5 class="cart-notification__heading caption-large text-body">{{ 'general.cart.item_added' | t }} (<span class="cart_item_count_noti">{{ cart.item_count }}</span>)</h5>
+        <button type="button" @click="cart_functioality.animate_drawer('showMiniCartNotification')" class="cart-notification__close modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
+          <svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="#icon-close"></svg>
+        </button>
+      </div>
+      <div class="cart-notification__links notifi ">
+        <a href="{{ routes.cart_url }}" id="cart-notification-button" class="button button--primary btn-lg notification-button">{{ 'sections.cart.mini_cart_btn' | t }}</a>
+        <!-- <button type="button" class="link button-label btn-continue-shop" @click="$dispatch('toggle-notification')">{{ 'general.continue_shopping'  | t }}</button> -->
+      </div>
+
+    </div>
+  </div>
+</cart-notification>
+
+<div x-show="showMiniCart" x-data="{ showMiniCart: false }" @toggle-cart.window="showMiniCart = !showMiniCart">
+  <div class="mini-cart-overlay" @click="cart_functioality.animate_drawer('showMiniCart')">
+  </div>
+</div>
+{% style %}
+  .cart-notification {
+     display: none;
+  }
+{% endstyle %}

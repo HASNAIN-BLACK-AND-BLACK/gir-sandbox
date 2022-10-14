@@ -1,0 +1,114 @@
+/* WISHLIST PAGE **/
+
+.whishlist-page.page-width-full {
+    padding: 0px;
+  }
+
+  .whishlist-page .main-page-title {
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #000000;
+    font-family: CutiveMono-Regular;
+    font-weight: 400;
+    padding-bottom: 4px;
+    margin-top: 0px;
+}
+
+.wk-note.wk-note__login p,
+.wk-note.wk-note__list-empty p {
+    margin: 0px;
+    font-size: 12px;
+    line-height: 13px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #000000;
+    font-family: CutiveMono-Regular;
+}
+
+.wk-note.wk-note__login p a {
+    color: #000;
+    text-underline-offset: 0.5rem;
+}
+
+.wk-note.wk-note__login p a:hover {
+    text-decoration-thickness: .1rem;
+    color: #7e7a78;
+}
+
+.whishlist-page .wk-page .wk-grid {
+    padding: 40px 0px;
+    grid-gap: 30px 0.5px;
+}
+
+.wk-grid__item .wk-button.wk-button--remove {
+    display: block;
+}
+
+/* .wk-grid__item:hover .wk-button.wk-button--remove {
+    display: block;
+} */
+
+.wk-product-info .wk-product-title,
+.wk-product-info .wk-product-price {
+    font-size: 16px;
+    line-height: 17px;
+    letter-spacing: 0.02em;
+    color: #000000;
+    font-weight: 400;
+    font-family: CutiveMono-Regular;
+}
+
+.whishlist-page .wk-product-info {
+    margin-top: 1.4rem;
+    text-align: center;
+}
+
+.whishlist-page .wishlist-page-top {
+    padding-top: 12px;
+    padding-bottom: 15px;
+    background: #F6EBD8;
+}
+
+.wk-sharing__list-item .wk-share-button {
+    background-color: transparent;
+    padding: 5px;
+}
+
+.wk-sharing__list-item .wk-share-button:hover {
+    background-color: transparent;
+}
+
+.wishlist-page-top .wk-sharing {
+    margin-bottom: 0px;
+}
+.wk-product-image {
+    background-size: cover !important;
+}
+
+@media only screen and (max-width: 750px){
+
+    .whishlist-page .main-page-title {
+        font-size: 14px;
+        line-height: 15px;
+    }
+    
+    .wk-note.wk-note__login p, .wk-note.wk-note__list-empty p {
+        font-size: 10px;
+        line-height: 11px;
+    }
+    
+    .wk-note.wk-note__login p {
+        max-width: 180px;
+        margin: 0 auto;
+    }
+    
+    .whishlist-page .wk-page .wk-grid {
+        padding: 26px 0px;
+        grid-gap: 12px 1px;
+    }
+
+}

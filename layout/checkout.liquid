@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ direction }}" class="{{ checkout_html_classes }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    <meta name="referrer" content="origin">
+
+    <title>{{ page_title }}</title>
+    <script type="application/javascript" async src="https://sdk.postscript.io/integrations/sdk-min.js"></script>
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+
+    <style>
+      @font-face {
+        font-family: 'CutiveMono-Regular';
+        src: url({{ 'CutiveMono-Regular.woff' | asset_url }}) format('woff'),
+            url({{ 'CutiveMono-Regular.ttf' | asset_url }}) format('ttf');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      .main > *, h1, h2, h3, h4, h5, .sidebar > *, #ps__container > *{
+        font-family: 'CutiveMono-Regular';
+      }
+      h1, h2, h3, h4, h5, .product__description__name, .total-line__name{
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        color: #393435 !important;
+      }
+      .product__description__variant, .sidebar .order-summary__small-text, .sidebar .payment-due__currency, .breadcrumb__text{
+        color: #7E7A78 !important;
+      }
+      .breadcrumb__item--current .breadcrumb__text, .main .field__input,
+       .sidebar .order-summary__emphasis, .sidebar .field__input, .payment-due-label__total, .payment-due__price {
+        color: #393435 !important;
+      }
+      button.btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        gap: 10px;
+        height: 46px;
+        background: #000000;
+        border-radius: 3px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: .02em;
+        text-transform: uppercase;
+        color: #fff;
+        font-family: CutiveMono-Regular;
+      }
+      a{
+        color: #000;
+        line-height: normal;
+      }
+      .icon-svg--color-accent{
+        color: #000;
+      }
+      .product-thumbnail__quantity{
+        background-color: #000;
+      }
+    </style>
+     {% render 'app-config' %}
+  
+  {% include "globale-checkout-css" %}
+
+      {% include 'tag-manager-head' %}
+  
+  </head>
+  <body>
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {{ breadcrumb }}
+            {{ alternative_payment_methods }}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+
+    {% include 'tag-manager-checkout' %}
+
+    
+    <script>
+      window.addEventListener('DOMContentLoaded', function(){
+        if(document.querySelector('#checkout_email_or_phone').value === '')
+        {
+          let element_inputs = document.querySelectorAll('.field--third input');
+          console.log(element_inputs);
+          for (const input of element_inputs) {
+            input.value = '';
+            input.setAttribute('autocomplete', false)
+          }
+          
+        }
+      });
+    </script>
+  
+  {% include "globale-checkout-js" %}
+</body>
+</html>

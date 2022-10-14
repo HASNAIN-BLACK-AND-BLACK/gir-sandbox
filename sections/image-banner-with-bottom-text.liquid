@@ -1,0 +1,516 @@
+{{ 'section-image-banner-bottom-text.css' | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  #Banner-{{ section.id }}::after {
+    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+  }
+
+  .banner__box-top .banner__heading {
+    color: {{section.settings.heading_color}};
+    font-size: {{ section.settings.heading_size | append: 'px' }};
+  }
+
+  .banner__box-top .banner__subheading {
+    color: {{section.settings.subheading_color}};
+    font-size: {{ section.settings.subheading_size | append: 'px' }};
+  }
+
+  .banner__box-bottom .banner__text {
+    color: {{section.settings.text_color}};
+    font-size: {{ section.settings.btmtxt_size | append: 'px' }};
+  }
+
+  .banner__box-bottom .banner__buttons .button {
+      color: {{section.settings.button_label_color}};
+  }
+  .banner__text span {
+    color: {{section.settings.subheading_color}};
+  }
+
+{%- endstyle -%}
+
+
+{%- if section.settings.adapt_height_first_image and section.settings.image != blank -%}
+  {%- style -%}
+  @media screen and (max-width: 749px) {
+    #Banner-{{ section.id }}::before,
+    #Banner-{{ section.id }} .banner__media::before,
+    #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
+      padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    #Banner-{{ section.id }}::before,
+    #Banner-{{ section.id }} .banner__media::before {
+      padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    }
+
+  }
+
+  @media screen and (max-width: 750px) {
+
+    .banner__box-top .banner__heading {
+      color: {{section.settings.mb_heading_color}};
+      font-size: 34px;
+    }
+  
+    .banner__box-top .banner__subheading {
+      color: {{section.settings.mb_subheading_color}};
+      font-size: 40px;
+    }
+
+    .banner__box-bottom .banner__text {
+      color: {{section.settings.mb_text_color}};
+      font-size: 22px;
+    }
+
+    .banner__box-bottom .banner__buttons .button {
+      color: {{section.settings.mb_button_label_color}};
+      border-color: {{section.settings.mb_button_label_color}};
+    }
+    .banner__text span {
+      color: {{section.settings.mb_text_color}};
+    }
+
+  }
+
+  {%- endstyle -%}
+{%- endif -%}
+
+
+<div id="Banner-{{ section.id }}" class="banner banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}">
+  {%- if section.settings.image != blank -%}
+    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %} small-hide">
+      <img
+        srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if section.settings.image.width >= 550 -%}{{ section.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+          {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+          {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
+          {{ section.settings.image | image_url }} {{ section.settings.image.width }}w"
+        sizes="{% if section.settings.image_2 != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image_2 != blank %}50vw{% else %}100vw{% endif %}"
+        src="{{ section.settings.image | image_url: width: 1500 }}"
+        loading="lazy"
+        alt="{{ section.settings.image.alt | escape }}"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+        {% if section.settings.image_2 != blank %}class="banner__media-image-half"{% endif %}
+      >
+    </div>
+    {%- if section.settings.image_mbl != blank -%}
+      <div class="banner__media media{% if section.settings.image_mbl == blank and section.settings.image_mbl_2 == blank %} placeholder{% endif %}{% if section.settings.image_mbl_2 != blank %} banner__media-half{% endif %} medium-hide large-up-hide">
+        <img
+          srcset="{%- if section.settings.image_mbl.width >= 375 -%}{{ section.settings.image_mbl | image_url: width: 375 }} 375w,{%- endif -%}
+            {%- if section.settings.image_mbl.width >= 550 -%}{{ section.settings.image_mbl | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if section.settings.image_mbl.width >= 750 -%}{{ section.settings.image_mbl | image_url: width: 750 }} 750w,{%- endif -%}
+            {%- if section.settings.image_mbl.width >= 1100 -%}{{ section.settings.image_mbl | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if section.settings.image_mbl.width >= 1500 -%}{{ section.settings.image_mbl | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if section.settings.image_mbl.width >= 1780 -%}{{ section.settings.image_mbl | image_url: width: 1780 }} 1780w,{%- endif -%}
+            {%- if section.settings.image_mbl.width >= 2000 -%}{{ section.settings.image_mbl | image_url: width: 2000 }} 2000w,{%- endif -%}
+            {%- if section.settings.image_mbl.width >= 3000 -%}{{ section.settings.image_mbl | image_url: width: 3000 }} 3000w,{%- endif -%}
+            {%- if section.settings.image_mbl.width >= 3840 -%}{{ section.settings.image_mbl | image_url: width: 3840 }} 3840w,{%- endif -%}
+            {{ section.settings.image_mbl | image_url }} {{ section.settings.image_mbl.width }}w"
+          sizes="{% if section.settings.image_mbl_2 != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image_mbl_2 != blank %}50vw{% else %}100vw{% endif %}"
+          src="{{ section.settings.image_mbl | image_url: width: 1500 }}"
+          loading="lazy"
+          alt="{{ section.settings.image_mbl.alt | escape }}"
+          width="{{ section.settings.image_mbl.width }}"
+          height="{{ section.settings.image_mbl.width | divided_by: section.settings.image.aspect_ratio }}"
+          {% if section.settings.image_mbl_2 != blank %}class="banner__media-image-half"{% endif %}
+        >
+      </div>
+    {%- endif -%}
+  {%- elsif section.settings.image_2 == blank -%}
+    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}">
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+  {%- endif -%}
+  {%- if section.settings.image_2 != blank -%}
+    <div class="banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %} small-hide">
+      <img
+        srcset="{%- if section.settings.image_2.width >= 375 -%}{{ section.settings.image_2 | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 750 -%}{{ section.settings.image_2 | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 1100 -%}{{ section.settings.image_2 | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 1500 -%}{{ section.settings.image_2 | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 1780 -%}{{ section.settings.image_2 | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 2000 -%}{{ section.settings.image_2 | image_url: width: 2000 }} 2000w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 3000 -%}{{ section.settings.image_2 | image_url: width: 3000 }} 3000w,{%- endif -%}
+          {%- if section.settings.image_2.width >= 3840 -%}{{ section.settings.image_2 | image_url: width: 3840 }} 3840w,{%- endif -%}
+          {{ section.settings.image_2 | image_url }} {{ section.settings.image_2.width }}w"
+        sizes="{% if section.settings.image != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image != blank %}50vw{% else %}100vw{% endif %}"
+        src="{{ section.settings.image_2 | image_url: width: 1500 }}"
+        loading="lazy"
+        alt="{{ section.settings.image_2.alt | escape }}"
+        width="{{ section.settings.image_2.width }}"
+        height="{{ section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio }}"
+        {% if section.settings.image != blank %}class="banner__media-image-half"{% endif %}
+      >
+    </div>
+    {%- if section.settings.image_mbl_2 != blank -%}
+    <div class="banner__media media{% if section.settings.image_mbl != blank %} banner__media-half{% endif %} medium-hide large-up-hide">
+      <img
+        srcset="{%- if section.settings.image_mbl_2.width >= 375 -%}{{ section.settings.image_mbl_2 | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if section.settings.image_mbl_2.width >= 750 -%}{{ section.settings.image_mbl_2 | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if section.settings.image_mbl_2.width >= 1100 -%}{{ section.settings.image_mbl_2 | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if section.settings.image_mbl_2.width >= 1500 -%}{{ section.settings.image_mbl_2 | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {%- if section.settings.image_mbl_2.width >= 1780 -%}{{ section.settings.image_mbl_2 | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {%- if section.settings.image_mbl_2.width >= 2000 -%}{{ section.settings.image_mbl_2 | image_url: width: 2000 }} 2000w,{%- endif -%}
+          {%- if section.settings.image_mbl_2.width >= 3000 -%}{{ section.settings.image_mbl_2 | image_url: width: 3000 }} 3000w,{%- endif -%}
+          {%- if section.settings.image_mbl_2.width >= 3840 -%}{{ section.settings.image_mbl_2 | image_url: width: 3840 }} 3840w,{%- endif -%}
+          {{ section.settings.image_mbl_2 | image_url }} {{ section.settings.image_mbl_2.width }}w"
+        sizes="{% if section.settings.image_mbl != blank and section.settings.stack_images_on_mobile %}(min-width: 750px) 50vw, 100vw{% elsif section.settings.image_mbl != blank %}50vw{% else %}100vw{% endif %}"
+        src="{{ section.settings.image_mbl_2 | image_url: width: 1500 }}"
+        loading="lazy"
+        alt="{{ section.settings.image_mbl_2.alt | escape }}"
+        width="{{ section.settings.image_mbl_2.width }}"
+        height="{{ section.settings.image_mbl_2.width | divided_by: section.settings.image_mbl_2.aspect_ratio }}"
+        {% if section.settings.image_mbl != blank %}class="banner__media-image-half"{% endif %}
+      >
+    </div>
+    {%- endif -%}
+  {%- endif -%}
+  <div class="banner__content banner-with-bottom-text__info page-width banner__content--{{ section.settings.desktop_content_alignment }}">
+        <div class="banner__content_empty">
+        </div>
+        <div class="banner__box-top content--{{ section.settings.text_align }}">
+          <h2 class="banner__heading family-{{ section.settings.font_family_heading }}">
+            {{ section.settings.heading | escape }}
+          </h2>
+          <h3 class="banner__subheading family-{{ section.settings.font_family_subheading }}">
+            {{ section.settings.sub_heading }}
+          </h3>
+        </div>
+      <div class="banner__box-bottom">
+            <div class="empty-block"></div>
+        	{% unless section.settings.text == blank %}
+            <div class="banner__text family-{{ section.settings.font_family_btmtext }}">
+              <span>{{ section.settings.text | escape }}</span>
+            </div>
+        	{% endunless %}
+        
+           {%- if section.settings.button_label_1 != blank -%}
+              <div class="banner__buttons">          
+                  <a href="{{ section.settings.button_link_1 }}" class="button button--primary btn-lg btn-white">{{ section.settings.button_label_1 | escape }}</a> 
+              </div>
+           {%- endif -%}
+      </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image banner bottom text",
+  "tag": "section",
+  "class": "image-banner-with-bottom-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-banner.settings.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mbl",
+      "label": "First Mobile Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "t:sections.image-banner.settings.image_2.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mbl_2",
+      "label": "Second Mobile Image"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "adapt_height_first_image",
+      "default": false,
+      "label": "t:sections.image-banner.settings.adapt_height_first_image.label",
+      "info": "t:sections.image-banner.settings.adapt_height_first_image.info"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Image banner",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 60
+    },
+    {
+      "type": "select",
+      "id": "font_family_heading",
+      "options": [
+        {
+          "value": "Chalet-NY",
+          "label": "Chalet-NY"
+        },
+        {
+          "value": "CutiveMono-Regular",
+          "label": "CutiveMono-Regular"
+        },
+        {
+          "value": "FormulaCondensed-Black",
+          "label": "FormulaCondensed-Black"
+        },
+        {
+          "value": "FormulaCondensed-Bold",
+          "label": "FormulaCondensed-Bold"
+        },
+        {
+          "value": "FormulaCondensed-Light",
+          "label": "FormulaCondensed-Light"
+        },
+        {
+          "value": "FormulaCondensed-Regular",
+          "label": "FormulaCondensed-Regular"
+        }
+      ],
+      "default": "FormulaCondensed-Light",
+      "label": "Heading Font"
+    },
+    {
+      "type": "text",
+      "id": "sub_heading",
+      "default": "Subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Sub Heading size",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "font_family_subheading",
+      "options": [
+        {
+          "value": "Chalet-NY",
+          "label": "Chalet-NY"
+        },
+        {
+          "value": "CutiveMono-Regular",
+          "label": "CutiveMono-Regular"
+        },
+        {
+          "value": "FormulaCondensed-Black",
+          "label": "FormulaCondensed-Black"
+        },
+        {
+          "value": "FormulaCondensed-Bold",
+          "label": "FormulaCondensed-Bold"
+        },
+        {
+          "value": "FormulaCondensed-Light",
+          "label": "FormulaCondensed-Light"
+        },
+        {
+          "value": "FormulaCondensed-Regular",
+          "label": "FormulaCondensed-Regular"
+        }
+      ],
+      "default": "FormulaCondensed-Light",
+      "label": "Sub Heading Font"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.image-banner.settings.desktop_content_alignment.label"
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.image-banner.settings.desktop_content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.image-banner.settings.desktop_content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.image-banner.settings.desktop_content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.image-banner.settings.desktop_content_alignment.label"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image-banner.settings.header.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_images_on_mobile",
+      "default": true,
+      "label": "t:sections.image-banner.settings.stack_images_on_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_below",
+      "default": true,
+      "label": "t:sections.image-banner.settings.show_text_below.label"
+    },
+    {
+      "type": "color",
+      "id": "mb_heading_color",
+      "label": "Heading color on mobile"
+    },
+    {
+      "type": "color",
+      "id": "mb_subheading_color",
+      "label": "Subheading color on mobile"
+    },
+	{
+		"type": "header",
+		"content": "Banner Bottom Content"
+	},
+  {
+    "type": "text",
+    "id": "text",
+    "default": "Give customers details about the banner image(s) or content on the template.",
+    "label": "Bottom Text"
+    },
+    {
+      "type": "range",
+      "id": "btmtxt_size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size",
+      "default": 22
+    },
+    {
+      "type": "select",
+      "id": "font_family_btmtext",
+      "options": [
+        {
+          "value": "Chalet-NY",
+          "label": "Chalet-NY"
+        },
+        {
+          "value": "CutiveMono-Regular",
+          "label": "CutiveMono-Regular"
+        },
+        {
+          "value": "FormulaCondensed-Black",
+          "label": "FormulaCondensed-Black"
+        },
+        {
+          "value": "FormulaCondensed-Bold",
+          "label": "FormulaCondensed-Bold"
+        },
+        {
+          "value": "FormulaCondensed-Light",
+          "label": "FormulaCondensed-Light"
+        },
+        {
+          "value": "FormulaCondensed-Regular",
+          "label": "FormulaCondensed-Regular"
+        }
+      ],
+      "default": "FormulaCondensed-Light",
+      "label": "Bottom Text Font"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Bottom Text Color"
+    },
+    {
+      "type": "color",
+      "id": "mb_text_color",
+      "label": "Bottom text color on mobile"
+    },
+	{
+   	 "type": "text",
+    	"id": "button_label_1",
+    	"default": "Button label",
+    	"label": "t:sections.image-banner.blocks.buttons.settings.button_label_1.label",
+    	"info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+    },
+    {
+   	 "type": "url",
+   	 "id": "button_link_1",
+    	"label": "t:sections.image-banner.blocks.buttons.settings.button_link_1.label"
+    },
+    {
+      "type": "color",
+      "id": "button_label_color",
+      "label": "Button label color"
+    },
+    {
+      "type": "color",
+      "id": "mb_button_label_color",
+      "label": "Button label color on mobile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image banner bottom text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,150 @@
+.clothing-size-table span.size-cm {
+    display: none;
+}
+
+.clothing-size-guide-section {
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    height: 100%;
+    width: 50%;
+    z-index: 11;
+    right: -50%;
+    transition: .5s;
+    padding-top: 40px;
+    overflow-y: auto;
+}
+
+.clothing-size-guide-section.open {
+    right: 0px;
+}
+
+.clothing-size-guide {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.clothing-size__top-heading h2 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    font-family: CutiveMono-Regular;
+}
+
+.clothing-size__top-heading p {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.02em;
+    color: #393435;
+    margin: 0px;
+    font-family: 'CutiveMono-Regular';
+}
+
+.clothing-size__buttons button {
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: #000000;
+    background-color: transparent;
+    border: 0px;
+    padding: 5px 0px;
+    margin-right: 22px;
+    font-family: 'CutiveMono-Regular';
+    text-transform: uppercase;
+}
+.clothing-size__buttons button.active {
+    border-bottom: 1px solid #000;
+}
+.clothing-size__top-heading {
+    margin-bottom: 22px;
+}
+
+.clothing-size-table tr th, .clothing-size-table tr td {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 13px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #393435;
+    padding: 0px;
+    font-family: CutiveMono-Regular;
+    flex: 1 0 0;
+    text-align: center;
+}
+
+.clothing-size-table {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.clothing-size-table tr {
+    padding: 16px 0px;
+    border-bottom: 1px dashed rgba(126, 122, 120, 0.4);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.clothing-size-guide__close p {
+    font-size: 14px;
+    line-height: 15px;
+    letter-spacing: .02em;
+    font-family: CutiveMono-Regular;
+    text-transform: uppercase;
+    color: #393435;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.clothing-size-guide__close {
+    padding: 30px 40px 10px 40px;
+}
+
+.clothing-size-guide__close p svg {
+    margin-left: 6px;
+}
+
+@media only screen and (max-width: 750px){
+    .clothing-size-guide-section {
+        width: 100%;
+        top: auto;
+        bottom: -100%;
+        right: 0px;
+    }
+    
+    .clothing-size-guide-section.open {
+        bottom: 0px;
+    }  
+    
+    .clothing-size__top-heading p {
+        font-size: 12px;
+        line-height: 20px;
+    }
+    
+    .clothing-size__buttons button {
+        font-size: 10px;
+    }
+    
+    .clothing-size__top-heading h2 {
+        margin-bottom: 16px;
+    }
+    
+    .clothing-size-guide__close {
+        padding: 0px 20px;
+    }
+
+    .clothing-size-guide {
+        height: calc(100vh - 200px);
+        overflow-y: auto;
+        padding: 0 22px;
+    }
+    .clothing-size-guide::-webkit-scrollbar {
+        display: none;
+    }
+}
+ 

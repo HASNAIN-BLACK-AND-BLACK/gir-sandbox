@@ -1,0 +1,185 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "16621420521e24864c": {
+      "type": "image-banner",
+      "blocks": {
+        "1662142052082181e6-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "DISCOVER GIR",
+            "heading_size": 70,
+            "font_family_heading": "FormulaCondensed-Light"
+          }
+        },
+        "1662142052082181e6-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "1662142052082181e6-0",
+        "1662142052082181e6-1"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/GIR_EDIT_R03_Page_104_Image_0001.jpg",
+        "image_mbl": "shopify:\/\/shop_images\/Screen_Shot_2022-09-06_at_10.48.47_PM.png",
+        "image_overlay_opacity": 30,
+        "image_height": "small",
+        "adapt_height_first_image": false,
+        "desktop_height": "",
+        "auto_mb_height": false,
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "1662142565cf27dd35": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "b6f17e51-f0a2-451e-8162-fe38981783c5": {
+          "type": "heading",
+          "settings": {
+            "heading": "We are a 100% cashmere knitwear brand designing heirloom quality pieces for everybody. Introducing garments designed to last years, not seasons.",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "b6f17e51-f0a2-451e-8162-fe38981783c5"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 52,
+        "padding_bottom": 24,
+        "padding_left": 0,
+        "padding_right": 0,
+        "text_width": 860
+      }
+    },
+    "1662420027c0acc998": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Screen_Shot_2022-09-05_at_6.23.37_PM.png",
+        "image_mbl": "shopify:\/\/shop_images\/Screen_Shot_2022-09-05_at_6.05.05_PM.png",
+        "image_overlay_opacity": 0,
+        "image_height": "large",
+        "adapt_height_first_image": true,
+        "desktop_height": "",
+        "auto_mb_height": false,
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "16624183861b932623": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "81f5d540-31b4-465f-9496-97067e77493b": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p><strong>WHAT DOES \"GUEST IN RESIDENCE\" MEAN? <\/strong><\/p><p><br\/>WHEN GIGI HADID BEGAN BRAINSTORMING THIS BRAND, THE IDEA OF A \"GUEST IN RESIDENT\" WAS REOCCURRING FOR HER. <\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "81f5d540-31b4-465f-9496-97067e77493b"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 24,
+        "padding_bottom": 10,
+        "padding_left": 50,
+        "padding_right": 50,
+        "text_width": 860
+      }
+    },
+    "16624186350955fb1a": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "1ef145c2-36ab-47b7-bc98-f26fef5c2c8c": {
+          "type": "paragraph",
+          "settings": {
+            "paragraph": "<p>\"WE ARE GUESTS ON THIS PLANET AND IN OUR BODIES, GUESTS WHEN WE TRAVEL. WE ARE GUESTS IN OUR CLOTHES; THEY'VE HAD LIVES BEFORE WE HAD THEM, AND THEY HAVE LIVES AFTER US. SOMETIMES, WE EVEN FEEL LIKE GUESTS TO OURSELVES, NAVIGATING LIFE WHILE LEARNING WHO WE ARE. THE ONE GUARANTEE AS A GUEST IS THAT YOUR TRIP ISN'T PERMANENT. THEREFORE, TIME IS A GUEST'S ULTIMATE LUXURY.\"<\/p>",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "1ef145c2-36ab-47b7-bc98-f26fef5c2c8c"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 52,
+        "padding_left": 70,
+        "padding_right": 70,
+        "text_width": 860
+      }
+    },
+    "16624175554d61c406": {
+      "type": "custom-video",
+      "settings": {
+        "heading": "",
+        "heading_size": 24,
+        "font_family_heading": "CutiveMono-Regular",
+        "video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/81f00e760c0b4c93bad9224d08996fd6.mp4",
+        "mb_video_url": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/f4d5d18632334a668f37553d95c65a55.mp4",
+        "button_text": "",
+        "button_link": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "1662418216f3dad22b": {
+      "type": "section-two-article-1",
+      "blocks": {
+        "a3118b33-3575-4e78-b2ae-6cb83bb10dd3": {
+          "type": "heading",
+          "settings": {
+            "heading": "WE NAMED OUR FIRST CAMPAIGN \"YEAR BOOK\" BECAUSE A YEAR BOOK IS A TIME STAMP MEMORIALIZING A TIME AND PLACE FOR A COMMUNITY. WE BELIEVE PRODUCTS AND PEOPLE GET BETTER WITH AGE, SO WE SHOT 100 PEOPLE OF 100 DIFFERENT AGES, CELEBRATING HOW EACH MODEL CHOOSES TO EXPRESS THEMSELVES ONCE DRESSED.",
+            "heading_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "a3118b33-3575-4e78-b2ae-6cb83bb10dd3"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 30,
+        "padding_bottom": 16,
+        "padding_left": 0,
+        "padding_right": 0,
+        "text_width": 860
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16621420521e24864c",
+    "1662142565cf27dd35",
+    "1662420027c0acc998",
+    "16624183861b932623",
+    "16624186350955fb1a",
+    "16624175554d61c406",
+    "1662418216f3dad22b"
+  ]
+}

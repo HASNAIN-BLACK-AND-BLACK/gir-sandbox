@@ -1,0 +1,269 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'custom-video-section.css' | asset_url | stylesheet_tag }}
+
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  #{{ section.id }} .middle-content h3{
+    font-size: {{ section.settings.heading_size | append: 'px' }};
+  }
+  @media screen and (max-width: 480px) {
+    .middle-content h3{
+      font-size: 16px;
+    }
+  }
+
+{%- endstyle -%}
+
+<div class="custom-video-main" id="{{ section.id }}">
+  <div class="video-section isolate{% unless section.settings.full_width %} page-width{% endunless %} section-{{ section.id }}-padding">
+    
+    <div class="main-video">
+      
+      <div class="video-wrap video-{{section.id}}">
+        
+        {% unless section.settings.video_url == blank %}
+      	<video playsinline  class="desktop-video" width="100%" height="100%" autoplay="autoplay" muted loop>
+          <source src="{{section.settings.video_url}}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        {% endunless %}
+        
+        {% if section.settings.mb_video_url != blank %}
+        <video playsinline  class="mobile-video" width="100%" height="100%" autoplay="autoplay" muted loop>
+          <source src="{{section.settings.mb_video_url}}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        {% endif %}
+        
+        <div class="video-overlay-content">
+          <div class="play-pause-btn">
+          	<button type="button" class="video-control-btn pause-btn"><span class="visually-hidden">Pause</span>{% render 'icon-pause' %}</button>
+            <button type="button" class="video-control-btn play-btn hide"><span class="visually-hidden">Play</span>{% render 'icon-play' %}</button>
+          </div>
+          
+          
+          <div class="middle-content">
+          	{%- unless section.settings.heading == blank -%}
+                <h3 class="title family-{{ section.settings.font_family_heading }}">{{ section.settings.heading }}</h3>
+            {%- endunless -%}
+            
+            {% unless section.settings.button_text == blank %}
+            <div class="middle-content-btn">
+              <a href="{{section.settings.button_link}}" class="video-link-btn">{{section.settings.button_text}}</a>
+            </div>
+            {% endunless %}
+          </div>
+          <div class="audio-btn">
+            <button type="button" class="audio-control-btn unmute-btn">
+              <span class="visually-hidden">Umute</span>
+            	{% render 'icon-mute' %}
+            </button>
+            <button type="button" class="audio-control-btn mute-btn hide">
+              <span class="visually-hidden">Mute</span>
+            	{% render 'icon-unmute' %}
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.pause-btn').click(function(){
+      $(this).addClass('hide');
+      $(this).parent().find('.play-btn').removeClass('hide');
+      $(this).parent().find('.play-btn').focus();
+      $(this).parents('.video-{{section.id}}').find('video').trigger('pause');
+  });
+  
+  $('.play-btn').click(function(){
+      $(this).addClass('hide');
+      $(this).parent().find('.pause-btn').removeClass('hide');
+      $(this).parent().find('.pause-btn').focus();
+      $(this).parents('.video-{{section.id}}').find('video').trigger('play');
+  });
+  
+  $('.unmute-btn').click(function(){
+      $(this).addClass('hide');
+      $(this).parent().find('.mute-btn').removeClass('hide');
+      $(this).parent().find('.mute-btn').focus();
+      $(this).parents('.video-{{section.id}}').find('video').prop('muted', false);
+      $(this).parents('.video-{{section.id}}').addClass('audio-playing');
+  });
+  
+  $('.mute-btn').click(function(){
+      $(this).addClass('hide');
+      $(this).parent().find('.unmute-btn').removeClass('hide');
+      $(this).parent().find('.unmute-btn').focus();
+      $(this).parents('.video-{{section.id}}').find('video').prop('muted', true);
+      $(this).parents('.video-{{section.id}}').removeClass('audio-playing');
+  });
+
+  /** CHECK ELEMENT VISIBILITY **/
+  $.fn.visible = function(partial) {
+      var $t            = $(this),
+          $w            = $(window),
+          viewTop       = $w.scrollTop(),
+          viewBottom    = viewTop + $w.height(),
+          _top          = $t.offset().top,
+          _bottom       = _top + $t.height(),
+          compareTop    = partial === true ? _bottom : _top,
+          compareBottom = partial === true ? _top : _bottom;
+    
+    return ((compareBottom <= viewBottom) && (compareTop >= viewTop)); 
+
+  };
+
+   /* VIDEO MUTE ON SCROLL */
+   $(window).scroll(function(event) {
+      var videoSection = $('.video-{{section.id}}');
+      if (videoSection.visible(true)) {
+        $(this).find('video').trigger('play');
+        $(this).find('.unmute-btn').addClass('hide');
+        $(this).find('.mute-btn').removeClass('hide');
+      } else {
+        $(this).find('video').prop('muted', true);
+        $(this).find('.unmute-btn').removeClass('hide');
+        $(this).find('.mute-btn').addClass('hide');
+      }
+
+      if (videoSection.visible(true)) {
+        $('.video-{{section.id}}.audio-playing').find('video').prop('muted', false);
+      } else {
+        $('.video-{{section.id}}.audio-playing').find('video').prop('muted', true);
+      }
+  });
+
+
+  
+})
+</script>
+
+{% schema %}
+{
+  "name": "Custom Video",
+  "tag": "section",
+  "class": "video-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Video",
+      "label": "t:sections.video.settings.heading.label"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "font_family_heading",
+      "options": [
+        {
+          "value": "Chalet-NY",
+          "label": "Chalet-NY"
+        },
+        {
+          "value": "CutiveMono-Regular",
+          "label": "CutiveMono-Regular"
+        },
+        {
+          "value": "FormulaCondensed-Black",
+          "label": "FormulaCondensed-Black"
+        },
+        {
+          "value": "FormulaCondensed-Bold",
+          "label": "FormulaCondensed-Bold"
+        },
+        {
+          "value": "FormulaCondensed-Light",
+          "label": "FormulaCondensed-Light"
+        },
+        {
+          "value": "FormulaCondensed-Regular",
+          "label": "FormulaCondensed-Regular"
+        }
+      ],
+      "default": "CutiveMono-Regular",
+      "label": "Heading Font"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL"
+    },
+    {
+      "type": "url",
+      "id": "mb_video_url",
+      "label": "Mobile Video URL"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Label",
+	  "default": "Watch"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.video.settings.full_width.label",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Video"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,242 @@
+
+{{ 'section-four-o-four.css' | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  #Banner-{{ section.id }}::after {
+    opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
+  }
+
+  .banner__box-top .banner__heading {
+    color: {{section.settings.heading_color}};
+  }
+
+  .banner__buttons .button {
+      color: {{section.settings.button_label_color}};
+  }
+{%- endstyle -%}
+
+
+{%- if section.settings.adapt_height_first_image and section.settings.image != blank -%}
+  {%- style -%}
+  @media screen and (max-width: 749px) {
+    #Banner-{{ section.id }}::before,
+    #Banner-{{ section.id }} .banner__media::before,
+    #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
+      padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    #Banner-{{ section.id }}::before,
+    #Banner-{{ section.id }} .banner__media::before {
+      padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+      content: '';
+      display: block;
+    }
+
+  }
+
+  @media screen and (max-width: 750px) {
+
+    .banner__box-top .banner__heading {
+      color: {{section.settings.mb_heading_color}};
+    }
+
+    .banner__buttons .button {
+      color: {{section.settings.mb_button_label_color}};
+      border-color: {{section.settings.mb_button_label_color}};
+    }
+
+  }
+
+  {%- endstyle -%}
+{%- endif -%}
+
+
+<div id="Banner-{{ section.id }}" class="banner banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }} banner--adapt">
+  {%- if section.settings.image != blank -%}
+    <div class="hide-on-mobile banner__media media{% if section.settings.image == blank %} placeholder{% endif %}">
+      <img
+        srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
+          {%- if section.settings.image.width >= 550 -%}{{ section.settings.image | image_url: width: 550 }} 550w,{%- endif -%}
+          {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
+          {%- if section.settings.image.width >= 1100 -%}{{ section.settings.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+          {%- if section.settings.image.width >= 1500 -%}{{ section.settings.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+          {%- if section.settings.image.width >= 1780 -%}{{ section.settings.image | image_url: width: 1780 }} 1780w,{%- endif -%}
+          {%- if section.settings.image.width >= 2000 -%}{{ section.settings.image | image_url: width: 2000 }} 2000w,{%- endif -%}
+          {%- if section.settings.image.width >= 3000 -%}{{ section.settings.image | image_url: width: 3000 }} 3000w,{%- endif -%}
+          {%- if section.settings.image.width >= 3840 -%}{{ section.settings.image | image_url: width: 3840 }} 3840w,{%- endif -%}
+          {{ section.settings.image | image_url }} {{ section.settings.image.width }}w"
+        sizes="100vw"
+        src="{{ section.settings.image | image_url: width: 1500 }}"
+        loading="lazy"
+        alt="{{ section.settings.image.alt | escape }}"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.width | divided_by: section.settings.image.aspect_ratio }}"
+      >
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.image_2 != blank -%}
+  <div class="hide-on-desktop banner__media media{% if section.settings.image_2 == blank %} placeholder{% endif %}">
+    <img
+      srcset="{%- if section.settings.image_2.width >= 375 -%}{{ section.settings.image_2 | image_url: width: 375 }} 375w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 550 -%}{{ section.settings.image_2 | image_url: width: 550 }} 550w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 750 -%}{{ section.settings.image_2 | image_url: width: 750 }} 750w,{%- endif -%}
+        {%- if section.settings.image_2.width >= 1100 -%}{{ section.settings.image_2 | image_url: width: 1100 }} 1100w,{%- endif -%}
+        {{ section.settings.image_2 | image_url }} {{ section.settings.image_2.width }}w"
+      sizes="100vw"
+      src="{{ section.settings.image_2 | image_2_url: width: 1500 }}"
+      loading="lazy"
+      alt="{{ section.settings.image_2.alt | escape }}"
+      width="{{ section.settings.image_2.width }}"
+      height="{{ section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio }}"
+    >
+  </div>
+{%- endif -%}
+  
+  
+
+  <div class="banner__content banner-with-bottom-text__info page-width banner__content--{{ section.settings.desktop_content_alignment }}">
+        <div class="banner__content_empty">
+        </div>
+        <div class="banner__box-top content--{{ section.settings.text_align }}">
+          <h2 class="typography-heading typography-heading--1 banner__heading">
+            {{ section.settings.heading | escape }}
+          </h2>
+          {%- if section.settings.button_label_1 != blank -%}
+          <div class="banner__buttons">          
+              <a href="{{ section.settings.button_link_1 }}" class="button button--primary btn-lg btn-white">{{ section.settings.button_label_1 | escape }}</a> 
+          </div>
+       {%- endif -%}
+        </div>
+      <div class="banner__box-bottom">
+            <div class="empty-block"></div>
+      </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "404 main",
+  "tag": "section",
+  "class": "four-O-four",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Mobile image"
+    },
+    {
+      "type": "range",
+      "id": "image_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "adapt_height_first_image",
+      "default": true,
+      "label": "t:sections.image-banner.settings.adapt_height_first_image.label",
+      "info": "t:sections.image-banner.settings.adapt_height_first_image.info"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Image banner",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.image-banner.settings.desktop_content_alignment.label"
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.image-banner.settings.desktop_content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.image-banner.settings.desktop_content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.image-banner.settings.desktop_content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.image-banner.settings.desktop_content_alignment.label"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.image-banner.settings.header.content"
+    },
+    {
+      "type": "color",
+      "id": "mb_heading_color",
+      "label": "Heading color on mobile"
+    },
+	{
+   	 "type": "text",
+    	"id": "button_label_1",
+    	"default": "Button label",
+    	"label": "Button label",
+    	"info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+    },
+    {
+   	 "type": "url",
+   	 "id": "button_link_1",
+    	"label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "button_label_color",
+      "label": "Button label color"
+    },
+    {
+      "type": "color",
+      "id": "mb_button_label_color",
+      "label": "Button label color on mobile"
+    }
+  ]
+}
+{% endschema %}
+
+
+

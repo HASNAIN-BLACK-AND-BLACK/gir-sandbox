@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "banner": {
+      "type": "banner-with-subscribeForm",
+      "settings": {
+        "show_form": true,
+        "media_type": "image",
+        "image": "shopify:\/\/shop_images\/386520070003_FINAL_copy.jpg",
+        "image_alter": "shopify:\/\/shop_images\/386520660015_FINAL_copy.jpg",
+        "video": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/48763202198846ac890a1b4bd03e094a.mp4",
+        "video_alter": "https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/9c92e4db339e46cbac6ba9a33b3401b2.mp4",
+        "bg_color": "#f6ebd8",
+        "list_id": "X8cyiB",
+        "email_newsletter_heading": "DROP 2: JOIN THE WAITLIST FOR EARLY ACCESS AND FREE GLOBAL SHIPPING.",
+        "font_family_heading": "FormulaCondensed-Light",
+        "email_privacy_agreement": "<p>By checking this box, you agree to receive marketing messages from Guest In Residence and agree to our  <a href=\"https:\/\/guestinresidence.com\/pages\/terms-conditions\" target=\"_blank\" title=\"Terms & Conditions\">terms of service <\/a>+ <a href=\"https:\/\/guestinresidence.com\/pages\/privacy-policy\" target=\"_blank\" title=\"Privacy Policy\">privacy policy<\/a>.<\/p>",
+        "font_family_privacy": "CutiveMono-Regular",
+        "email_form_btn": "Subscribe",
+        "email_success_msg": "Thank you! You've successfully joined the waitlist.",
+        "email_error_msg": "Invalid Email",
+        "phone_form_trigger": "Text me instead",
+        "email_form_trigger": "Email me instead",
+        "font_family_messages": "CutiveMono-Regular",
+        "phone_newsletter_heading": "DROP 2: JOIN THE WAITLIST FOR EARLY ACCESS AND FREE GLOBAL SHIPPING.",
+        "phone_privacy_agreement": "<p>By checking this box, you agree to receive marketing messages from Guest In Residence including recurring automated marketing text messages (e.g. cart reminders) if a phone number is provided. Consent is not a condition to purchase. Msg & data rates may apply. Msg frequency varies. Reply HELP for help and STOP to cancel. View our <a href=\"\/pages\/terms-of-services\" target=\"_blank\" title=\"Terms of Services\">Terms of Service<\/a> and <a href=\"\/pages\/privacy-policy\" target=\"_blank\" title=\"Privacy Policy\">Privacy Policy<\/a>.<\/p>",
+        "phone_form_btn": "Subscribe",
+        "phone_success_msg": "Thank you! You've successfully joined the waitlist.",
+        "phone_error_msg": "Invalid Phone Number"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 65,
+        "load_more_btn_lbl": "Load More",
+        "ls_limit": 40,
+        "show_swatches": true,
+        "promo_content_alignment": "bottom",
+        "enable_filtering": true,
+        "filter_type": "drawer"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid"
+  ]
+}
