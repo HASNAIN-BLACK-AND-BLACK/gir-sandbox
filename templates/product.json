@@ -2,7 +2,7 @@
   "sections": {
     "main": {
       "type": "main-product",
-      "blocks": {
+      "blocks": { 
         "title": {
           "type": "title",
           "settings": {
@@ -18,7 +18,7 @@
         "price": {
           "type": "price",
           "settings": {
-          }
+          }   
         },
         "variant_picker": {
           "type": "variant_picker",

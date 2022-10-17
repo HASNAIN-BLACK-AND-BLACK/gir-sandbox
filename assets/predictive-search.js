@@ -20,11 +20,14 @@ class PredictiveSearch extends HTMLElement {
             let image = $(item).find(".snize-thumbnail img").attr("src");
             let title = $(item).find(".snize-title").text();
             let price = $(item).find(".snize-price-list .snize-price").text();
-      
+            let link = $(item).find("a.snize-item").attr('href');
+
+
             let singleProduct = {
               image,
               title,
               price,
+              link,
             };
             SearchedProducts.push(singleProduct);
           });
@@ -201,7 +204,7 @@ class PredictiveSearch extends HTMLElement {
     $('header .predictive-search #predictive-search-results').find('.predictive-search-see-all').text(`SEE ALL RESULTS (${this.SearchedProducts.length})`);
     $('header .predictive-search #predictive-search-results').find('#predictive-search-results-list').empty();
   this.SearchedProducts.slice(0, 6).map((product,key) => {
-   let Producthtml = `<li id="predictive-search-option-${key}" class="predictive-search__list-item" role="option" aria-selected="false"> <a href="/en-pk/products/quarter-zip-pullover-steel?_pos=1&amp;_psq=p&amp;_ss=e&amp;_v=1.0" class="predictive-search__item predictive-search__item--link link link--text" tabindex="-1"><div class="product-card-media media"> <div class="media-ratio ratio--1-1"> <img class="predictive-search__image media-asset" src="${product.image};width=250"> </div></div><div class="predictive-search__item-content"><div> <h3 class="predictive-search__item-heading h5">${product.title}</h3><h4 class="typography-font-3 product-subtitle">100% CASHMERE</h4> <span class="medium-hide large-up-hide typography-font-3 uppercase available-colors">1 color</span> </div><div class="price typography-font-3"> <div class="price__container"><div class="price__regular"> <span class="visually-hidden visually-hidden--inline">Regular price</span> <span class="price-item price-item--regular"> ${product.price} </span> </div><div class="price__sale"> <span class="visually-hidden visually-hidden--inline">Regular price</span> <span> <s class="price-item price-item--regular"> ${product.price} </s> </span><span class="visually-hidden visually-hidden--inline">Sale price</span> <span class="price-item price-item--sale price-item--last"> ${product.price} </span> </div><small class="unit-price caption hidden"> <span class="visually-hidden">Unit price</span> <span class="price-item price-item--last"> <span></span> <span aria-hidden="true">/</span> <span class="visually-hidden">&nbsp;per&nbsp;</span> <span> </span> </span> </small> </div></div></div></a> </li>`
+   let Producthtml = `<li id="predictive-search-option-${key}" class="predictive-search__list-item" role="option" aria-selected="false"> <a href="${product.link}" class="predictive-search__item predictive-search__item--link link link--text" tabindex="-1"><div class="product-card-media media"> <div class="media-ratio ratio--1-1"> <img class="predictive-search__image media-asset" src="${product.image};width=250"> </div></div><div class="predictive-search__item-content"><div> <h3 class="predictive-search__item-heading h5">${product.title}</h3><h4 class="typography-font-3 product-subtitle">100% CASHMERE</h4> <span class="medium-hide large-up-hide typography-font-3 uppercase available-colors">1 color</span> </div><div class="price typography-font-3"> <div class="price__container"><div class="price__regular"> <span class="visually-hidden visually-hidden--inline">Regular price</span> <span class="price-item price-item--regular"> ${product.price} </span> </div><div class="price__sale"> <span class="visually-hidden visually-hidden--inline">Regular price</span> <span> <s class="price-item price-item--regular"> ${product.price} </s> </span><span class="visually-hidden visually-hidden--inline">Sale price</span> <span class="price-item price-item--sale price-item--last"> ${product.price} </span> </div><small class="unit-price caption hidden"> <span class="visually-hidden">Unit price</span> <span class="price-item price-item--last"> <span></span> <span aria-hidden="true">/</span> <span class="visually-hidden">&nbsp;per&nbsp;</span> <span> </span> </span> </small> </div></div></div></a> </li>`
    $('header .predictive-search #predictive-search-results').find('#predictive-search-results-list').append(Producthtml) 
   })
   }
