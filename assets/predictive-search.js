@@ -189,7 +189,7 @@ class PredictiveSearch extends HTMLElement {
 
     setTimeout(()=>{
       this.SmartsearchProductResult()
-    }, 500);
+    }, 800);
 
   }
 
@@ -197,10 +197,24 @@ class PredictiveSearch extends HTMLElement {
   {
     console.log( this.SearchedProducts)
     console.log( this.SearchedProducts.length)
+    console.log(this.getQuery())
+
+    
+
+    if(this.getQuery().length && !this.SearchedProducts.length)
+    { 
+      $('header .predictive-search .suggested-search , header .predictive-search .suggested-search .predictive-search__loading-state').show();
+      $('header .predictive-search').find('#predictive-nosearch-results-list').show()
+      $('header .predictive-search #predictive-search-results').find('#predictive-search-results-list').empty();
+      $('header .predictive-search #predictive-search-results').hide();
+    }
+
     if(!this.SearchedProducts.length) return ;
+
 
     $('header .predictive-search .suggested-search , header .predictive-search .suggested-search .predictive-search__loading-state').hide();
     $('header .predictive-search #predictive-search-results').show();
+    $('header .predictive-search').find('#predictive-nosearch-results-list').hide()
     $('header .predictive-search #predictive-search-results').find('.predictive-search-see-all').text(`SEE ALL RESULTS (${this.SearchedProducts.length})`);
     $('header .predictive-search #predictive-search-results').find('#predictive-search-results-list').empty();
   this.SearchedProducts.slice(0, 6).map((product,key) => {

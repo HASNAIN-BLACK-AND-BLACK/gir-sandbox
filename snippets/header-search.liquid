@@ -56,6 +56,11 @@
                     <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
 
                       <div class="suggested-search">
+
+                    <ul id="predictive-nosearch-results-list" style="display: none ;" class="predictive-search__results-list list-unstyled" role="listbox" aria-labelledby="predictive-search-products">
+                       <li id="predictive-search-option-search-keywords" class="predictive-search__list-item" role="option"> <button class="predictive-search__item predictive-search__item--term link link--text h5 uppercase" tabindex="-1"> Your Search for “swe” didn't return any results. </button> </li>                       
+                    </ul>
+
                         {% assign category_search_heading = settings.category_search_heading %}
                         {% if category_search_heading %}
                             <h4 class="search-section-heading uppercase">{{ category_search_heading }}</h4>
@@ -81,7 +86,10 @@
                                   <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
                                 </svg>
                               </h2>
-                            <ul id="predictive-search-results-list" class="predictive-search__results-list list-unstyled" role="listbox" aria-labelledby="predictive-search-products"></ul>
+                     
+                            <ul id="predictive-search-results-list" class="predictive-search__results-list list-unstyled" role="listbox" aria-labelledby="predictive-search-products">
+
+                            </ul>
                               <a class="button button--primary btn-lg predictive-search-see-all" href="javascript:;" onclick="seeAllPredictiveResults()">SEE ALL RESULTS (6)</a>
                          </div>
 

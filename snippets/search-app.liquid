@@ -1,0 +1,41 @@
+<!-- Do NOT edit this page. Searchanise shows the search results here -->
+<script src="//searchserverapi.com/widgets/shopify/init.js?a=8g5m8Y8K6L"></script>
+<div class="snize" id="snize_results"></div>
+
+
+<script>
+    $( document ).ready(function() {
+     let SearchedProducts = [] ;
+
+    const elementToObserve = document.querySelector("body");
+    const observer = new MutationObserver((changes) => {
+      changes.forEach(function(change) {
+        console.log(change.target)
+        if($(change.target).has('snize-search-results-content'))
+        {
+          SearchedProducts = [];
+          $(change.target).find(".snize-product").each((index, item) => {
+            let image = $(item).find(".snize-thumbnail img").attr("src");
+            let title = $(item).find(".snize-title").text();
+            let price = $(item).find(".snize-price-list .snize-price").text();
+            let link = $(item).find("a.snize-view-link").attr('href');
+            let available = $(item).find(".snize-out-of-stock").text();
+
+            let singleProduct = {
+              image,
+              title,
+              price,
+              link,
+              available,
+            };
+            SearchedProducts.push(singleProduct);
+            console.log(SearchedProducts)
+          });
+        }
+    });
+
+    this.SearchedProducts = SearchedProducts
+    });
+    observer.observe(elementToObserve, { subtree: true, childList: true });
+});
+</script>
