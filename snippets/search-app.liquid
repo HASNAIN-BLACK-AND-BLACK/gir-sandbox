@@ -3,16 +3,151 @@
 <div class="snize" id="snize_results"></div>
 
 
-<script>
-    $( document ).ready(function() {
-     let SearchedProducts = [] ;
 
+<style>
+  .snize-filters-sidebar.snize-product-filters {
+    width: 330px !important;
+    position: absolute;
+    z-index: 9;
+    background: white;
+    right: -330px;
+    margin: 0 !important;
+    padding: 3.7rem;
+    transition: all 300ms linear;
+}
+#snize-search-results-grid-mode li.snize-product .snize-button
+{
+  z-index: 8;
+}
+.snize-filters-sidebar.snize-product-filters.filter_open
+{
+     right: 0px;
+}
+
+div#snize-search-results-grid-mode {
+    width: 100% !important;
+}
+
+.afterfiltercontaner {
+    margin: 0;
+    margin-right: 15px !important;
+}
+
+.snize-horizontal-right {
+    display: flex;
+    min-width: 350px !important;
+}
+
+a.appfiltertoggle {
+    background-repeat: no-repeat;
+    background-size: 21px;
+    padding: 0;
+    /* margin: 0; */
+    width: 33px;
+    height: 32px;
+    border: 1px solid #c1c1c1;
+    opacity: 1;
+    margin: 0;
+    border-radius: 1px;
+    box-sizing: content-box !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.snize-search-results
+{
+  position: relative;
+  overflow: hidden;
+}
+
+li#snize-product-8146807849200 {}
+
+.snize-product {
+    padding: 3px !important;
+    text-align: center !important;
+}
+
+span.snize-title {
+    text-align: center !important;
+}
+
+span.snize-description {
+    text-align: center !important;
+}
+
+span.snize-attribute {
+    text-align: center !important;
+}
+
+.snize-price-list {
+    text-align: center !important;
+}
+
+button.snize-button.snize-action-button.snize-view-product-button {
+    display: none !important;
+}
+
+.snize-main-panel-controls {
+    display: none;
+}
+
+.snize-main-panel {
+    display: none !important;
+}
+
+.snize-search-results-header {
+    opacity: 0 !important;
+}
+
+</style>
+
+
+<script>
+  $( document ).ready(function() {
+        jQuery.extend( jQuery.fn, {
+          within: function( pSelector ) {
+              return this.filter(function(){
+                  return $(this).closest( pSelector ).length;
+              });
+          }
+        });
+
+
+    function addfilterButton(){
+    $('#snize_results').find('.snize-horizontal-right .snize-main-panel-view-mode').after(defaultOptions.filterHtml)
+    }
+
+    function implementDesigne()
+    {
+      let searchProductLength = SearchedProducts.length ;
+      console.log($('#snize_results').has('.afterfiltercontaner').within(".snize-main-panel-view-mode").length)
+      if(!searchProductLength)
+      {
+      } else {
+        clearInterval(findproductinterval);
+       addfilterButton()
+        $('#searchresultcount').text(searchProductLength)
+      }
+       console.log($('#snize_results').has('.afterfiltercontaner').length)
+    }
+
+
+    let defaultOptions =  {
+       filterHtml:  `<div class="afterfiltercontaner"><a href="#" class="appfiltertoggle"><svg width="24" height="32"  class="icon icon-filter" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"> <path fill-rule="evenodd" d="M4.833 6.5a1.667 1.667 0 1 1 3.334 0 1.667 1.667 0 0 1-3.334 0ZM4.05 7H2.5a.5.5 0 0 1 0-1h1.55a2.5 2.5 0 0 1 4.9 0h8.55a.5.5 0 0 1 0 1H8.95a2.5 2.5 0 0 1-4.9 0Zm11.117 6.5a1.667 1.667 0 1 0-3.334 0 1.667 1.667 0 0 0 3.334 0ZM13.5 11a2.5 2.5 0 0 1 2.45 2h1.55a.5.5 0 0 1 0 1h-1.55a2.5 2.5 0 0 1-4.9 0H2.5a.5.5 0 0 1 0-1h8.55a2.5 2.5 0 0 1 2.45-2Z" fill="currentColor"></path></svg></a></div>`
+    }
+    $('.seaction-featured-collection').hide();
+    $('.sectionfeatured-blog').hide();
+    let SearchedProducts = [] ;
     const elementToObserve = document.querySelector("body");
     const observer = new MutationObserver((changes) => {
+
       changes.forEach(function(change) {
-        console.log(change.target)
-        if($(change.target).has('snize-search-results-content'))
+
+
+        if($(change.target).find(".snize-search-results-content").length > 0 && $(change.target).within(".snize-search-results-main-content").length > 0)
         {
+          console.log('change.target',change.target)
           SearchedProducts = [];
           $(change.target).find(".snize-product").each((index, item) => {
             let image = $(item).find(".snize-thumbnail img").attr("src");
@@ -29,13 +164,40 @@
               available,
             };
             SearchedProducts.push(singleProduct);
-            console.log(SearchedProducts)
+           
           });
+
+          setTimeout(()=>{
+
+          if($('#snize_results').has('.afterfiltercontaner').length == 0)
+          {
+            addfilterButton()
+          }
+
+          },500)
+
+          
+
         }
     });
-
+   
     this.SearchedProducts = SearchedProducts
     });
-    observer.observe(elementToObserve, { subtree: true, childList: true });
+
+
+  let findproductinterval = setInterval(implementDesigne,500)
+
+    observer.observe(elementToObserve, { attributes: true, childList: true, subtree: true  });
+
+
+$(document).on('click','.appfiltertoggle',function(e){
+    e.preventDefault();
+    $('#snize_results .snize-filters-sidebar.snize-product-filters').toggleClass('filter_open')
+
+})
+
+
 });
 </script>
+
+

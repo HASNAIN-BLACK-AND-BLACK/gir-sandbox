@@ -1,0 +1,255 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-search.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+  {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+  
+
+
+
+{%- liquid
+  assign sort_by = search.sort_by | default: search.default_sort_by
+  assign terms = search.terms | escape
+  assign search_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
+-%}
+
+
+
+{%- assign search_terms = canonical_url | split: '?q=' | last | split: '&' | first -%}
+
+<div class="template-search{% unless search.performed and searchResultsCount > 0 %} template-search--empty{% endunless %}">
+  <div class="template-search__header center">
+    {%- if search.performed -%}
+      <h1 class="h3 typography-heading typography-font-3 typography-heading--4 uppercase">“{{search_terms}}”</h1>
+    {%- else -%}
+      <h1 class="h3 typography-heading typography-font-3 typography-heading--4 uppercase">“{{search_terms }}”</h1>
+    {%- endif -%}
+
+
+    <ul class="search-header-info typography-text typography-text--body-small list-unstyled uppercase">
+      <li><span id="searchresultcount">{{ searchResultsCount }}</span> Results</li>
+      <li><button id="search-again" class="typography-text typography-text--body-small uppercase">Search Again</button></li>
+    </ul>
+
+    
+    {%- if search.performed -%}
+      {%- unless section.settings.enable_filtering or section.settings.enable_sorting -%}
+        {%- if searchResultsCount > 0 -%}
+          <p role="status">{{ 'templates.search.results_with_count_and_term' | t: terms: search.terms, count: searchResultsCount }}</p>
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endif -%}
+  </div>
+
+  {% include 'search-app' %}
+
+</div>
+
+<script>
+  {% if searchResultsCount > 0 %}
+  var clpLayoutControls = (gridLayout) => {
+    // Switch clp layout between 2 and 4 grid
+    var switchLayoutBtn = document.getElementById("switch-layout");
+    var prodGrid = document.querySelector("#product-grid");
+    
+    if (gridLayout == "twoColumnLayout") {
+      console.log("set 2 columns layout");
+      prodGrid.classList.add("grid-layout"); 
+      switchLayoutBtn.classList.remove("grid-4");
+    }
+
+    $(switchLayoutBtn).unbind().click(function() {
+      console.log("switchLayoutBtn: ", $(".grid-layout"));
+      if (prodGrid.classList.contains("grid-layout")) {
+        $(prodGrid).removeClass("grid-layout"); 
+      } else {
+        $(prodGrid).addClass("grid-layout");
+      }
+      
+      switchLayoutBtn.classList.toggle("grid-4");
+    });
+
+
+    // Switch product images to outfit images
+    let switchImageBtns = Array.from(document.querySelectorAll(".switch-product-image li button"));
+    let productMedia = document.querySelectorAll(".product-card .media");
+
+    let handleClick = (e) => {
+      switchImageBtns.forEach(node => {
+        node.classList.remove('active');
+      });
+
+      if (e.currentTarget.classList.contains("outfit-image")) {
+        prodGrid.classList.add("show-outfit-image");
+      } else {
+        prodGrid.classList.remove("show-outfit-image");
+      }
+
+      productMedia.forEach(media => {
+        media.querySelector(".secondary_image").classList.toggle("active");
+        media.querySelector(".first_image").classList.toggle("active");
+      });
+      e.currentTarget.classList.add('active');
+    }
+
+    switchImageBtns.forEach(node => {
+      node.addEventListener('click', handleClick)
+    });
+  }
+  clpLayoutControls("fourColumnLayout");
+  {% endif %}
+
+  // Opens up the header search modal when click on `search again` button
+  const searchAgainBtn = document.getElementById("search-again");
+  searchAgainBtn.addEventListener("click", () => {
+    let searchModal = document.querySelectorAll(".header__search details");
+    document.body.classList.add("overflow-hidden");
+    
+    searchModal.forEach(modal => {
+      modal.setAttribute("open", "true");
+      modal.setAttribute("expanded", "true");
+    });
+  });
+
+
+  // Set active state to selected search category and toggles the section
+  const searchSubCategories = document.querySelectorAll('.search-categories a');
+  searchSubCategories.forEach(category => {
+    category.onclick = categoryClick;
+  })
+
+  function categoryClick(evt) {
+    evt.preventDefault();
+    searchSubCategories.forEach(category => {
+      category.classList.remove('active');
+    })
+    evt.target.classList.add('active');
+    
+    document.querySelectorAll(".search-resource-wrapper").forEach(wrapper => {
+      wrapper.classList.add("hidden");
+    });
+
+    var selectedSearchCategory = evt.target.getAttribute("data-attr");
+    if (selectedSearchCategory == "all") {
+      document.querySelectorAll(".search-resource-wrapper").forEach(wrapper => {
+        wrapper.classList.remove("hidden");
+        wrapper.classList.remove("remove-spaces");
+      });
+    } else {
+      document.getElementById(selectedSearchCategory).classList.remove("hidden");
+      document.getElementById(selectedSearchCategory).classList.add("remove-spaces");
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-search.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+    },
+    {
+      "type": "select",
+      "id": "filter_type",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__1.label"
+        },
+        {
+          "value": "vertical",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__2.label"
+        },
+        {
+          "value": "drawer",
+          "label": "t:sections.main-collection-product-grid.settings.filter_type.options__3.label"
+        }
+      ],
+      "default": "drawer",
+      "label": "t:sections.main-collection-product-grid.settings.filter_type.label",
+      "info": "t:sections.main-collection-product-grid.settings.filter_type.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-search.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "article_show_date",
+      "default": true,
+      "label": "t:sections.main-search.settings.article_show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "article_show_author",
+      "default": false,
+      "label": "t:sections.main-search.settings.article_show_author.label"
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+<style>
+
+  .template-search__search {
+    margin: 0 auto 3.5rem;
+    max-width: 47.8rem;
+  }
+
+  .template-search__search .search {
+    margin-top: 3rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .template-search__header {
+      margin-bottom: 0;
+    }
+  }
+
+  .search__button .icon {
+    height: 1.8rem;
+  }
+  {% if searchResultsCount == 0 %}
+  body[data-template=search] #MainContent section:not(:first-child) {
+    display: block;
+    margin-top: 4rem;
+  }
+  {% endif %}
+
+  @media screen and (max-width: 749px) {
+    {% if searchResultsCount == 0 %}
+    body[data-template=search] #MainContent section:not(:first-child) {
+      display: none;
+    }
+    {% endif %}
+  }
+</style>
