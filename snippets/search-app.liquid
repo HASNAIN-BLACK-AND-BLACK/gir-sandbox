@@ -99,6 +99,50 @@ span.snize-title {
     font-size: inherit !important;
 }
 
+#snize-search-results-grid-mode span.snize-thumbnail {
+    height: auto !important;
+}
+#snize-search-results-grid-mode span.snize-thumbnail img,
+#snize-search-results-grid-mode span.snize-overhidden
+{
+  position: unset !important;
+}
+
+#snize-search-results-grid-mode span.snize-thumbnail img{
+  max-height: unset !important; 
+}
+
+#snize-search-results-grid-mode span.snize-in-stock, #snize-search-results-grid-mode span.snize-pre-order, #snize-search-results-grid-mode span.snize-out-of-stock
+{
+  top: 8px;
+    right: 8px;
+}
+
+#snize-search-results-grid-mode.snize-four-columns li.snize-product {
+    width: 25% !important;
+    margin: 0px !important;
+    margin-bottom: 10px !important ;
+}
+
+.snize-search-results-main-content {
+    padding: 20px !important;
+}
+
+@media only screen and (max-width: 749px) {
+#snize-search-results-grid-mode.snize-two-columns li.snize-product {
+    width: 50% !important;
+    margin: 0px !important;
+    margin-bottom: 10px !important ;
+}
+#snize_results.snize-mobile-design.snize-new-version #snize-search-results-grid-mode ul {
+    margin-left: 0;
+    margin-right: 0;
+}
+.snize-search-results-main-content {
+    padding: 3px !important;
+}
+}
+
 .snize-product {
     padding: 3px !important;
     text-align: center !important;
