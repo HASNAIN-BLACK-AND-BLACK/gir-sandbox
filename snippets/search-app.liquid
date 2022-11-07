@@ -180,6 +180,17 @@ button.snize-button.snize-action-button.snize-view-product-button {
     opacity: 0 !important;
 }
 
+a.snize-main-panel-dropdown-discount-desc,
+a.snize-main-panel-dropdown-created-desc,
+a.snize-main-panel-dropdown-created-asc {
+  display: none !important;
+}
+
+.predictive-search__item-heading,
+.predictive-search__item-content .product-subtitle, 
+.predictive-search__item .price {
+  line-height: 1.5rem !important;
+}
 </style>
 
 
@@ -232,7 +243,7 @@ button.snize-button.snize-action-button.snize-view-product-button {
           $(change.target).find(".snize-product").each((index, item) => {
             let image = $(item).find(".snize-thumbnail img").attr("src");
             let title = $(item).find(".snize-title").text();
-            let price = $(item).find(".snize-price-list .snize-price").text();
+            let price = Math.floor($(item).find(".snize-price-list .snize-price").text());
             let link = $(item).find("a.snize-view-link").attr('href');
             let available = $(item).find(".snize-out-of-stock").text();
 
