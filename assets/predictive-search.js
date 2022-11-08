@@ -218,7 +218,7 @@ class PredictiveSearch extends HTMLElement {
     $('header .predictive-search #predictive-search-results').find('.predictive-search-see-all').text(`SEE ALL RESULTS (${this.SearchedProducts.length})`);
     $('header .predictive-search #predictive-search-results').find('#predictive-search-results-list').empty();
   this.SearchedProducts.slice(0, 6).map((product,key) => {
-    console.log("product.price: ", product.price);
+    console.log("product.price: ", product.price, typeof(product.price));
     var noDecPrice = Math.floor(product.price);
     noDecPrice = noDecPrice.split(".")[0];
     console.log("noDecPrice: ", noDecPrice);
