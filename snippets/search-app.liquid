@@ -244,6 +244,7 @@ a.snize-main-panel-dropdown-created-asc {
             let image = $(item).find(".snize-thumbnail img").attr("src");
             let title = $(item).find(".snize-title").text();
             let price = $(item).find(".snize-price-list .snize-price").text();
+            console.log("SearchedProducts-price: ", price);
             let link = $(item).find("a.snize-view-link").attr('href');
             let available = $(item).find(".snize-out-of-stock").text();
 
