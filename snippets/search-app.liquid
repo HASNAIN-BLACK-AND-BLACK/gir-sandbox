@@ -191,6 +191,14 @@ a.snize-main-panel-dropdown-created-asc {
 .predictive-search__item .price {
   line-height: 1.5rem !important;
 }
+
+.snize-product .snize-price {
+  opacity: 0;
+}
+
+.snize-product .snize-price.show {
+  opacity: 1;
+}
 </style>
 
 
@@ -288,14 +296,14 @@ $(document).on('click','.appfiltertoggle',function(e){
 })
 
 setTimeout(() => {
-  console.log("custom prices");
   var allProdsPrices = document.querySelectorAll(".snize-product .snize-price");
   allProdsPrices.forEach(item => {
     var price = item.textContent;
     let noDecPrice = price.split(".")[0];
     item.textContent = noDecPrice;
+    item.classList.add("show");
   });
-}, 5000);
+}, 3000);
 
 });
 
