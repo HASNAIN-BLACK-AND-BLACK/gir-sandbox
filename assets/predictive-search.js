@@ -244,7 +244,6 @@ class PredictiveSearch extends HTMLElement {
   }
 
   renderSearchResults(resultsMarkup) {
-    console.log("resultsMarkup: ", resultsMarkup);
     this.predictiveSearchResults.innerHTML = resultsMarkup;
     this.setAttribute("results", true);
 
