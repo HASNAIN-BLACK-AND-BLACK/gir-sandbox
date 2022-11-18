@@ -429,5 +429,11 @@
       "copy_code_success": "Codul a fost copiat cu succes",
       "print_gift_card": "Imprimați"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

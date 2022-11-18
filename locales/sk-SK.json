@@ -436,5 +436,11 @@
       "copy_code_success": "Kód sa úspešne skopíroval",
       "print_gift_card": "Tlačiť"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

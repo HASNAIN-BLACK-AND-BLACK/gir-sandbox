@@ -436,5 +436,11 @@
       "copy_code_success": "Koda je uspešno kopirana",
       "print_gift_card": "Natisni"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

@@ -436,5 +436,11 @@
       "copy_code_success": "Код скопирован",
       "print_gift_card": "Печать"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

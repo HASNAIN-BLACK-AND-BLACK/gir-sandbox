@@ -422,5 +422,11 @@
       "copy_code_success": "คัดลอกรหัสสำเร็จ",
       "print_gift_card": "พิมพ์"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }
