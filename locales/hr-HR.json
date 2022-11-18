@@ -429,5 +429,11 @@
       "copy_code_success": "Kod je uspješno kopiran",
       "print_gift_card": "Ispiši"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

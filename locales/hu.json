@@ -422,5 +422,11 @@
       "copy_code_success": "Sikeres volt a kód másolása",
       "print_gift_card": "Nyomtatás"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

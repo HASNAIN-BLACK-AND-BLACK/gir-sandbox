@@ -422,5 +422,11 @@
       "copy_code_success": "El código se copió correctamente",
       "print_gift_card": "Imprimir"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }
