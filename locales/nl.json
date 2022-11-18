@@ -422,5 +422,11 @@
       "copy_code_success": "Code gekopieerd",
       "print_gift_card": "Afdrukken"
     }
+  },
+  "discount_ninja": {
+    "from": "Vanaf",
+    "here": "hier",
+    "free": "GRATIS",
+    "sold_out": "Uitverkocht"
   }
 }

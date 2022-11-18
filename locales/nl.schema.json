@@ -2652,5 +2652,11 @@
         "name": "Inklapbare content"
       }
     }
+  },
+  "discount_ninja": {
+    "from": "Vanaf",
+    "here": "hier",
+    "free": "GRATIS",
+    "sold_out": "Uitverkocht"
   }
 }
