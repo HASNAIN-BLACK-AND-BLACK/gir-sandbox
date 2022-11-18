@@ -2652,5 +2652,11 @@
         "name": "可摺疊的內容"
       }
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

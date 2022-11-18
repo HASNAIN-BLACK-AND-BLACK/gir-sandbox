@@ -113,6 +113,7 @@
 
   {% include 'tag-manager-head' %}
   {% render "global_products_color.liquid" %}
+{% render 'limoniapps-discountninja-header' %}{%- if product -%}{%- assign discountninjaproduct = product -%}{%- endif -%}{%- if collection -%}{%- assign discountninjacollection = collection -%}{%- endif -%}
 </head>
 
   {% assign mbTransparents  = settings.mb_transparent | split : ' ,' %}
@@ -351,5 +352,6 @@ $(document).ajaxComplete(function(event, request, settings){
       {%- endif -%}
     
   {{'tiny-img-link-preloader.js' | asset_url | script_tag }}
+{% include 'limoniapps-discountninja-body' %}
 </body>
 </html>
