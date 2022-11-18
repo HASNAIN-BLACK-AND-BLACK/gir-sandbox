@@ -422,5 +422,11 @@
       "copy_code_success": "Đã sao chép mã thành công",
       "print_gift_card": "In"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

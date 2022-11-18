@@ -422,5 +422,11 @@
       "copy_code_success": "已成功复制代码",
       "print_gift_card": "打印"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }
