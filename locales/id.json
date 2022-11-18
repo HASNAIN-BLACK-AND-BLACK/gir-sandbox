@@ -422,5 +422,11 @@
       "copy_code_success": "Kode berhasil disalin",
       "print_gift_card": "Cetak"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

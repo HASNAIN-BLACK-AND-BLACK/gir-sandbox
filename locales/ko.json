@@ -422,5 +422,11 @@
       "copy_code_success": "코드 복사 완료",
       "print_gift_card": "인쇄"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

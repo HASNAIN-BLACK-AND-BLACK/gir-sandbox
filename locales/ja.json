@@ -422,5 +422,11 @@
       "copy_code_success": "コードは正常にコピーされました",
       "print_gift_card": "印刷する"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

@@ -2652,5 +2652,11 @@
         "name": "축소 가능한 콘텐츠"
       }
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

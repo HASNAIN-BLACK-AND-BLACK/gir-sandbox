@@ -436,5 +436,11 @@
       "copy_code_success": "Kodą pavyko nukopijuoti",
       "print_gift_card": "Spausdinti"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }
