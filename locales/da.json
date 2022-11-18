@@ -422,5 +422,11 @@
       "copy_code_success": "Koden er blevet kopieret",
       "print_gift_card": "Udskriv"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

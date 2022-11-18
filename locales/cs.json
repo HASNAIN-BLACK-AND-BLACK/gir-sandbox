@@ -436,5 +436,11 @@
       "copy_code_success": "Kód byl úspěšně zkopírován",
       "print_gift_card": "Vytisknout"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

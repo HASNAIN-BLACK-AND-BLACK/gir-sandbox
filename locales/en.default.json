@@ -470,5 +470,11 @@
       "send_to_customer_service": "Send to customer service",
       "add_all_to_cart": "Add wishlist to cart"
     }
+  },
+  "discount_ninja": {
+    "from": "From",
+    "here": "here",
+    "free": "FREE",
+    "sold_out": "Sold out"
   }
 }

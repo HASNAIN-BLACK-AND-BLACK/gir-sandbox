@@ -2652,5 +2652,11 @@
         "name": "Einklappbarer Inhalt"
       }
     }
+  },
+  "discount_ninja": {
+    "from": "Ab",
+    "here": "hier",
+    "free": "KOSTENLOS",
+    "sold_out": "Ausverkauft"
   }
 }

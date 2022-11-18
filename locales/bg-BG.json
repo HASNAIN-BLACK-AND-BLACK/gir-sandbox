@@ -422,5 +422,11 @@
       "print_gift_card": "Печат",
       "subtext": "Вашият ваучер за подарък"
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }

@@ -2652,5 +2652,11 @@
         "name": "Indhold, der kan skjules"
       }
     }
+  },
+  "discount_ninja": {
+    "from": "A partir de",
+    "here": "aqui",
+    "free": "GRÁTIS",
+    "sold_out": "Agotado"
   }
 }
