@@ -1,3 +1,4 @@
+{% comment %}Starting from 31 Jan 2024 this file is optional. File is still used for faster CSS load, but if it will be removed - Global-e will keep working.{% endcomment %}
 
 {% if checkout.shipping_address.country_code != blank %}    
     {% assign shipping_country_code = checkout.shipping_address.country_code %}  
